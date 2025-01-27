@@ -1,0 +1,18 @@
+{
+  "devDependencies": {
+    "@eslint/js": "^9.19.0",
+    "@stylistic/eslint-plugin": "^3.0.0",
+    "eslint": "^9.19.0",
+    "globals": "^15.14.0",
+    "typescript": "5.7.3",
+    "typescript-eslint": "^8.22.0"
+  },
+  "name": "new-project",
+  "scripts": {
+    "build": "pnpm -r build",
+    "dev": "pnpm -r dev",
+    "lint": "eslint ."
+  },
+  "type": "module",
+  "version": "0.0.0"
+}
