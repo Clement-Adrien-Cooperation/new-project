@@ -1,5 +1,9 @@
 import js from '@eslint/js'
 import stylisticPlugin from '@stylistic/eslint-plugin'
+
+import jsxA11y from 'eslint-plugin-jsx-a11y'
+import reactRefresh from 'eslint-plugin-react-refresh'
+
 import globals from 'globals'
 import tseslint from 'typescript-eslint'
 
@@ -8,16 +12,25 @@ export default tseslint.config(
   ...tseslint.configs.stylistic,
   { ignores: ['**/dist'] },
   {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    extends: [
+      js.configs.recommended,
+      ...tseslint.configs.strict
+    ],
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser
     },
     plugins: {
-      '@stylistic': stylisticPlugin
+      '@stylistic': stylisticPlugin,
+      'jsx-a11y': jsxA11y,
+      'react-refresh': reactRefresh
     },
     rules: {
+      ...jsxA11y.flatConfigs.rules,
+      ...reactRefresh.configs.recommended.rules,
+      ...stylisticPlugin.configs.rules,
+
       '@stylistic/comma-dangle': ['error', 'never'],
       '@stylistic/comma-spacing': ['error', { 'before': false, 'after': true }],
       '@stylistic/eol-last': ['error', 'always'],
@@ -39,14 +52,15 @@ export default tseslint.config(
       '@typescript-eslint/no-unused-vars': ['error', { 'argsIgnorePattern': '^_', 'varsIgnorePattern': '^_' }],
 
       'no-useless-return': 'error',
-      'semi': ['error', 'never'],
       'sort-imports': ['error', {
         'ignoreCase': true,
         'ignoreDeclarationSort': true,
         'ignoreMemberSort': false,
         'memberSyntaxSortOrder': ['all', 'multiple', 'single', 'none'],
         'allowSeparatedGroups': true
-      }]
+      }],
+
+      'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     }
   }
 )
