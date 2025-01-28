@@ -1,0 +1,25 @@
+{
+	"React component": {
+		"body": [
+			"import React from 'react'",
+			"",
+			"import './${TM_FILENAME_BASE}.styles.sass'",
+			"",
+			"type ${1:${TM_FILENAME_BASE/([\\w]+)([-_])([\\w])/${1:/capitalize}${3:/capitalize}/g}}Props = {",
+			"",
+			"}",
+			"",
+			"export const ${1:${TM_FILENAME_BASE/([\\w]+)([-_])([\\w])/${1:/capitalize}${3:/capitalize}/g}}: React.FC<${1:${TM_FILENAME_BASE/([\\w]+)([-_])([\\w])/${1:/capitalize}${3:/capitalize}/g}}Props> = () => {",
+			"  return (",
+			"    <div className='${TM_FILENAME_BASE}'>",
+			"      $0",
+			"    </div>",
+			"  )",
+			"}",
+			""
+		],
+		"description": "Create typescript React component named with file name",
+		"prefix": "comp",
+		"scope": "typescriptreact"
+	}
+}
