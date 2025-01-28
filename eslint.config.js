@@ -2,6 +2,7 @@ import js from '@eslint/js'
 import stylisticPlugin from '@stylistic/eslint-plugin'
 
 import jsxA11y from 'eslint-plugin-jsx-a11y'
+import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 
 import globals from 'globals'
@@ -10,7 +11,7 @@ import tseslint from 'typescript-eslint'
 export default tseslint.config(
   ...tseslint.configs.strict,
   ...tseslint.configs.stylistic,
-  { ignores: ['**/dist'] },
+  { ignores: ['**/dist', '**/polyglot.js'] },
   {
     extends: [
       js.configs.recommended,
@@ -24,9 +25,11 @@ export default tseslint.config(
     plugins: {
       '@stylistic': stylisticPlugin,
       'jsx-a11y': jsxA11y,
+      'react-hooks': reactHooks,
       'react-refresh': reactRefresh
     },
     rules: {
+      ...reactHooks.configs.recommended.rules,
       ...jsxA11y.flatConfigs.rules,
       ...reactRefresh.configs.recommended.rules,
       ...stylisticPlugin.configs.rules,
