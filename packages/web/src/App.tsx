@@ -1,5 +1,5 @@
-import { LocaleSwitcher } from './i18n/locale-switcher'
-import { I18nProvider } from './i18n/provider'
+import { LocaleSwitcher } from './i18n/LocaleSwitcher'
+import { I18nProvider } from './i18n/I18nProvider'
 
 export const App = () => (
   <I18nProvider>

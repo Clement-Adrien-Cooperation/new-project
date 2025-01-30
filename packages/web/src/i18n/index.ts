@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useProvidedContext } from '../lib/react'
+import { useProvidedContext } from '../lib/react.ts'
 
 import Polyglot from './polyglot'
 
@@ -48,12 +48,12 @@ export const getSupportedNavigatorLocale = (): Locale | null => {
     return primaryNavigatorLocale
   }
 
-  const secondaryNavigatorLocale = navigator.languages
+  const matchingLocale = navigator.languages
     .map((language) => language.slice(0, 2))
     .find((language) => isSupportedLocale(language))
 
-  if (secondaryNavigatorLocale != null) {
-    return secondaryNavigatorLocale
+  if (matchingLocale != null) {
+    return matchingLocale
   }
 
   return null
