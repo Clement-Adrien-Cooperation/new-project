@@ -1,0 +1,6 @@
+{
+  "compilerOptions": {
+    "composite": true
+  },
+  "include": ["packages", "apps/web-app", "apps/backend-api"]
+}
