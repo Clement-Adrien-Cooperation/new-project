@@ -9,8 +9,13 @@
     }
   ],
   "cSpell.words": [
+    "contenteditable",
     "grayscale",
-    "oklch"
+    "menuitemcheckbox",
+    "menuitemradio",
+    "oklch",
+    "spinbutton",
+    "tabindex"
   ],
   "peacock.color": "#832561",
   "workbench.colorCustomizations": {
