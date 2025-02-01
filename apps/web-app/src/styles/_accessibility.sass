@@ -1,0 +1,24 @@
+// Override react-aria-components focus styles
+
+@mixin no-focus-outline
+  outline: none
+
+  &:focus,
+  &[data-focused]
+    outline: none
+
+@mixin focus-border
+  @include no-focus-outline
+  border: var(--stroke-m, 0.125rem) solid transparent
+
+  &:focus-visible:not([data-focused]),
+  &[data-focus-visible]
+    border-color: var(--ring)
+
+@mixin focus-outline
+  @include no-focus-outline
+  outline-offset: var(--stroke-m, 0.125rem)
+
+  &:focus-visible:not([data-focused]),
+  &[data-focus-visible]
+    outline: var(--stroke-m, 0.125rem) solid var(--ring)

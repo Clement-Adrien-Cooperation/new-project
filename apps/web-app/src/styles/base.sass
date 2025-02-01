@@ -1,0 +1,30 @@
+@use './normalize.css'
+@use './sizes.sass'
+@use './colors.sass'
+@use './transitions.sass'
+@use './typography.sass'
+@use './accessibility.sass'
+@use './interactions.sass'
+@use './shadows.sass'
+@use './mixins.sass'
+@use './scrollbar.sass'
+
+html
+  @include typography.body-medium
+  -moz-osx-font-smoothing: grayscale
+  -webkit-font-smoothing: antialiased
+  -webkit-tap-highlight-color: transparent
+  accent-color: hsl(var(--accent))
+  background: var(--background)
+  caret-color: hsl(var(--accent))
+  color: var(--foreground)
+  color-scheme: dark light
+  scroll-padding: var(--spacing-m, 1rem)
+
+#root
+  flex: 1
+  height: 100%
+
+h1, h2, h3, h4, h5, h6
+  @include typography.title-medium
+
