@@ -1,4 +1,4 @@
-import type { Locale } from '../i18n'
+import type { Locale } from '../../domain/i18n'
 
 type LocalStorage = {
   locale: Locale

@@ -1,4 +1,4 @@
-import { useI18n } from '.'
+import { useI18n } from '../../application/hooks/useI18n'
 
 export const LocaleSwitcher: React.FC = () => {
   const { changeLocale, selectedLocale, translate } = useI18n()

@@ -1,42 +1,37 @@
 import React from 'react'
 
-import { getStoredItem, storeItem } from '../helpers/local-storage'
+import { I18nService } from '../../application/services/I18nService'
 
-import {
-  DEFAULT_LOCALE,
-  getPolyglot,
-  getSupportedNavigatorLocale,
-  I18nContext,
-  isSupportedLocale,
-  type Locale,
-  type TranslateKey,
-  type TranslateOptions
-} from '.'
+import { DEFAULT_LOCALE, type Locale } from '../../domain/i18n'
+
+import { getPolyglot } from '../../infrastructure/i18n'
+
+import { I18nContext, type TranslateKey, type TranslateOptions } from './I18nContext'
 
 export const I18nProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
   const [selectedLocale, setSelectedLocale] = React.useState<Locale>(DEFAULT_LOCALE)
 
   const selectLocale = React.useCallback((newLocale: Locale) => {
     setSelectedLocale(newLocale)
-    document.documentElement.setAttribute('lang', newLocale)
+    I18nService.updateDocumentLanguage(newLocale)
   }, [])
 
   const changeLocale = React.useCallback((newLocale: Locale) => {
-    if (isSupportedLocale(newLocale)) {
+    if (I18nService.isSupportedLocale(newLocale)) {
       selectLocale(newLocale)
-      storeItem('locale', newLocale)
+      I18nService.setLocale(newLocale)
     }
   }, [selectLocale])
 
   React.useEffect(() => {
-    const storedLocale = getStoredItem('locale')
+    const storedLocale = I18nService.getLocale()
 
-    if (storedLocale != null && isSupportedLocale(storedLocale)) {
+    if (storedLocale != null && I18nService.isSupportedLocale(storedLocale)) {
       selectLocale(storedLocale)
       return
     }
 
-    const navigatorLocale = getSupportedNavigatorLocale()
+    const navigatorLocale = I18nService.getSupportedNavigatorLocale()
 
     if (navigatorLocale != null) {
       selectLocale(navigatorLocale)
