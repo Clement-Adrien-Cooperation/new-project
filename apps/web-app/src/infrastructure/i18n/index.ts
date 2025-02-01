@@ -1,6 +1,8 @@
 import Polyglot from './polyglot'
-import { type Dictionary, en, fr } from './dictionaries'
+import { en, fr } from './dictionaries'
 
-export const dictionaries: Record<string, Dictionary> = { en, fr }
+export const dictionaries = { en, fr } as const
 
-export const getPolyglot = (locale: string) => new Polyglot({ phrases: dictionaries[locale] })
+type Locale = keyof typeof dictionaries
+
+export const getPolyglot = (locale: Locale) => new Polyglot({ phrases: dictionaries[locale] })

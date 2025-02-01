@@ -1,4 +1,7 @@
-export const SUPPORTED_LOCALES = ['en', 'fr'] as const
+import { dictionaries } from '../infrastructure/i18n'
+import { getObjectKeys } from '../infrastructure/utils/object'
+
+export const SUPPORTED_LOCALES = getObjectKeys(dictionaries)
 
 export type Locale = typeof SUPPORTED_LOCALES[number]
 
