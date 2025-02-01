@@ -1,7 +1,6 @@
-import { createContext } from 'react'
+import { createContext, type ReactNode } from 'react'
 
 import type { Locale } from '../../domain/i18n'
-
 import type { Dictionary } from '../../infrastructure/i18n/dictionaries'
 
 type DotPrefix<T extends string> = T extends '' ? '' : `.${T}`
@@ -15,7 +14,7 @@ type DotNestedKeys<T> = (
   : never
 
 export type TranslateKey = DotNestedKeys<Dictionary>
-export type TranslateOptions = Record<string, React.ReactNode>
+export type TranslateOptions = Record<string, ReactNode>
 type Translate = (key: TranslateKey, options?: TranslateOptions) => string
 
 type I18n = {

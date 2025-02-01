@@ -1,19 +1,17 @@
 {
 	"React component": {
 		"body": [
-			"import React from 'react'",
+			"import type { FC } from 'react'",
 			"",
 			"import './${TM_FILENAME_BASE}.styles.sass'",
 			"",
-			"type ${1:${TM_FILENAME_BASE}}Props = {",
+			"type ${TM_FILENAME_BASE}Props = {",
 			"",
 			"}",
 			"",
-			"export const ${1:${TM_FILENAME_BASE}}: React.FC<${1:${TM_FILENAME_BASE}}Props> = () => {",
+			"export const ${TM_FILENAME_BASE}: FC<${TM_FILENAME_BASE}Props> = () => {",
 			"  return (",
-			"    <div className='${TM_FILENAME_BASE}'>",
-			"      $0",
-			"    </div>",
+			"    $0",
 			"  )",
 			"}",
 			""
