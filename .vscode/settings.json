@@ -1,17 +1,21 @@
 {
   "cSpell.ignorePaths": [
+    "."
   ],
   "cSpell.overrides": [
     {
-      "filename": "**/i18n/dictionaries/en.json",
-      "language": "en"
-    },
-    {
-      "filename": "**/i18n/dictionaries/fr.json",
+      "filename": "apps/web-app/src/infrastructure/i18n/dictionaries/fr.ts",
       "language": "en,fr"
     }
   ],
   "cSpell.words": [
+    "contenteditable",
+    "grayscale",
+    "menuitemcheckbox",
+    "menuitemradio",
+    "oklch",
+    "spinbutton",
+    "tabindex"
   ],
   "peacock.color": "#832561",
   "workbench.colorCustomizations": {

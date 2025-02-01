@@ -1,0 +1,58 @@
+@use './normalize.css'
+@use './sizes.sass'
+@use './colors.sass'
+@use './transitions.sass'
+@use './typography.sass'
+@use './accessibility.sass'
+@use './interactions.sass'
+@use './shadows.sass'
+@use './mixins.sass'
+@use './scrollbar.sass'
+
+html
+  @include typography.body-medium
+  -moz-osx-font-smoothing: grayscale
+  -webkit-font-smoothing: antialiased
+  -webkit-tap-highlight-color: transparent
+  accent-color: var(--foreground-accent)
+  background: var(--background)
+  caret-color: var(--foreground-accent)
+  color: var(--foreground)
+  color-scheme: dark light
+
+  ::selection
+    background-color: var(--background-primary)
+    color: var(--foreground-primary)
+
+#root
+  min-height: 100svh
+
+h1, h2, h3, h4, h5, h6
+  @include typography.title-medium
+
+a,
+button,
+iframe,
+input,
+select,
+textarea,
+summary,
+[contenteditable],
+[tabindex],
+[role="button"],
+[role="checkbox"],
+[role="combobox"],
+[role="link"], 
+[role="menuitem"],
+[role="menuitemcheckbox"],
+[role="menuitemradio"], 
+[role="option"],
+[role="radio"],
+[role="searchbox"],
+[role="slider"], 
+[role="spinbutton"],
+[role="switch"],
+[role="tab"],
+[role="textbox"],
+[role="treeitem"]
+  @include accessibility.focus-outline

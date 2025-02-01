@@ -4,7 +4,7 @@ import { I18nService } from '../../application/services/I18nService'
 import { DEFAULT_LOCALE, type Locale } from '../../domain/i18n'
 import { getPolyglot } from '../../infrastructure/i18n'
 
-import { I18nContext, type TranslateKey, type TranslateOptions } from './I18nContext'
+import { I18nContext, type I18nKey, type I18nOptions } from './I18nContext'
 
 export const I18nProvider: FC<PropsWithChildren> = ({ children }) => {
   const [selectedLocale, setSelectedLocale] = useState<Locale>(DEFAULT_LOCALE)
@@ -37,10 +37,10 @@ export const I18nProvider: FC<PropsWithChildren> = ({ children }) => {
   }, [selectLocale])
 
   const polyglot = useMemo(() => getPolyglot(selectedLocale), [selectedLocale])
-  const translate = useCallback((key: TranslateKey, options?: TranslateOptions) => polyglot.t(key, options), [polyglot])
+  const i18n = useCallback((key: I18nKey, options?: I18nOptions) => polyglot.t(key, options), [polyglot])
 
   return (
-    <I18nContext value={{ changeLocale, translate, selectedLocale }}>
+    <I18nContext value={{ changeLocale, i18n, selectedLocale }}>
       {children}
     </I18nContext>
   )
