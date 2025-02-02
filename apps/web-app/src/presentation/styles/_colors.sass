@@ -1,0 +1,91 @@
+@function fade($color, $alpha: 0.5, $space: oklch)
+  @return color-mix(in #{$space}, $color, transparent calc(100% - ($alpha * 100%)))
+
+:root
+  --black-oklch: 15% 0 0
+  --white-oklch: 97% 0 0
+
+  --black: oklch(var(--black-oklch))
+  --white: oklch(var(--white-oklch))
+
+  --overlay-alpha: 0.32
+  --hover-alpha: 0.88
+  --active-alpha: 0.76
+  --pending-alpha: 0.64
+
+  --neutral-background: var(--black)
+  --neutral-background-inverted-oklch: var(--white-oklch)
+  --neutral-background-inverted: oklch(var(--neutral-background-inverted-oklch))
+  --neutral-background-muted: oklch(27.41% 0.006 286.03)
+
+  --neutral-foreground: var(--white)
+  --neutral-foreground-light: oklch(74.89% 0 0)
+  --neutral-foreground-muted: oklch(71.19% 0.013 286.07)
+
+  --brand-background-primary: var(--white)
+  --brand-background-secondary: oklch(27.41% 0.006 286.03)
+  --brand-background-accent: oklch(27.41% 0.006 286.03)
+
+  --brand-foreground-on-brand: oklch(21.03% 0.006 285.88)
+  --brand-foreground-primary: var(--white)
+  --brand-foreground-secondary: var(--white)
+  --brand-foreground-accent: var(--white)
+
+  --status-info-background: oklch(91.33% 0.0315 264.41)
+  --status-info-foreground: oklch(51.68% 0.165 262.27)
+
+  --status-success-background: oklch(95.14% 0.041 160.72)
+  --status-success-foreground: oklch(49.23% 0.113 153.53)
+
+  --status-warning-background: oklch(93.45% 0.027 57.96)
+  --status-warning-foreground: oklch(66.59% 0.146 52.41)
+
+  --status-error-background: oklch(90.98% 0.036 10.98)
+  --status-error-foreground: oklch(54.61% 0.185 20.83)
+
+  --status-gold-background: oklch(94% 0.045 85.67)
+  --status-gold-foreground: oklch(81.53% 0.165 85.67)
+
+  --status-destructive-background: oklch(39.59% 0.133 25.72)
+  --status-destructive-foreground: var(--white)
+
+  --border: oklch(27.41% 0.006 286.03)
+  --ring: oklch(87.09% 0.006 286.29)
+
+  &.light
+    --neutral-background-inverted-oklch: var(--black-oklch)
+
+    --neutral-foreground-light: oklch(42.99% 0.028 285.14)
+
+    --brand-background-primary: oklch(21.03% 0.006 285.88)
+    --brand-foreground-on-brand: oklch(98.48% 0 0)
+
+    --brand-background-secondary: oklch(96.76% 0.001 286.38)
+    --brand-foreground-secondary: oklch(21.03% 0.006 285.88)
+
+    --neutral-background-muted: oklch(96.76% 0.001 286.38)
+    --neutral-foreground-muted: oklch(55.19% 0.014 285.94)
+
+    --brand-background-accent: oklch(96.76% 0.001 286.38)
+    --brand-foreground-accent: oklch(21.03% 0.006 285.88)
+
+    --status-info-background: oklch(91.33% 0.0315 264.41)
+    --status-info-foreground: oklch(38.27% 0.155 262.27)
+
+    --status-success-background: oklch(95.14% 0.041 160.72)
+    --status-success-foreground: oklch(38.93% 0.104 153.53)
+
+    --status-warning-background: oklch(93.45% 0.027 57.96)
+    --status-warning-foreground: oklch(52.12% 0.136 52.41)
+
+    --status-gold-background: oklch(94% 0.045 85.67)
+    --status-gold-foreground: oklch(68.23% 0.145 85.67)
+
+    --background-error: oklch(90.98% 0.036 10.98)
+    --foreground-error: oklch(44.11% 0.175 20.83)
+
+    --status-destructive-background: oklch(63.68% 0.2078 25.33)
+    --status-destructive-foreground: oklch(98.48% 0 0)
+
+    --border: 240 5.9% 90%
+    --ring: oklch(21.03% 0.006 285.88)

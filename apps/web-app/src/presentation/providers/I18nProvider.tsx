@@ -1,6 +1,6 @@
 import { type FC, type PropsWithChildren, useCallback, useEffect, useMemo, useState } from 'react'
 
-import { I18nService } from '../../application/services/I18nService'
+import { I18nService } from '../../application/services'
 import { DEFAULT_LOCALE, type Locale } from '../../domain/i18n'
 import { getPolyglot } from '../../infrastructure/i18n'
 

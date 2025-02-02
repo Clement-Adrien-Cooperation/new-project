@@ -197,6 +197,7 @@ button {
   cursor: pointer;
   background-color: transparent;
   color: inherit;
+  height: fit-content;
 }
 
 input {

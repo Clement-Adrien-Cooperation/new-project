@@ -9,13 +9,21 @@
     }
   ],
   "cSpell.words": [
+    "bezier",
+    "Cantarell",
     "contenteditable",
+    "dbaeumer",
     "grayscale",
     "menuitemcheckbox",
     "menuitemradio",
+    "Neue",
+    "nowrap",
     "oklch",
+    "Roboto",
+    "Segoe",
     "spinbutton",
-    "tabindex"
+    "tabindex",
+    "vmin"
   ],
   "peacock.color": "#832561",
   "workbench.colorCustomizations": {

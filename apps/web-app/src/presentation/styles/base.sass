@@ -10,19 +10,21 @@
 @use './scrollbar.sass'
 
 html
-  @include typography.body-medium
   -moz-osx-font-smoothing: grayscale
   -webkit-font-smoothing: antialiased
   -webkit-tap-highlight-color: transparent
-  accent-color: var(--foreground-accent)
-  background: var(--background)
-  caret-color: var(--foreground-accent)
-  color: var(--foreground)
+  accent-color: var(--brand-foreground-accent)
+  caret-color: var(--brand-foreground-accent)
   color-scheme: dark light
 
   ::selection
-    background-color: var(--background-primary)
-    color: var(--foreground-primary)
+    background-color: var(--brand-background-primary)
+    color: var(--brand-foreground-on-brand)
+
+body
+  @include typography.body-medium
+  background: var(--neutral-background)
+  color: var(--neutral-foreground)
 
 #root
   min-height: 100svh
@@ -56,3 +58,9 @@ summary,
 [role="textbox"],
 [role="treeitem"]
   @include accessibility.focus-outline
+
+.box
+  aspect-ratio: 1
+  width: 100px
+  border-radius: 10px
+  box-shadow: var(--shadow-m)

@@ -6,6 +6,8 @@ type LocalStorage = {
 
 type LocaleStorageKey = keyof LocalStorage
 
+export const clearStore = () => { window.localStorage.clear() }
+
 export const getStoredItem = <K extends LocaleStorageKey> (key: K): LocalStorage[K] | undefined => {
   const value = window.localStorage.getItem(key)
 
@@ -19,12 +21,10 @@ export const getStoredItem = <K extends LocaleStorageKey> (key: K): LocalStorage
   }
 }
 
-export const storeItem = <K extends LocaleStorageKey> (key: K, value: LocalStorage[K]) => {
-  window.localStorage.setItem(key, JSON.stringify(value))
-}
-
 export const removeStoredItem = (key: LocaleStorageKey) => {
   window.localStorage.removeItem(key)
 }
 
-export const clearStore = () => { window.localStorage.clear() }
+export const storeItem = <K extends LocaleStorageKey> (key: K, value: LocalStorage[K]) => {
+  window.localStorage.setItem(key, JSON.stringify(value))
+}

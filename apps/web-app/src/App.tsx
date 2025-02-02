@@ -1,7 +1,7 @@
-import { LocaleSwitcher } from './presentation/components/LocaleSwitcher'
-import { I18nProvider } from './presentation/providers/I18nProvider'
+import { LocaleSwitcher } from './presentation/components'
+import { I18nProvider } from './presentation/providers'
 
-import './styles/base.sass'
+import './presentation/styles/base.sass'
 
 export const App = () => (
   <I18nProvider>

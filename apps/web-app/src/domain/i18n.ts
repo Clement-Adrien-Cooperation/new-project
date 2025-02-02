@@ -1,5 +1,5 @@
 import { dictionaries } from '../infrastructure/i18n'
-import { getObjectKeys } from '../infrastructure/utils/object'
+import { getObjectKeys } from '../infrastructure/utils'
 
 export const SUPPORTED_LOCALES = getObjectKeys(dictionaries)
 
