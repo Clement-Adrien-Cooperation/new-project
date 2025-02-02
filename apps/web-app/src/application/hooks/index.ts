@@ -1,1 +1,1 @@
-export { useI18n } from './useI18n'
+export * from './useI18n'

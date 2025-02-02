@@ -1,7 +1,7 @@
 import { createContext, type ReactNode } from 'react'
 
-import type { Locale } from '../../domain/i18n'
-import type { Dictionary } from '../../infrastructure/i18n/dictionaries'
+import type { Locale } from '@/domain/i18n'
+import type { Dictionary } from '@/infrastructure/i18n/dictionaries'
 
 type DotPrefix<T extends string> = T extends '' ? '' : `.${T}`
 

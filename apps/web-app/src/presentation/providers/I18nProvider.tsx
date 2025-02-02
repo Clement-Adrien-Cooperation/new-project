@@ -1,10 +1,9 @@
 import { type FC, type PropsWithChildren, useCallback, useEffect, useMemo, useState } from 'react'
 
-import { I18nService } from '../../application/services'
-import { DEFAULT_LOCALE, type Locale } from '../../domain/i18n'
-import { getPolyglot } from '../../infrastructure/i18n'
-
-import { I18nContext, type I18nKey, type I18nOptions } from './I18nContext'
+import { I18nService } from '@/application/services'
+import { DEFAULT_LOCALE, type Locale } from '@/domain/i18n'
+import { getPolyglot } from '@/infrastructure/i18n'
+import { I18nContext, type I18nKey, type I18nOptions } from '@/presentation/providers'
 
 export const I18nProvider: FC<PropsWithChildren> = ({ children }) => {
   const [selectedLocale, setSelectedLocale] = useState<Locale>(DEFAULT_LOCALE)

@@ -1,7 +1,7 @@
 import { LoaderCircleIcon } from 'lucide-react'
 import type { ComponentProps, FC } from 'react'
 
-import { mergeClassNames } from '../../utils'
+import { mergeClassNames } from '@/presentation/utils'
 
 import './Spinner.styles.sass'
 

@@ -1,8 +1,7 @@
 import type { FC } from 'react'
 
-import { useI18n } from '../../application/hooks'
-
-import { Button } from './ui/Pressable/Button'
+import { useI18n } from '@/application/hooks'
+import { Button } from '@/presentation/components'
 
 import './LocaleSwitcher.styles.sass'
 
@@ -15,12 +14,8 @@ export const LocaleSwitcher: FC = () => {
       <br />
       selected locale: {selectedLocale}
       <br />
-      <button onClick={() => changeLocale('en')}>English</button>
-      <button onClick={() => changeLocale('fr')}>French</button>
-
-      <Button>
-        <>test</>
-      </Button>
+      <Button onPress={() => changeLocale('en')}>English</Button>
+      <Button onPress={() => changeLocale('fr')}>French</Button>
     </div>
   )
 }

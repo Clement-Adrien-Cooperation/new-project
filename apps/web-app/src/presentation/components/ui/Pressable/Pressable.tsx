@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 import type { ButtonRenderProps } from 'react-aria-components'
 
-import { mergeReactAriaClassNames, type RenderPropsValues } from '../../../utils'
+import { mergeReactAriaClassNames, type RenderPropsValues } from '@/presentation/utils'
 
 import './Pressable.styles.sass'
 

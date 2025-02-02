@@ -1,7 +1,7 @@
-import { DEFAULT_LOCALE, type Locale } from '../../domain/i18n'
+import { DEFAULT_LOCALE, type Locale } from '@/domain/i18n'
 
-import { dictionaries } from '../../infrastructure/i18n'
-import { getStoredItem, storeItem } from '../../infrastructure/storage'
+import { dictionaries } from '@/infrastructure/i18n'
+import { getStoredItem, storeItem } from '@/infrastructure/storage'
 
 export const I18nService = {
   getDictionary(locale: Locale) {

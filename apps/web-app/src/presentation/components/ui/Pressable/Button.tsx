@@ -1,8 +1,8 @@
 import type { FC } from 'react'
 import { Button as ReactAriaButton, type ButtonProps as ReactAriaButtonProps } from 'react-aria-components'
 
-import { mergeReactAriaPressableClassNames, type PressableProps } from './Pressable'
-import { Spinner } from '../Spinner'
+import { mergeReactAriaPressableClassNames, type PressableProps } from '@/presentation/components/ui/Pressable'
+import { Spinner } from '@/presentation/components'
 
 type ButtonProps = PressableProps & ReactAriaButtonProps
 

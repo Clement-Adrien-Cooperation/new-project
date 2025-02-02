@@ -1,1 +1,3 @@
-export { LocaleSwitcher } from './LocaleSwitcher'
+export * from './ui'
+
+export * from './LocaleSwitcher'

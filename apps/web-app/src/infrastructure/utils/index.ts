@@ -1,1 +1,1 @@
-export { getObjectEntries, getObjectKeys } from './object'
+export * from './object'

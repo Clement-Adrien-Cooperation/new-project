@@ -1,1 +1,1 @@
-export { clearStore, getStoredItem, removeStoredItem, storeItem } from './localStorage'
+export * from './localStorage'
