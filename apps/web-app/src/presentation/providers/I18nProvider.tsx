@@ -9,13 +9,13 @@ export const I18nProvider: FC<PropsWithChildren> = ({ children }) => {
   const [selectedLocale, setSelectedLocale] = useState<Locale>(DEFAULT_LOCALE)
 
   const selectLocale = useCallback((newLocale: Locale) => {
-    setSelectedLocale(newLocale)
     I18nService.changeLocale(newLocale)
+    setSelectedLocale(newLocale)
   }, [])
 
   const changeLocale = useCallback((newLocale: Locale) => {
-    selectLocale(newLocale)
     I18nService.saveFavoriteLocale(newLocale)
+    selectLocale(newLocale)
   }, [selectLocale])
 
   useEffect(() => {

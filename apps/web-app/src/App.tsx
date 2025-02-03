@@ -1,17 +1,14 @@
-import { useTheme } from '@/application/hooks'
 import { LocaleSwitcher } from '@/presentation/components'
-import { ThemeSwitcher } from '@/presentation/components/ThemeSwitcher'
-import { I18nProvider } from '@/presentation/providers'
+import { ThemeSwitcher } from '@/presentation/components'
+import { I18nProvider, ThemeProvider } from '@/presentation/providers'
 
 import '@/presentation/styles/base.sass'
 
-export const App = () => {
-  useTheme()
-
-  return (
-    <I18nProvider>
+export const App = () => (
+  <I18nProvider>
+    <ThemeProvider>
       <LocaleSwitcher />
       <ThemeSwitcher />
-    </I18nProvider>
-  )
-}
+    </ThemeProvider>
+  </I18nProvider>
+)

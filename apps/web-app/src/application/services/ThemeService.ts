@@ -1,25 +1,23 @@
-import { type ColorScheme, DEFAULT_THEME, SUPPORTED_THEMES, type Theme } from '@/domain/theme'
+import { type ColorScheme, DEFAULT_THEME, PREFERS_DARK_COLOR_SCHEME_MATCHER, SUPPORTED_THEMES, type Theme } from '@/domain/theme'
 
 import { getStoredItem, storeItem } from '@/infrastructure/storage'
 
-const PREFERS_DARK_COLOR_SCHEME = '(prefers-color-scheme: dark)'
-
-const applyTheme = (colorScheme: ColorScheme) => {
-  document.documentElement.setAttribute('data-color-scheme', colorScheme)
-}
-
 export const ThemeService = {
-  changeTheme(theme: Theme) {
+  applyColorScheme(colorScheme: ColorScheme) {
+    document.documentElement.setAttribute('data-color-scheme', colorScheme)
+  },
+
+  changeTheme: (theme: Theme) => {
     if (theme === 'system') {
-      const isSystemColorSchemeDark = window.matchMedia(PREFERS_DARK_COLOR_SCHEME).matches
-      applyTheme(isSystemColorSchemeDark ? 'dark' : 'light')
+      const isSystemColorSchemeDark = PREFERS_DARK_COLOR_SCHEME_MATCHER.matches
+      ThemeService.applyColorScheme(isSystemColorSchemeDark ? 'dark' : 'light')
       return
     }
 
-    applyTheme(theme)
+    ThemeService.applyColorScheme(theme)
   },
 
-  getInitialTheme(): Theme {
+  getInitialTheme: (): Theme => {
     const storedTheme = getStoredItem('theme')
 
     if (storedTheme != null && SUPPORTED_THEMES.includes(storedTheme)) {

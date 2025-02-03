@@ -8,11 +8,11 @@ const isSupportedLocale = (locale: string): locale is Locale => {
 }
 
 export const I18nService = {
-  changeLocale(locale: Locale) {
+  changeLocale: (locale: Locale) => {
     document.documentElement.setAttribute('lang', locale)
   },
 
-  getInitialLocale(): Locale {
+  getInitialLocale: (): Locale => {
     const storedLocale = getStoredItem('locale')
 
     if (storedLocale != null && isSupportedLocale(storedLocale)) {
@@ -36,7 +36,7 @@ export const I18nService = {
     return DEFAULT_LOCALE
   },
 
-  saveFavoriteLocale(locale: Locale) {
+  saveFavoriteLocale: (locale: Locale) => {
     storeItem('locale', locale)
   }
 }
