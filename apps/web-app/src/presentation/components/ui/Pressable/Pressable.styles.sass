@@ -4,19 +4,13 @@
 @use '@/presentation/styles/transitions'
 @use '@/presentation/styles/typography'
 
-@mixin common-button
+@mixin common-pressable
   @include accessibility.focus-outline
   @include transitions.color-transition
   @include typography.label-large
   align-items: center
-  border: var(--stroke-m, 0.125rem) solid transparent
-  border-radius: var(--radius-m, 0.5rem)
   display: flex
   gap: var(--spacing-s, 0.5rem)
-  height: var(--element-size, 2.5rem)
-  padding-inline: var(--spacing-2xl, 1.5rem)
-  white-space: nowrap
-  width: fit-content
 
   & svg
     height: var(--size-160, 1.25rem)
@@ -25,25 +19,13 @@
   &.small
     @include typography.label-medium
     gap: var(--spacing-2xs, 0.25rem)
-    height: var(--size-280, 1.75rem)
-    padding-inline: var(--spacing-l, 1rem)
 
     & svg
       height: var(--size-140, 0.875rem)
       width: var(--size-140, 0.875rem)
 
-  &.icon-left
-    padding-inline: var(--spacing-l, 1rem) var(--spacing-2xl, 1.5rem)
-
-    &.small
-      padding-inline: var(--spacing-s, 0.5rem) var(--spacing-l, 1rem)
-
   &.icon-right
     flex-direction: row-reverse
-    padding-inline: var(--spacing-2xl, 1.5rem) var(--spacing-l, 1rem)
-
-    &.small
-      padding-inline: var(--spacing-l, 1rem) var(--spacing-s, 0.5rem)
 
   &.icon-size
     aspect-ratio: 1
@@ -55,6 +37,36 @@
   &[data-pending='true']
     opacity: var(--pending-alpha, 0.64)
     pointer-events: none
+
+@mixin common-button
+  @include common-pressable
+  border: var(--stroke-m, 0.125rem) solid transparent
+  border-radius: var(--radius-m, 0.5rem)
+  height: var(--element-size, 2.5rem)
+  padding-inline: var(--spacing-3xl, 1.5rem)
+  white-space: nowrap
+  width: fit-content
+
+  &.icon-left
+    padding-inline: var(--spacing-xl, 0.875rem) var(--spacing-3xl, 1.5rem)
+
+  &.icon-right
+    padding-inline: var(--spacing-3xl, 1.5rem) var(--spacing-xl, 0.875rem)
+
+  &.small
+    height: var(--size-280, 1.75rem)
+    padding-inline: var(--spacing-l, 1rem)
+
+    &.icon-left
+      padding-inline: var(--spacing-s, 0.5rem) var(--spacing-l, 0.75rem)
+
+    &.icon-right
+      padding-inline: var(--spacing-l, 0.75rem) var(--spacing-s, 0.5rem)
+
+  &.icon-size
+    aspect-ratio: 1
+    justify-content: center
+    padding-inline: unset
 
 @mixin filled
   background-color: var(--brand-background-primary)
@@ -184,4 +196,5 @@
     @include transparent
 
   &.underlined
+    @include common-pressable
     @include underlined

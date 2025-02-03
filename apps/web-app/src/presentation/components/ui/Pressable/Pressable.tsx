@@ -7,7 +7,7 @@ import './Pressable.styles.sass'
 
 export type PressableIconSide = 'left' | 'right'
 
-export type PressableSize = 'small'
+export type PressableSize = 'medium' | 'small'
 
 export type PressableVariant
   = 'filled'
@@ -69,6 +69,7 @@ export function mergeReactAriaPressableClassNames <T extends PressableRenderProp
   const hasIcon = !!Icon
   const isIconButton = hasIcon && children == null
   const currentVariant: PressableProps['variant'] = variant == null && isIconButton ? 'transparent' : variant
+  const currentSize: PressableProps['size'] = size === 'medium' ? undefined : size
 
   return mergeReactAriaClassNames(
     values,
@@ -77,6 +78,6 @@ export function mergeReactAriaPressableClassNames <T extends PressableRenderProp
     currentVariant,
     hasIcon && !isIconButton && `icon-${iconSide}`,
     isIconButton && 'icon-size',
-    size
+    currentSize
   )
 }
