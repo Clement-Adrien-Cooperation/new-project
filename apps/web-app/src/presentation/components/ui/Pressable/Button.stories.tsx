@@ -29,14 +29,16 @@ export const ButtonWithLabel: Story = {
   args: {
     children: BUTTON_LABEL,
     variant: 'filled'
-  }
+  },
+  name: 'Button with label'
 }
 
 export const IconButton: Story = {
   args: {
     Icon: <SettingsIcon />,
     variant: 'outlined'
-  }
+  },
+  name: 'Button with icon'
 }
 
 export const IconButtonWithLabel: Story = {
@@ -50,5 +52,6 @@ export const IconButtonWithLabel: Story = {
       control: 'inline-radio',
       options: ['left', 'right']
     }
-  }
+  },
+  name: 'Button with icon & label'
 }

@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import type { ButtonRenderProps } from 'react-aria-components'
+import type { ButtonRenderProps, LinkRenderProps } from 'react-aria-components'
 
 import { mergeReactAriaClassNames, type RenderPropsValues } from '@/presentation/utils'
 
@@ -52,6 +52,7 @@ export type PressableProps = PressableWithVariantProps | PressableWithoutVariant
 
 type PressableRenderProps
   = ButtonRenderProps
+  | LinkRenderProps
 
 type PressableChildren <T extends PressableRenderProps>
   = React.ReactNode

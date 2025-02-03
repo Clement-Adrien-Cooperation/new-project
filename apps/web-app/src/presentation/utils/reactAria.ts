@@ -1,9 +1,10 @@
-import type { ButtonRenderProps } from 'react-aria-components'
+import type { ButtonRenderProps, LinkRenderProps } from 'react-aria-components'
 
 import { type ClassNames, mergeClassNames } from './classNames'
 
 export type ElementRenderProps
   = ButtonRenderProps
+  | LinkRenderProps
 
 export type RenderPropsValues <T extends ElementRenderProps> = T & {
   defaultClassName: string | undefined
