@@ -1,0 +1,66 @@
+@use '@/presentation/styles/normalize.css'
+@use '@/presentation/styles/sizes.sass'
+@use '@/presentation/styles/colors.sass'
+@use '@/presentation/styles/transitions.sass'
+@use '@/presentation/styles/typography.sass'
+@use '@/presentation/styles/accessibility.sass'
+@use '@/presentation/styles/interactions.sass'
+@use '@/presentation/styles/shadows.sass'
+@use '@/presentation/styles/mixins.sass'
+@use '@/presentation/styles/scrollbar.sass'
+
+html
+  -moz-osx-font-smoothing: grayscale
+  -webkit-font-smoothing: antialiased
+  -webkit-tap-highlight-color: transparent
+  accent-color: var(--brand-foreground-accent)
+  caret-color: var(--brand-foreground-accent)
+  color-scheme: dark light
+
+  ::selection
+    background-color: var(--brand-background-primary)
+    color: var(--brand-foreground-on-brand)
+
+body
+  @include typography.body-medium
+  background: var(--neutral-background)
+  color: var(--neutral-foreground)
+
+#root
+  min-height: 100svh
+
+h1, h2, h3, h4, h5, h6
+  @include typography.title-medium
+
+a,
+button,
+iframe,
+input,
+select,
+textarea,
+summary,
+[contenteditable],
+[tabindex],
+[role="button"],
+[role="checkbox"],
+[role="combobox"],
+[role="link"], 
+[role="menuitem"],
+[role="menuitemcheckbox"],
+[role="menuitemradio"], 
+[role="option"],
+[role="radio"],
+[role="searchbox"],
+[role="slider"], 
+[role="spinbutton"],
+[role="switch"],
+[role="tab"],
+[role="textbox"],
+[role="treeitem"]
+  @include accessibility.focus-outline
+
+.box
+  aspect-ratio: 1
+  width: 100px
+  border-radius: 10px
+  box-shadow: var(--shadow-m)

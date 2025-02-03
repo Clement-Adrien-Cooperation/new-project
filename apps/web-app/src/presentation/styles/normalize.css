@@ -197,6 +197,7 @@ button {
   cursor: pointer;
   background-color: transparent;
   color: inherit;
+  height: fit-content;
 }
 
 input {
@@ -278,11 +279,6 @@ blockquote,
 dl,
 dd {
   margin: 0;
-}
-
-ul[role='list'],
-ol[role='list'] {
-  list-style: none;
 }
 
 html:focus-within {

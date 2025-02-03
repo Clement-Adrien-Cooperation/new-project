@@ -1,0 +1,18 @@
+:root
+  --timing: cubic-bezier(0.4, 0, 0.2, 1)
+  --transition-150: 150ms
+
+  @media (prefers-reduced-motion)
+    --transition-150: 0ms
+
+@mixin base-color-transition
+  transition-duration: var(--transition-150, 0)
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke
+  transition-timing-function: var(--timing, ease-in-out)
+
+@mixin color-transition
+  @include base-color-transition
+
+  & svg,
+  & path
+    @include base-color-transition
