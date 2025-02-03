@@ -3,38 +3,40 @@ import { DEFAULT_LOCALE, type Locale } from '@/domain/i18n'
 import { dictionaries } from '@/infrastructure/i18n'
 import { getStoredItem, storeItem } from '@/infrastructure/storage'
 
+const isSupportedLocale = (locale: string): locale is Locale => {
+  return Object.keys(dictionaries).includes(locale)
+}
+
 export const I18nService = {
-  getDictionary(locale: Locale) {
-    return dictionaries[locale] ?? dictionaries[DEFAULT_LOCALE]
+  changeLocale: (locale: Locale) => {
+    document.documentElement.setAttribute('lang', locale)
   },
 
-  getLocale(): Locale | undefined {
-    return getStoredItem('locale')
-  },
+  getInitialLocale: (): Locale => {
+    const storedLocale = getStoredItem('locale')
 
-  getSupportedNavigatorLocale(): Locale | null {
+    if (storedLocale != null && isSupportedLocale(storedLocale)) {
+      return storedLocale
+    }
+
     const primaryNavigatorLocale = navigator.language.slice(0, 2)
 
-    if (I18nService.isSupportedLocale(primaryNavigatorLocale)) {
+    if (isSupportedLocale(primaryNavigatorLocale)) {
       return primaryNavigatorLocale
     }
 
-    const matchingLocale = navigator.languages
+    const matchingNavigatorLocale = navigator.languages
       .map((language) => language.slice(0, 2))
-      .find((language) => I18nService.isSupportedLocale(language))
+      .find((language) => isSupportedLocale(language))
 
-    return matchingLocale ?? null
+    if (matchingNavigatorLocale != null) {
+      return matchingNavigatorLocale
+    }
+
+    return DEFAULT_LOCALE
   },
 
-  isSupportedLocale(locale: string): locale is Locale {
-    return Object.keys(dictionaries).includes(locale)
-  },
-
-  setLocale(locale: Locale) {
+  saveFavoriteLocale: (locale: Locale) => {
     storeItem('locale', locale)
-  },
-
-  updateDocumentLanguage(locale: Locale) {
-    document.documentElement.setAttribute('lang', locale)
   }
 }

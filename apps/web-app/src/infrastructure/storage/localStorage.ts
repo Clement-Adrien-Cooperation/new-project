@@ -1,7 +1,9 @@
 import type { Locale } from '@/domain/i18n'
+import type { Theme } from '@/domain/theme'
 
 type LocalStorage = {
   locale: Locale
+  theme: Theme
 }
 
 type LocaleStorageKey = keyof LocalStorage

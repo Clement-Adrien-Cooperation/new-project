@@ -9,30 +9,18 @@ export const I18nProvider: FC<PropsWithChildren> = ({ children }) => {
   const [selectedLocale, setSelectedLocale] = useState<Locale>(DEFAULT_LOCALE)
 
   const selectLocale = useCallback((newLocale: Locale) => {
+    I18nService.changeLocale(newLocale)
     setSelectedLocale(newLocale)
-    I18nService.updateDocumentLanguage(newLocale)
   }, [])
 
   const changeLocale = useCallback((newLocale: Locale) => {
-    if (I18nService.isSupportedLocale(newLocale)) {
-      selectLocale(newLocale)
-      I18nService.setLocale(newLocale)
-    }
+    I18nService.saveFavoriteLocale(newLocale)
+    selectLocale(newLocale)
   }, [selectLocale])
 
   useEffect(() => {
-    const storedLocale = I18nService.getLocale()
-
-    if (storedLocale != null && I18nService.isSupportedLocale(storedLocale)) {
-      selectLocale(storedLocale)
-      return
-    }
-
-    const navigatorLocale = I18nService.getSupportedNavigatorLocale()
-
-    if (navigatorLocale != null) {
-      selectLocale(navigatorLocale)
-    }
+    const initialLocale = I18nService.getInitialLocale()
+    selectLocale(initialLocale)
   }, [selectLocale])
 
   const polyglot = useMemo(() => getPolyglot(selectedLocale), [selectedLocale])
