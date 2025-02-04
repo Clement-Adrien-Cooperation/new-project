@@ -13,14 +13,14 @@ type DotNestedKeys<T> = (
   ? Extract<D, string>
   : never
 
-export type I18nKey = DotNestedKeys<Dictionary>
-export type I18nOptions = Record<string, ReactNode>
-type I18n = (key: I18nKey, options?: I18nOptions) => string
+export type TranslateKey = DotNestedKeys<Dictionary>
+export type TranslateOptions = Record<string, ReactNode>
+type Translate = (key: TranslateKey, options?: TranslateOptions) => string
 
 type I18nContextValue = {
   changeLocale: (newLocale: Locale) => void
   selectedLocale: Locale
-  i18n: I18n
+  translate: Translate
 }
 
 export const I18nContext = createContext<I18nContextValue | null>(null)

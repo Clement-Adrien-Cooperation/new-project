@@ -6,11 +6,11 @@ import { Button } from '@/presentation/components'
 import './LocaleSwitcher.styles.sass'
 
 export const LocaleSwitcher: FC = () => {
-  const { changeLocale, i18n, selectedLocale } = useI18n()
+  const { changeLocale, selectedLocale, translate } = useI18n()
 
   return (
     <div className='locale-switcher'>
-      {i18n('helloWorld')}
+      {translate('helloWorld')}
       <br />
       selected locale: {selectedLocale}
       <br />

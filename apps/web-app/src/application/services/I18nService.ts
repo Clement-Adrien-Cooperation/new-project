@@ -1,6 +1,7 @@
 import { DEFAULT_LOCALE, type Locale } from '@/domain/i18n'
 
 import { dictionaries } from '@/infrastructure/i18n'
+import Polyglot from '@/infrastructure/i18n/polyglot'
 import { getStoredItem, storeItem } from '@/infrastructure/storage'
 
 const isSupportedLocale = (locale: string): locale is Locale => {
@@ -34,6 +35,10 @@ export const I18nService = {
     }
 
     return DEFAULT_LOCALE
+  },
+
+  getPolyglot: (locale: Locale) => {
+    return new Polyglot({ phrases: dictionaries[locale] })
   },
 
   saveFavoriteLocale: (locale: Locale) => {

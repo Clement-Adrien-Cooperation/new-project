@@ -4,6 +4,4 @@ export type Theme = typeof SUPPORTED_THEMES[number]
 
 export const DEFAULT_THEME: Theme = 'system'
 
-export type ColorScheme = Extract<Theme, 'dark' | 'light'>
-
 export const PREFERS_DARK_COLOR_SCHEME_MATCHER = window.matchMedia('(prefers-color-scheme: dark)')
