@@ -11,5 +11,3 @@ export const success = <T = void>(data: T) => ({
 export type ErrorResult<E = string> = ReturnType<typeof failure<E>>
 export type SuccessResult<T = void> = ReturnType<typeof success<T>>
 export type Result<T = void, E = string> = ErrorResult<E> | SuccessResult<T>
-
-export const test = 'oui'
