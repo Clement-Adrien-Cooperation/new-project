@@ -3,7 +3,7 @@ import { type ColorScheme, DEFAULT_THEME, PREFERS_DARK_COLOR_SCHEME_MATCHER, SUP
 import { getStoredItem, storeItem } from '@/infrastructure/storage'
 
 export const ThemeService = {
-  applyColorScheme(colorScheme: ColorScheme) {
+  applyColorScheme: (colorScheme: ColorScheme) => {
     document.documentElement.setAttribute('data-color-scheme', colorScheme)
   },
 
@@ -27,7 +27,7 @@ export const ThemeService = {
     return DEFAULT_THEME
   },
 
-  saveFavoriteTheme(theme: Theme) {
+  saveFavoriteTheme: (theme: Theme) => {
     storeItem('theme', theme)
   }
 }
