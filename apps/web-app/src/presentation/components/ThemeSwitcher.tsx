@@ -5,6 +5,7 @@ import { useTheme } from '@/application/hooks'
 import { Button, Separator } from '@/presentation/components'
 
 import './ThemeSwitcher.styles.sass'
+import { SettingsIcon } from 'lucide-react'
 
 export const ThemeSwitcher: FC = () => {
   const { changeTheme, selectedTheme } = useTheme()
@@ -14,11 +15,11 @@ export const ThemeSwitcher: FC = () => {
       <div>selected theme : {selectedTheme}</div>
 
       <div className='box'>
-        <Button onPress={() => changeTheme('system')} variant='outlined'>system</Button>
+        <Button Icon={<SettingsIcon />} onPress={() => changeTheme('system')} variant='outlined'>system</Button>
         <Separator orientation='vertical' />
-        <Button onPress={() => changeTheme('dark')} variant='outlined'>dark</Button>
+        <Button Icon={<SettingsIcon />} iconSide='right' onPress={() => changeTheme('dark')} variant='tonal'>dark</Button>
         <Separator orientation='vertical' />
-        <Button onPress={() => changeTheme('light')} variant='outlined'>Light</Button>
+        <Button Icon={<SettingsIcon />} onPress={() => changeTheme('light')} variant='transparent' />
       </div>
     </>
   )

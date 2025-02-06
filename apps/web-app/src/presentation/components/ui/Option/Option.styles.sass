@@ -1,0 +1,20 @@
+.option
+  align-items: center
+  display: flex
+  gap: var(--size-160, 1rem)
+  justify-content: space-between
+  padding: var(--size-80) var(--size-120)
+
+  &:hover
+    background-color: var(--neutral-background-muted)
+
+  &__box
+    align-items: center
+    display: flex
+    gap: var(--size-120, 0.75rem)
+
+    &__icon,
+    &__icon svg
+      --option-icon-size: var(--size-160, 1rem)
+      height: var(--option-icon-size)
+      width: var(--option-icon-size)

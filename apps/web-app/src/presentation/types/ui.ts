@@ -9,10 +9,10 @@ type BaseListItem <T extends Key, BaseProps = object> = BaseProps & {
   /** The ID of the item. */
   id: T
 
-  /** The label of the item. */
-  label: string
+  /** The text value of the item. */
+  textValue: string
 }
 
 export type ListItem <T extends Key, BaseProps = object>
-  = Omit<BaseProps, 'id' | 'label'>
+  = Omit<BaseProps, 'id' | 'textValue'>
   & BaseListItem<T, BaseProps>

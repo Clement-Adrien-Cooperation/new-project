@@ -1,10 +1,9 @@
 import type { ReactNode } from 'react'
 import { type ListBoxItemRenderProps, ListBox as ReactAriaListBox, type ListBoxProps as ReactAriaListBoxProps } from 'react-aria-components'
 
-import { ListBoxItem, type ListBoxItemProps } from '@/presentation/components'
+import { ListBoxItem, type ListBoxItemProps, Option } from '@/presentation/components'
 import type { Key } from '@/presentation/types'
 import { mergeClassNames, mergeReactAriaClassNames } from '@/presentation/utils'
-import { Option } from '@/presentation/components'
 
 type ListBoxChildrenRenderProps <K extends Key, O>
   = ListBoxItemProps<K, O>
@@ -33,7 +32,7 @@ export function ListBox <K extends Key, O> ({
   itemClassName,
   items,
   onAction,
-  ...props
+  ...listBoxProps
 }: ListBoxProps<K, O>) {
   const itemsArray = Array.from(items ?? [])
 
@@ -42,16 +41,16 @@ export function ListBox <K extends Key, O> ({
       return
     }
 
-    const item = itemsArray.find((item) => item.id === key)
+    const matchingItem = itemsArray.find(item => item.id === key)
 
-    if (item) {
-      onAction(item)
+    if (matchingItem) {
+      onAction(matchingItem)
     }
   }
 
   return (
     <ReactAriaListBox
-      {...props}
+      {...listBoxProps}
       items={items}
       onAction={onAction && onListBoxAction}
     >
@@ -71,14 +70,14 @@ export function ListBox <K extends Key, O> ({
             >
               {(values) => {
                 if (children) {
-                  return children({ ...item, ...values, defaultChildren: item.label })
+                  return children({ ...item, ...values, defaultChildren: item.textValue })
                 }
 
                 return (
                   <Option
-                    label={item.label}
-                    isSelected={values.isSelected}
                     isDisabled={values.isDisabled}
+                    isSelected={values.isSelected}
+                    textValue={item.textValue}
                   />
                 )
               }}

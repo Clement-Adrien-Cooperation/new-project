@@ -1,0 +1,24 @@
+@use '@/presentation/styles/colors'
+@use '@/presentation/styles/typography'
+
+.select
+  &__trigger
+    @include typography.label-large
+    align-items: center
+    border: var(--stroke-m, 0.125rem) solid var(--border)
+    display: flex
+    height: var(--element-size, 2.5rem)
+    justify-content: space-between
+    max-width: 15rem
+    min-width: clamp(8rem, 6rem + 9vw, 11.2rem)
+    padding-inline: var(--size-120, 0.75rem)
+
+    &[data-hovered='true']
+      background-color: colors.fade(var(--border), var(--alpha-2xs, 0.12))
+
+    &[data-pressed='true']
+      background-color: colors.fade(var(--border), var(--alpha-xs, 0.24))
+
+    &[data-disabled='true']
+      border-color: var(--neutral-background-muted)
+      color: var(--neutral-foreground-muted)

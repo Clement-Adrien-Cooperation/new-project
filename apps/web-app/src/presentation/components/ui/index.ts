@@ -1,3 +1,4 @@
+export * from './Label'
 export * from './ListBox'
 export * from './Loader'
 export * from './Option'

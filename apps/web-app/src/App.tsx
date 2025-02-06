@@ -1,15 +1,16 @@
-import { ListBox, LocaleSwitcher } from '@/presentation/components'
+import { LocaleSwitcher, type PickerItems, Select } from '@/presentation/components'
 import { ThemeSwitcher } from '@/presentation/components'
 import { I18nProvider, ThemeProvider } from '@/presentation/providers'
 
 import '@/presentation/styles/base.sass'
+import { SettingsIcon } from 'lucide-react'
 
-const items = [
-  { id: '1', label: 'Item 1' },
-  { id: '2', label: 'Item 2' },
-  { id: '3', label: 'Item 3', hasSeparatorBefore: true },
-  { id: '4', label: 'Item 4' },
-  { id: '5', label: 'Item 5' }
+const items: PickerItems = [
+  { id: '1', textValue: 'Item 1' },
+  { id: '2', textValue: 'Item 2', LeftIcon: <SettingsIcon />, RightIcon: <SettingsIcon /> },
+  { id: '3', textValue: 'Item 3', hasSeparatorBefore: true },
+  { id: '4', textValue: 'Item 4', RightIcon: <SettingsIcon /> },
+  { id: '5', textValue: 'Item 5 avec un nom un peu long', LeftIcon: <SettingsIcon /> }
 ]
 
 export const App = () => (
@@ -18,7 +19,11 @@ export const App = () => (
       <LocaleSwitcher />
       <ThemeSwitcher />
 
-      <ListBox aria-label='List of items' items={items} onAction={(item) => console.log('item : ', item)} />
+      <Select
+        items={items}
+        label='Select test'
+        placeholder='Select an item'
+      />
     </ThemeProvider>
   </I18nProvider>
 )

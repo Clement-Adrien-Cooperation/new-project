@@ -6,7 +6,7 @@ import { mergeClassNames } from '@/presentation/utils'
 
 import './Option.styles.sass'
 
-type OptionProps = ComponentProps<'div'> & {
+export type OptionProps = ComponentProps<'div'> & {
   /** The option description. */
   description?: string
 
@@ -16,14 +16,14 @@ type OptionProps = ComponentProps<'div'> & {
   /** Whether the option is selected. */
   isSelected?: boolean
 
-  /** The option label. */
-  label: string
-
   /** Icon to display on the left. */
   LeftIcon?: ReactNode
 
   /** Icon to display on the right */
   RightIcon?: ReactNode
+
+  /** The option label. */
+  textValue: string
 }
 
 const renderRightIcon = (RightIcon: ReactNode, isSelected?: boolean) => {
@@ -43,9 +43,9 @@ export const Option: FC<OptionProps> = ({
   description,
   isDisabled,
   isSelected,
-  label,
   LeftIcon,
   RightIcon,
+  textValue,
   ...optionProps
 }) => (
   <div
@@ -66,7 +66,7 @@ export const Option: FC<OptionProps> = ({
 
       <div className='option__box__content'>
         <Text className='option__box__content__label' slot='label'>
-          {label}
+          {textValue}
         </Text>
 
         <Text className='option__box__content__description' slot='description'>
