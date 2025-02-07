@@ -9,9 +9,7 @@ import './Select.styles.sass'
 export type PickerItem <K extends Key = Key, O = object> = ListBoxItemProps<K, O & OptionProps>
 export type PickerItems <K extends Key = Key, O = object> = ListBoxItems<K, O & OptionProps>
 
-type FilteredSelectProps<K extends Key, O> = Omit<ReactAriaSelectProps<PickerItem<K, O>>, 'onSelectionChange' | 'selectedKey'>
-
-type SelectProps <K extends Key, O> = FilteredSelectProps<K, O> & {
+type SelectProps <K extends Key, O> = ReactAriaSelectProps<PickerItem<K, O>> & {
   /** The list of items to render. */
   items: PickerItems<K, O>
 
@@ -22,25 +20,27 @@ type SelectProps <K extends Key, O> = FilteredSelectProps<K, O> & {
 export function Select <K extends Key, O> ({ items, label, ...selectProps }: SelectProps<K, O>) {
   return (
     <ReactAriaSelect {...selectProps}>
-      <Label>{label}</Label>
+      <Label className='select__label'>{label}</Label>
 
       <Button className='select__trigger'>
-        <SelectValue<PickerItem<K, O>>>
-          {(values) => values.selectedItem?.textValue ?? selectProps.placeholder}
+        <SelectValue className='select__trigger__value'>
+          {({ selectedText }) => selectedText}
         </SelectValue>
 
-        <ChevronDownIcon />
+        <ChevronDownIcon className='select__trigger__icon' />
       </Button>
 
-      <Popover>
-        <ListBox items={items}>
+      <Popover className='select__popover'>
+        <ListBox
+          className='select__popover__list'
+          itemClassName='select__popover__list__item'
+          items={items}
+        >
           {item => (
             <Option
-              description={item.description}
               isDisabled={item.isDisabled}
               isSelected={item.isSelected}
-              LeftIcon={item.LeftIcon}
-              RightIcon={item.RightIcon}
+              Icon={item.Icon}
               textValue={item.textValue}
             />
           )}

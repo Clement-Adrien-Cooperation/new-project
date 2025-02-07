@@ -4,9 +4,8 @@
 @use '@/presentation/styles/transitions'
 @use '@/presentation/styles/typography'
 @use '@/presentation/styles/accessibility'
-@use '@/presentation/styles/interactions'
+@use '@/presentation/styles/interactive'
 @use '@/presentation/styles/shadows'
-@use '@/presentation/styles/mixins'
 @use '@/presentation/styles/scrollbar'
 
 html
@@ -31,30 +30,3 @@ body
 
 h1, h2, h3, h4, h5, h6
   @include typography.title-medium
-
-a,
-button,
-iframe,
-input,
-select,
-textarea,
-summary,
-[contenteditable],
-[tabindex],
-[role="button"],
-[role="checkbox"],
-[role="combobox"],
-[role="link"], 
-[role="menuitem"],
-[role="menuitemcheckbox"],
-[role="menuitemradio"], 
-[role="option"],
-[role="radio"],
-[role="searchbox"],
-[role="slider"], 
-[role="spinbutton"],
-[role="switch"],
-[role="tab"],
-[role="textbox"],
-[role="treeitem"]
-  @include accessibility.focus-outline

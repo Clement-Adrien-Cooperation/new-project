@@ -1,21 +1,33 @@
-// Override react-aria-components focus styles
+@use '@/presentation/styles/selectors'
 
-@mixin no-focus-outline
+@mixin hidden
+  border: 0
+  clip: rect(0, 0, 0, 0)
+  height: 1px
+  margin: -1px
+  overflow: hidden
+  padding: 0
+  position: absolute
+  white-space: nowrap
+  width: 1px
+
+// Override react-aria-components focus styles
+// rac = react aria components
+
+@mixin no-rac-focus-outline
   &[data-rac]:not([data-focus-visible='true'])
     outline: none
 
 @mixin focus-border
-  @include no-focus-outline
+  @include no-rac-focus-outline
   border: var(--stroke-m, 0.125rem) solid transparent
 
-  &:focus-visible:not([data-rac]),
-  &[data-focus-visible='true']
+  @include selectors.focus-visible
     border-color: var(--ring)
 
 @mixin focus-outline
-  @include no-focus-outline
+  @include no-rac-focus-outline
   outline-offset: var(--size-20, 0.125rem)
 
-  &:focus-visible:not([data-rac]),
-  &[data-focus-visible='true']
+  @include selectors.focus-visible
     outline: var(--stroke-m, 0.125rem) solid var(--ring)

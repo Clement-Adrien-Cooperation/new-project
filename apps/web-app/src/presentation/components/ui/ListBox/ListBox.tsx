@@ -3,26 +3,22 @@ import { type ListBoxItemRenderProps, ListBox as ReactAriaListBox, type ListBoxP
 
 import { ListBoxItem, type ListBoxItemProps, Option } from '@/presentation/components'
 import type { Key } from '@/presentation/types'
-import { mergeClassNames, mergeReactAriaClassNames } from '@/presentation/utils'
+import { mergeReactAriaClassNames } from '@/presentation/utils'
 
-type ListBoxChildrenRenderProps <K extends Key, O>
-  = ListBoxItemProps<K, O>
-  & ListBoxItemRenderProps
-  & { defaultChildren: ReactNode | undefined }
+type ListBoxOverrideProps <K extends Key, O> = {
+  /** The list of items to render. */
+  children?: ReactNode | ((item: O & ListBoxItemRenderProps) => ReactNode)
 
-// Override onAction function to return all the item props
+  /** Additional className provided to all items */
+  itemClassName?: string
+
+  /** Callback with item in parameters when user click on an item */
+  onAction?: (item: ListBoxItemProps<K, O>) => void
+}
+
 type ListBoxProps <K extends Key, O>
-  = Omit<ReactAriaListBoxProps<ListBoxItemProps<K, O>>, 'children' | 'onAction' >
-  & {
-    /** The list of items to render. */
-    children?: ReactNode | ((item: ListBoxChildrenRenderProps<K, O>) => ReactNode)
-
-    /** Additional className provided to all items */
-    itemClassName?: ListBoxItemProps<K, O>['className']
-
-    /** Callback with item in parameters when user click on an item */
-    onAction?: (item: ListBoxItemProps<K, O>) => void
-  }
+  = Omit<ReactAriaListBoxProps<ListBoxItemProps<K, O>>, 'children' | 'onAction'>
+  & ListBoxOverrideProps<K, O>
 
 export type ListBoxItems <K extends Key = string, O = object> = ListBoxProps<K, O>['items']
 
@@ -59,13 +55,7 @@ export function ListBox <K extends Key, O> ({
         : (item) => (
             <ListBoxItem
               {...item}
-              className={(values) => {
-                const itemClassNames = [
-                  mergeReactAriaClassNames(values, itemClassName),
-                  mergeReactAriaClassNames(values, item.className)
-                ]
-                return mergeClassNames(...itemClassNames)
-              }}
+              className={(values) => mergeReactAriaClassNames(values, item.className, itemClassName)}
               key={item.id}
             >
               {(values) => {

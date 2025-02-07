@@ -1,0 +1,30 @@
+@react-aria-selector
+
+@mixin disabled
+  &.disabled:not([data-rac]),
+  &:disabled:not([data-rac]),
+  &[data-disabled='true']
+    @content
+
+@mixin focus-visible
+  &:focus-visible:not([data-rac]),
+  &[data-focus-visible='true']
+    @content
+
+@mixin hovered
+  @media (hover: hover)
+    &:hover:not([data-rac])
+      @content
+
+  &[data-hovered='true']
+    @content
+
+@mixin pending
+  &.pending:not([data-rac]),
+  &[data-pending='true']
+    @content
+
+@mixin pressed
+  &:active:not([data-rac]),
+  &[data-pressed='true']
+    @content

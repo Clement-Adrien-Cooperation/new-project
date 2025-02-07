@@ -1,20 +1,25 @@
+@use '@/presentation/styles/typography'
+
 .option
+  --option-icon-size: var(--element-icon-size, 1rem)
   align-items: center
-  display: flex
+  display: grid
   gap: var(--size-160, 1rem)
-  justify-content: space-between
+  grid-template-columns: 1fr var(--option-icon-size)
   padding: var(--size-80) var(--size-120)
 
-  &:hover
-    background-color: var(--neutral-background-muted)
-
-  &__box
+  &__content
     align-items: center
-    display: flex
+    display: grid
     gap: var(--size-120, 0.75rem)
+    grid-template-columns: 1fr
 
-    &__icon,
-    &__icon svg
-      --option-icon-size: var(--size-160, 1rem)
-      height: var(--option-icon-size)
-      width: var(--option-icon-size)
+    &:has(.option__icon)
+      grid-template-columns: var(--option-icon-size) 1fr
+
+    &__label
+      @include typography.text-ellipsis
+
+  &__icon > *
+    height: var(--option-icon-size)
+    width: var(--option-icon-size)

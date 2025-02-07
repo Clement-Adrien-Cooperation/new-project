@@ -11,11 +11,11 @@ const renderButtonIcon = (Icon: ButtonProps['Icon'], variant: ButtonProps['varia
     return null
   }
 
-  if (isPending && Icon != null) {
-    return <Spinner />
-  }
-
-  return Icon
+  return (
+    <div role='presentation'>
+      {isPending && Icon != null ? <Spinner /> : Icon}
+    </div>
+  )
 }
 
 export const Button: FC<ButtonProps> = ({
