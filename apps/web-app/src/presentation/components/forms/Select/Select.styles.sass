@@ -1,20 +1,14 @@
-@use '@/presentation/styles/colors'
 @use '@/presentation/styles/interactive'
-@use '@/presentation/styles/selectors'
 @use '@/presentation/styles/typography'
 
 .select
-  --select-label-width: clamp(8rem, 6rem + 9vw, 12rem)
-  --select-trigger-icon-size: var(--element-icon-size, 1rem)
-  --select-trigger-padding-inline: var(--size-120, 0.75rem)
   display: grid
-  gap: var(--size-40, 0.25rem)
+  gap: var(--size-60, 0.375rem)
 
   &__label
     @include typography.label-medium
     @include typography.text-ellipsis
     padding-inline: var(--size-40, 0.25rem)
-    width: calc(var(--select-label-width) + var(--select-trigger-icon-size) + var(--select-trigger-padding-inline) * 2)
 
   &__trigger
     @include interactive.outlined
@@ -23,18 +17,21 @@
       @include typography.label-large
       align-items: center
       border-radius: var(--radius-m, 0.5rem)
-      display: grid
+      display: flex
       gap: var(--size-120, 0.75rem)
-      grid-template-columns: 1fr var(--select-trigger-icon-size)
       height: var(--element-size, 2.5rem)
+      justify-content: space-between
+      min-width: clamp(8rem, 6rem + 9vw, 12rem)
       padding-inline: var(--size-120, 0.75rem)
+      max-width: 100%
 
     &__value
       @include typography.text-ellipsis
-      min-width: clamp(8rem, 6rem + 9vw, 12rem)
+      flex: 1 0 0
       text-align: start
 
     &__icon
+      --select-trigger-icon-size: var(--element-icon-size, 1rem)
       height: var(--select-trigger-icon-size)
       width: var(--select-trigger-icon-size)
 
@@ -45,6 +42,7 @@
     width: clamp(8rem, 100%, 18rem)
 
     &__list
+      background-color: var(--neutral-background)
       border: var(--stroke-m, 0.125rem) solid var(--border)
       border-radius: var(--radius-m, 0.5rem)
       max-height: clamp(2rem, 95vh, 30rem)
