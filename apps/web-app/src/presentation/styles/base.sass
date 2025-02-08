@@ -1,13 +1,12 @@
-@use '@/presentation/styles/normalize.css'
-@use '@/presentation/styles/sizes.sass'
-@use '@/presentation/styles/colors.sass'
-@use '@/presentation/styles/transitions.sass'
-@use '@/presentation/styles/typography.sass'
-@use '@/presentation/styles/accessibility.sass'
-@use '@/presentation/styles/interactions.sass'
-@use '@/presentation/styles/shadows.sass'
-@use '@/presentation/styles/mixins.sass'
-@use '@/presentation/styles/scrollbar.sass'
+@use '@/presentation/styles/normalize'
+@use '@/presentation/styles/sizes'
+@use '@/presentation/styles/colors'
+@use '@/presentation/styles/transitions'
+@use '@/presentation/styles/typography'
+@use '@/presentation/styles/accessibility'
+@use '@/presentation/styles/interactive'
+@use '@/presentation/styles/shadows'
+@use '@/presentation/styles/scrollbar'
 
 html
   -moz-osx-font-smoothing: grayscale
@@ -32,29 +31,6 @@ body
 h1, h2, h3, h4, h5, h6
   @include typography.title-medium
 
-a,
-button,
-iframe,
-input,
-select,
-textarea,
-summary,
-[contenteditable],
-[tabindex],
-[role="button"],
-[role="checkbox"],
-[role="combobox"],
-[role="link"], 
-[role="menuitem"],
-[role="menuitemcheckbox"],
-[role="menuitemradio"], 
-[role="option"],
-[role="radio"],
-[role="searchbox"],
-[role="slider"], 
-[role="spinbutton"],
-[role="switch"],
-[role="tab"],
-[role="textbox"],
-[role="treeitem"]
-  @include accessibility.focus-outline
+.wrapper
+  padding: 5rem
+  max-width: 20rem

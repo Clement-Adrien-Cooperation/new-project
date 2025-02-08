@@ -1,0 +1,20 @@
+@mixin absolute-center
+  inset: 50% auto auto 50%
+  position: absolute
+  transform: translate(-50%, -50%)
+
+@mixin fixed-center
+  inset: 50% auto auto 50%
+  position: fixed
+  transform: translate(-50%, -50%)
+
+@mixin flex-center
+  align-items: center
+  display: flex
+  justify-content: center
+
+@mixin full-screen
+  height: 100svh
+  inset: 0
+  position: fixed
+  width: 100vw

@@ -1,6 +1,7 @@
 @use '@/presentation/styles/accessibility'
 @use '@/presentation/styles/colors'
-@use '@/presentation/styles/interactions'
+@use '@/presentation/styles/interactive'
+@use '@/presentation/styles/selectors'
 @use '@/presentation/styles/transitions'
 @use '@/presentation/styles/typography'
 
@@ -9,21 +10,24 @@
   @include transitions.color-transition
   @include typography.label-large
   align-items: center
+  border-radius: var(--radius-s, 0.25rem)
   cursor: pointer
   display: flex
-  gap: var(--spacing-s, 0.5rem)
+  gap: var(--size-80, 0.5rem)
 
   & svg
-    height: var(--size-160, 1.25rem)
-    width: var(--size-160, 1.25rem)
+    --pressable-icon-size: var(--element-icon-size, 1rem)
+    height: var(--pressable-icon-size)
+    width: var(--pressable-icon-size)
 
   &.small
-    @include typography.label-medium
-    gap: var(--spacing-2xs, 0.25rem)
+    @include typography.label-small
+    gap: var(--size-40, 0.25rem)
 
     & svg
-      height: var(--size-140, 0.875rem)
-      width: var(--size-140, 0.875rem)
+      --pressable-icon-size: var(--size-120, 0.75rem)
+      height: var(--pressable-icon-size)
+      width: var(--pressable-icon-size)
 
   &.icon-right
     flex-direction: row-reverse
@@ -33,36 +37,37 @@
     justify-content: center
     padding-inline: unset
 
+  @include selectors.pending
+    opacity: var(--alpha-l, 0.64)
+
   &:disabled:not([data-rac]),
   &[data-disabled='true'],
   &[data-pending='true']
-    opacity: var(--pending-alpha, 0.64)
     pointer-events: none
 
 @mixin common-button
   @include common-pressable
-  border: var(--stroke-m, 0.125rem) solid transparent
   border-radius: var(--radius-m, 0.5rem)
   height: var(--element-size, 2.5rem)
-  padding-inline: var(--spacing-3xl, 1.5rem)
+  padding-inline: var(--size-120, 0.75rem)
   white-space: nowrap
   width: fit-content
 
   &.icon-left
-    padding-inline: var(--spacing-xl, 0.875rem) var(--spacing-3xl, 1.5rem)
+    padding-inline: var(--size-100, 0.625rem) var(--size-140, 0.875rem)
 
   &.icon-right
-    padding-inline: var(--spacing-3xl, 1.5rem) var(--spacing-xl, 0.875rem)
+    padding-inline: var(--size-140, 0.875rem) var(--size-100, 0.625rem)
 
   &.small
     height: var(--size-280, 1.75rem)
-    padding-inline: var(--spacing-l, 1rem)
+    padding-inline: var(--size-100, 0.625rem)
 
     &.icon-left
-      padding-inline: var(--spacing-s, 0.5rem) var(--spacing-l, 0.75rem)
+      padding-inline: var(--size-80, 0.5rem) var(--size-120, 0.75rem)
 
     &.icon-right
-      padding-inline: var(--spacing-l, 0.75rem) var(--spacing-s, 0.5rem)
+      padding-inline: var(--size-120, 0.75rem) var(--size-80, 0.5rem)
 
   &.icon-size
     aspect-ratio: 1
@@ -70,132 +75,75 @@
     padding-inline: unset
 
 @mixin filled
+  @include common-button
   background-color: var(--brand-background-primary)
   color: var(--brand-foreground-on-brand)
 
-  @media (hover: hover)
-    &:hover:not([data-rac])
-      background-color: colors.fade(var(--brand-background-primary), var(--hover-alpha))
+  @include selectors.hovered
+    background-color: colors.fade(var(--brand-background-primary), var(--alpha-2xl))
 
-  &[data-hovered='true']
-    background-color: colors.fade(var(--brand-background-primary), var(--hover-alpha))
+  @include selectors.pressed
+    background-color: colors.fade(var(--brand-background-primary), var(--alpha-xl))
 
-  &:active:not([data-rac]),
-  &[data-pressed='true']
-    background-color: colors.fade(var(--brand-background-primary), var(--active-alpha))
-
-  &:disabled:not([data-rac]),
-  &[data-disabled='true']
+  @include selectors.disabled
     background-color: var(--neutral-background-muted)
     color: var(--neutral-foreground-muted)
 
 @mixin outlined
-  border-color: var(--border)
-
-  @media (hover: hover)
-    &:hover:not([data-rac])
-      background-color: colors.fade(var(--border), calc(1 - var(--hover-alpha)))
-      border-color: colors.fade(var(--border), var(--hover-alpha))
-
-  &[data-hovered='true']
-    background-color: colors.fade(var(--border), calc(1 - var(--hover-alpha)))
-    border-color: colors.fade(var(--border), var(--hover-alpha))
-
-  &:active:not([data-rac]),
-  &[data-pressed='true']
-    background-color: colors.fade(var(--border), calc(1 - var(--active-alpha)))
-    border-color: colors.fade(var(--border), var(--active-alpha))
-
-  &:disabled:not([data-rac]),
-  &[data-disabled='true']
-    border-color: var(--neutral-background-muted)
-    color: var(--neutral-foreground-muted)
+  @include common-button
+  @include interactive.outlined
 
 @mixin tonal
+  @include common-button
   background-color: var(--brand-background-secondary)
   color: var(--brand-foreground-secondary)
 
-  @media (hover: hover)
-    &:hover:not([data-rac])
-      background-color: colors.fade(var(--brand-background-secondary), var(--hover-alpha))
+  @include selectors.hovered
+    background-color: colors.fade(var(--brand-background-secondary), var(--alpha-2xl))
 
-  &[data-hovered='true']
-    background-color: colors.fade(var(--brand-background-secondary), var(--hover-alpha))
+  @include selectors.pressed
+    background-color: colors.fade(var(--brand-background-secondary), var(--alpha-xl))
 
-  &:active:not([data-rac]),
-  &[data-pressed='true']
-    background-color: colors.fade(var(--brand-background-secondary), var(--active-alpha))
-
-  &:disabled:not([data-rac]),
-  &[data-disabled='true']
+  @include selectors.disabled
     background-color: var(--neutral-background-muted)
     color: var(--neutral-foreground-muted)
 
 @mixin transparent
-  color: var(--neutral-foreground)
-
-  @media (hover: hover)
-    &:hover:not([data-rac])
-      background-color: colors.fade(var(--neutral-background-inverted), calc(1 - var(--hover-alpha)))
-
-  &[data-hovered='true']
-    background-color: colors.fade(var(--neutral-background-inverted), calc(1 - var(--hover-alpha)))
-
-  &:active:not([data-rac]),
-  &[data-pressed='true']
-    background-color: colors.fade(var(--neutral-background-inverted), calc(1 - var(--active-alpha)))
-
-  &:disabled:not([data-rac]),
-  &[data-disabled='true']
-    background-color: transparent
-    color: var(--neutral-foreground-muted)
+  @include common-button
+  @include interactive.transparent
 
 @mixin underlined
-  @include accessibility.focus-outline
-  @include typography.label-large
+  @include common-pressable
   color: var(--brand-foreground-primary)
   text-decoration-thickness: var(--stroke-m, 0.125rem)
-  text-underline-offset: var(--spacing-3xs, 0.125rem)
+  text-underline-offset: var(--size-20, 0.125rem)
 
-  @media (hover: hover)
-    &:hover:not([data-rac])
-      color: colors.fade(var(--brand-foreground-primary), var(--hover-alpha))
-      text-decoration: underline
-
-  &[data-hovered='true']
-    color: colors.fade(var(--brand-foreground-primary), var(--hover-alpha))
+  @include selectors.hovered
+    color: colors.fade(var(--brand-foreground-primary), var(--alpha-2xl))
     text-decoration: underline
 
-  &:active:not([data-rac]),
-  &[data-pressed='true']
-    color: colors.fade(var(--brand-foreground-primary), var(--active-alpha))
+  @include selectors.pressed
+    color: colors.fade(var(--brand-foreground-primary), var(--alpha-xl))
     text-decoration: underline
 
-  &:disabled:not([data-rac]),
-  &[data-disabled='true']
+  @include selectors.disabled
     color: var(--neutral-foreground-muted)
     pointer-events: none
 
 .pressable
   @include accessibility.focus-outline
-  border-radius: var(--radius-s, 0.25rem)
 
   &.filled
-    @include common-button
     @include filled
 
   &.outlined
-    @include common-button
     @include outlined
 
   &.tonal
-    @include common-button
     @include tonal
 
   &.transparent
-    @include common-button
     @include transparent
 
   &.underlined
-    @include common-pressable
     @include underlined

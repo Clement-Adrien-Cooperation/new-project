@@ -1,0 +1,12 @@
+.separator
+  --separator-size: var(--stroke-m, 0.125rem)
+  --separator-spacing: var(--size-40, 0.25rem)
+  background-color: var(--neutral-background-muted)
+
+  &.horizontal
+    height: var(--separator-size)
+    margin-block: var(--separator-spacing)
+
+  &.vertical
+    margin-inline: var(--separator-spacing)
+    width: var(--separator-size)

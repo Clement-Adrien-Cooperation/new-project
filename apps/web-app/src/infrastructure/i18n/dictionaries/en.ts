@@ -1,3 +1,10 @@
 export const en = {
-  helloWorld: 'Hello world'
+  features: {
+    theme: {
+      dark: 'Dark',
+      label: 'Theme',
+      light: 'Light',
+      system: 'System'
+    }
+  }
 }

@@ -1,4 +1,5 @@
 import { type FC, type PropsWithChildren, useCallback, useEffect, useMemo, useState } from 'react'
+import { I18nProvider as ReactAriaI18nProvider } from 'react-aria-components'
 
 import { I18nService } from '@/application/services'
 import { DEFAULT_LOCALE, type Locale } from '@/domain/i18n'
@@ -30,7 +31,9 @@ export const I18nProvider: FC<PropsWithChildren> = ({ children }) => {
 
   return (
     <I18nContext value={{ changeLocale, selectedLocale, translate }}>
-      {children}
+      <ReactAriaI18nProvider locale={selectedLocale}>
+        {children}
+      </ReactAriaI18nProvider>
     </I18nContext>
   )
 }

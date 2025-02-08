@@ -1,5 +1,12 @@
 import type { Dictionary } from '.'
 
 export const fr = {
-  helloWorld: 'Bonjour monde'
+  features: {
+    theme: {
+      dark: 'Sombre',
+      label: 'Theme',
+      light: 'Clair',
+      system: 'Système'
+    }
+  }
 } satisfies Dictionary
