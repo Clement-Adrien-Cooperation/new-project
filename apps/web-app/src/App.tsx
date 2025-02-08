@@ -1,16 +1,29 @@
-import { LocaleSwitcher } from '@/presentation/components'
-import { ThemeSwitcher } from '@/presentation/components'
+import { RouterProvider } from 'react-aria-components'
+import { useNavigate } from 'react-router'
+
+import { Router } from '@/application/router'
 import { I18nProvider, ThemeProvider } from '@/presentation/providers'
 
 import '@/presentation/styles/base.sass'
 
-export const App = () => (
-  <I18nProvider>
-    <ThemeProvider>
-      <main className='temp-wrapper'>
-        <LocaleSwitcher />
-        <ThemeSwitcher />
-      </main>
-    </ThemeProvider>
-  </I18nProvider>
-)
+export const App = () => {
+  const navigate = useNavigate()
+
+  return (
+    <RouterProvider navigate={navigate}>
+      <I18nProvider>
+        <ThemeProvider>
+
+          <header />
+
+          <main>
+            <Router />
+          </main>
+
+          <footer />
+
+        </ThemeProvider>
+      </I18nProvider>
+    </RouterProvider>
+  )
+}

@@ -6,6 +6,7 @@ import { Button, Label, ListBox, ListBoxItem, type ListBoxItemProps, Option, typ
 import type { Key, Style } from '@/presentation/types'
 
 import './Select.styles.sass'
+import { mergeReactAriaClassNames } from '@/presentation/utils'
 
 export type PickerItem <K extends Key = Key, O = object> = ListBoxItemProps<K, O & OptionProps>
 export type PickerItems <K extends Key = Key, O = object> = Iterable<PickerItem<K, O>>
@@ -31,6 +32,7 @@ type SelectProps <K extends Key, O> = FilteredSelectProps<K, O> & {
 }
 
 export function Select <K extends Key, O> ({
+  className,
   items,
   label,
   onSelectionChange,
@@ -76,6 +78,7 @@ export function Select <K extends Key, O> ({
   return (
     <ReactAriaSelect
       {...selectProps}
+      className={values => mergeReactAriaClassNames(values, className, 'select')}
       onSelectionChange={onSelectSelectionChange}
       ref={selectRef}
       selectedKey={selectedKey}

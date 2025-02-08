@@ -1,20 +1,10 @@
-import { createContext, type ReactNode } from 'react'
+import { createContext } from 'react'
 
-import type { Locale } from '@/domain/i18n'
-import type { Dictionary } from '@/infrastructure/i18n/dictionaries'
-
-type DotPrefix<T extends string> = T extends '' ? '' : `.${T}`
-
-type DotNestedKeys<T> = (
-  T extends object ? {
-    [K in Exclude<keyof T, symbol>]: `${K}${DotPrefix<DotNestedKeys<T[K]>>}`
-  }[Exclude<keyof T, symbol>] : ''
-) extends infer D
-  ? Extract<D, string>
-  : never
+import type { Dictionary, Locale } from '@/domain/i18n'
+import type { DotNestedKeys } from '@/infrastructure/utils'
 
 export type TranslateKey = DotNestedKeys<Dictionary>
-export type TranslateOptions = Record<string, ReactNode>
+export type TranslateOptions = Record<string, string | number> | number
 type Translate = (key: TranslateKey, options?: TranslateOptions) => string
 
 type I18nContextValue = {

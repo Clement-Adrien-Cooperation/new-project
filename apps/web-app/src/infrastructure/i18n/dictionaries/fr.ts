@@ -11,5 +11,10 @@ export const fr = {
       light: 'Clair',
       system: 'Système'
     }
+  },
+  pages: {
+    settings: {
+      title: 'Paramètres'
+    }
   }
 } satisfies Dictionary
