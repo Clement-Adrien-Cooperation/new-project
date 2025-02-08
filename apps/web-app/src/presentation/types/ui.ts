@@ -16,3 +16,5 @@ type BaseListItemObject <T extends Key, BaseProps = object> = BaseProps & {
 export type ListItemObject <T extends Key, BaseProps = object>
   = Omit<BaseProps, 'id' | 'textValue'>
   & BaseListItemObject<T, BaseProps>
+
+export type Style = Record<string, null | number | string>

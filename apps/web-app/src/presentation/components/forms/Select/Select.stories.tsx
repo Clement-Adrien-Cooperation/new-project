@@ -29,16 +29,16 @@ const selectItems: PickerItems = [
 
 const meta: Meta<typeof Select> = {
   args: {
-    label: 'Select',
     items: selectItems,
-    onSelectionChange: fn(),
-    placeholder: 'Select an option'
+    label: 'Select',
+    placeholder: 'Select an option',
+    onSelectionChange: fn()
   },
   component: Select,
   title: 'Select',
   decorators: [
     (Story) => (
-      <div style={{ maxWidth: 300, height: 500 }}>
+      <div style={{ maxWidth: 300, height: 800 }}>
         <Story />
       </div>
     )
@@ -49,5 +49,9 @@ export default meta
 type Story = StoryObj<typeof Select>
 
 export const SelectWithItems: Story = {
+  argTypes: {
+    label: { control: 'text' },
+    placeholder: { control: 'text' }
+  },
   name: 'Select'
 }

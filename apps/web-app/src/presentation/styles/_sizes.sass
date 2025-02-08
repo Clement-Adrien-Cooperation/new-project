@@ -37,3 +37,6 @@
 
   --element-size: var(--size-400, 2.5rem)
   --element-icon-size: var(--size-160, 1rem)
+
+@mixin popover ($size: clamp(9.6rem, 7.2rem + 10.8vw, 13.44rem))
+  width: clamp(clamp(8rem, 6rem + 9vw, 12rem), $size, calc(100vw - 24px))
