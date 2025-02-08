@@ -9,5 +9,10 @@ export const en = {
       light: 'Light',
       system: 'System'
     }
+  },
+  pages: {
+    settings: {
+      title: 'Settings'
+    }
   }
 }

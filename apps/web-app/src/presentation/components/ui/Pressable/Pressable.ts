@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import type { ReactElement, ReactNode } from 'react'
 import type { ButtonRenderProps, LinkRenderProps } from 'react-aria-components'
 
 import { mergeReactAriaClassNames, type RenderPropsValues } from '@/presentation/utils'
@@ -18,7 +18,7 @@ export type PressableVariant
 
 type PressableWithVariantProps = {
   /** Optional icon to display within the button. */
-  Icon?: ReactNode
+  Icon?: ReactElement
 
   /**
    * Determines the side of the button the icon should appear on. Defaults to 'left'.
@@ -54,9 +54,9 @@ type PressableRenderProps
   = ButtonRenderProps
   | LinkRenderProps
 
-type PressableChildren <T extends PressableRenderProps>
-  = React.ReactNode
-  | ((values: T & { defaultChildren: React.ReactNode | undefined }) => React.ReactNode)
+type PressableChildren <T extends PressableRenderProps> =
+  | ReactNode
+  | ((values: T & { defaultChildren: ReactNode | undefined }) => ReactNode)
 
 export function mergeReactAriaPressableClassNames <T extends PressableRenderProps> (
   values: RenderPropsValues<T>,

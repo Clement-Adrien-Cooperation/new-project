@@ -1,13 +1,16 @@
-import type { Dictionary } from './dictionaries/en.ts'
+import type { DotNestedKeys } from '@/infrastructure/utils'
+
+import type { Locale } from '.'
+import type { Dictionary } from './dictionaries'
 
 declare type IPolyglotOptions = {
   phrases: Dictionary
-  locale?: string
+  locale: Locale
 }
 
 declare class Polyglot {
   constructor (options: IPolyglotOptions)
-  t (key: string, options?: Record<string, unknown>): string
+  t (key: DotNestedKeys<Dictionary>, options?: Record<string, string | number> | number): string
 }
 
 export = Polyglot

@@ -1,5 +1,5 @@
 import { CheckIcon } from 'lucide-react'
-import type { ComponentProps, FC, ReactNode } from 'react'
+import type { ComponentProps, FC, ReactElement } from 'react'
 
 import { Text } from '@/presentation/components'
 import { mergeClassNames } from '@/presentation/utils'
@@ -14,7 +14,7 @@ export type OptionProps = {
   isSelected?: boolean
 
   /** Icon to display on the left. */
-  Icon?: ReactNode
+  Icon?: ReactElement
 
   /** The option label. */
   textValue: string
