@@ -31,6 +31,9 @@ body
 h1, h2, h3, h4, h5, h6
   @include typography.title-medium
 
-.wrapper
-  padding: 5rem
-  max-width: 20rem
+.temp-wrapper
+  display: grid
+  gap: 2rem
+  margin-inline: auto
+  padding-block: 5rem
+  width: min(20rem, calc(100% - 4rem))

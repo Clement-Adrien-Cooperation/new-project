@@ -1,8 +1,9 @@
 import { ChevronDownIcon } from 'lucide-react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { Popover, Select as ReactAriaSelect, type SelectProps as ReactAriaSelectProps, SelectValue } from 'react-aria-components'
 
 import { Button, Label, ListBox, ListBoxItem, type ListBoxItemProps, Option, type OptionProps } from '@/presentation/components'
-import type { Key } from '@/presentation/types'
+import type { Key, Style } from '@/presentation/types'
 
 import './Select.styles.sass'
 
@@ -29,22 +30,56 @@ type SelectProps <K extends Key, O> = FilteredSelectProps<K, O> & {
   selectedKey?: K | null
 }
 
-export function Select <K extends Key, O> ({ items, label, onSelectionChange, ...selectProps }: SelectProps<K, O>) {
+export function Select <K extends Key, O> ({
+  items,
+  label,
+  onSelectionChange,
+  selectedKey,
+  ...selectProps
+}: SelectProps<K, O>) {
+  const [currentSelectedKey, setCurrentSelectedKey] = useState<K | null | undefined>(selectedKey)
+  const [selectWidth, setSelectWidth] = useState<number | null>(null)
+
+  const selectRef = useRef<HTMLDivElement>(null)
+
+  const updateSelectSize = useCallback((ref: React.RefObject<HTMLDivElement | null>) => {
+    setSelectWidth(ref.current?.offsetWidth ?? null)
+  }, [])
+
+  useEffect(() => {
+    if (selectRef.current) {
+      updateSelectSize(selectRef)
+    }
+  }, [currentSelectedKey, selectRef, updateSelectSize])
+
   const onSelectSelectionChange = (key: Key) => {
-    if (!items || !onSelectionChange) {
+    if (!items) {
       return
     }
 
     for (const item of items) {
       if (item.id === key) {
-        onSelectionChange(item)
-        return
+        setCurrentSelectedKey(item.id)
+
+        if (onSelectionChange) {
+          onSelectionChange(item)
+          return
+        }
       }
     }
   }
 
+  const selectStyleVariables: Style = {
+    '--select-width': selectWidth ? `${selectWidth}px` : '100%'
+  }
+
   return (
-    <ReactAriaSelect {...selectProps} onSelectionChange={onSelectSelectionChange}>
+    <ReactAriaSelect
+      {...selectProps}
+      onSelectionChange={onSelectSelectionChange}
+      ref={selectRef}
+      selectedKey={selectedKey}
+    >
       <Label className='select__label'>{label}</Label>
 
       <Button className='select__trigger'>
@@ -57,11 +92,12 @@ export function Select <K extends Key, O> ({ items, label, onSelectionChange, ..
 
       <Popover className='select__popover'>
         <ListBox
-          className='select__popover__list'
+          className='select__list'
           items={items}
+          style={selectStyleVariables}
         >
           {item => (
-            <ListBoxItem {...item} className='select__popover__list__item'>
+            <ListBoxItem {...item} className='select__list__item'>
               {values => (
                 <Option
                   isDisabled={values.isDisabled}

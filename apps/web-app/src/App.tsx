@@ -7,8 +7,10 @@ import '@/presentation/styles/base.sass'
 export const App = () => (
   <I18nProvider>
     <ThemeProvider>
-      <LocaleSwitcher />
-      <ThemeSwitcher />
+      <main className='temp-wrapper'>
+        <LocaleSwitcher />
+        <ThemeSwitcher />
+      </main>
     </ThemeProvider>
   </I18nProvider>
 )
