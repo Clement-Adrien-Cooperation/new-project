@@ -1,3 +1,4 @@
+@use '@/presentation/styles/animations'
 @use '@/presentation/styles/interactive'
 @use '@/presentation/styles/sizes'
 @use '@/presentation/styles/typography'
@@ -13,6 +14,7 @@
     padding-inline: var(--size-40, 0.25rem)
 
   &__trigger
+    --select-trigger-icon-size: var(--element-icon-size, 1rem)
     @include interactive.outlined
 
     &
@@ -28,11 +30,13 @@
 
     &__value
       @include typography.text-ellipsis
+      align-items: center
+      display: flex
       flex: 1 0 0
+      gap: var(--size-80, 0.5rem)
       text-align: start
 
     &__icon
-      --select-trigger-icon-size: var(--element-icon-size, 1rem)
       height: var(--select-trigger-icon-size)
       width: var(--select-trigger-icon-size)
 
@@ -40,6 +44,7 @@
       color: var(--neutral-foreground-muted)
 
   &__list
+    @include animations.color-transition
     @include sizes.popover(var(--select-width, 100%))
     background-color: var(--neutral-background)
     border: var(--stroke-m, 0.125rem) solid var(--border)

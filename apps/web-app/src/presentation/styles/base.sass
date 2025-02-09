@@ -1,7 +1,7 @@
 @use '@/presentation/styles/normalize'
 @use '@/presentation/styles/sizes'
 @use '@/presentation/styles/colors'
-@use '@/presentation/styles/transitions'
+@use '@/presentation/styles/animations'
 @use '@/presentation/styles/typography'
 @use '@/presentation/styles/shadows'
 @use '@/presentation/styles/layout'
@@ -20,6 +20,7 @@ html
     color: var(--brand-foreground-on-brand)
 
 body
+  @include animations.color-transition
   @include typography.body-medium
   background: var(--neutral-background)
   color: var(--neutral-foreground)

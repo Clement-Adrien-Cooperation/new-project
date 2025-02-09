@@ -3,14 +3,14 @@ import type { FC } from 'react'
 
 import { useI18n } from '@/application/hooks'
 import { ROUTE_HOME, ROUTE_SETTINGS } from '@/domain/navigation'
-import { ListBox, type ListItems } from '@/presentation/components'
 
 import './NavBar.styles.sass'
+import { Link } from '@/presentation/components'
 
 export const NavBar: FC = () => {
   const { translate } = useI18n()
 
-  const navBarItems: ListItems = [
+  const navBarItems = [
     {
       href: ROUTE_HOME,
       Icon: <HomeIcon />,
@@ -27,19 +27,20 @@ export const NavBar: FC = () => {
 
   return (
     <nav className='nav-bar'>
-      <ListBox
-        aria-label={translate('layouts.navBar.ariaLabel')}
-        className='nav-bar__list'
-        itemClassName='nav-bar__list__item'
-        items={navBarItems}
-      >
-        {item => (
-          <>
-            {item.Icon}
-            {item.textValue}
-          </>
-        )}
-      </ListBox>
+      <ul className='nav-bar__list'>
+        {navBarItems.map(item => (
+          <li key={item.id} role='none'>
+            <Link
+              className='nav-bar__list__item'
+              href={item.href}
+              Icon={item.Icon}
+              variant='underlined'
+            >
+              {item.textValue}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </nav>
   )
 }

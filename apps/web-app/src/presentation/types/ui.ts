@@ -17,7 +17,7 @@ type BaseCommonItem <T extends Key> = {
   textValue: string
 }
 
-export type CommonItem <T extends Key, BaseProps = object>
+export type CommonItem <T extends Key = Key, BaseProps = object>
   = Omit<BaseProps, 'id' | 'textValue'>
   & BaseCommonItem<T>
 

@@ -1,16 +1,14 @@
 import type { ReactNode } from 'react'
 import { type ListBoxItemRenderProps, ListBox as ReactAriaListBox, type ListBoxProps as ReactAriaListBoxProps } from 'react-aria-components'
 
-import { ListBoxItem, type ListBoxItemProps, Option, Separator } from '@/presentation/components'
+import { ListBoxItem, type ListBoxItemProps, Option } from '@/presentation/components'
 import type { CommonItem, Key } from '@/presentation/types'
 import { mergeClassNames, mergeReactAriaClassNames } from '@/presentation/utils'
 
 export type ListItem <K extends Key = Key, O = object> = CommonItem<K, O & ListBoxItemProps>
 export type ListItems <K extends Key = Key, O = object> = Iterable<ListItem<K, O>>
 
-type ListBoxChildrenRenderProps <K extends Key, O>
-  = Omit<ListItem<K, O>, 'hasSeparatorBefore'>
-  & ListBoxItemRenderProps
+type ListBoxChildrenRenderProps <K extends Key, O> = ListItem<K, O> & ListBoxItemRenderProps
 
 type ListBoxOverrideProps <K extends Key, O> = {
   /** The list of items to render. */
@@ -57,31 +55,27 @@ export function ListBox <K extends Key, O> ({
       onAction={onAction && onListBoxAction}
     >
       {typeof children === 'function' || children == null
-        ? ({ hasSeparatorBefore, ...item }) => (
-            <>
-              {hasSeparatorBefore && <Separator />}
-
-              <ListBoxItem
-                {...item}
-                className={values => {
-                  const classNames = [
-                    mergeReactAriaClassNames(values, itemClassName),
-                    mergeReactAriaClassNames(values, item.className)
-                  ]
-                  return mergeClassNames(classNames)
-                }}
-              >
-                {values => children
-                  ? children({ ...item, ...values })
-                  : <Option
-                      isDisabled={values.isDisabled}
-                      isSelected={values.isSelected}
-                      Icon={item.Icon}
-                      textValue={item.textValue}
-                    />
-                }
-              </ListBoxItem>
-            </>
+        ? (item) => (
+            <ListBoxItem
+              {...item}
+              className={values => {
+                const classNames = [
+                  mergeReactAriaClassNames(values, itemClassName),
+                  mergeReactAriaClassNames(values, item.className)
+                ]
+                return mergeClassNames(classNames)
+              }}
+            >
+              {values => children
+                ? children({ ...item, ...values })
+                : <Option
+                    Icon={item.Icon}
+                    isDisabled={values.isDisabled}
+                    isSelected={values.isSelected}
+                    textValue={item.textValue}
+                  />
+              }
+            </ListBoxItem>
           )
         : children
       }

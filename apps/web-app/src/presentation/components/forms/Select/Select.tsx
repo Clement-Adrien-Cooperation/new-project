@@ -36,6 +36,7 @@ export function Select <K extends Key, O> ({
   items,
   label,
   onSelectionChange,
+  placeholder,
   selectedKey,
   ...selectProps
 }: SelectProps<K, O>) {
@@ -80,14 +81,31 @@ export function Select <K extends Key, O> ({
       {...selectProps}
       className={values => mergeReactAriaClassNames(values, className, 'select')}
       onSelectionChange={onSelectSelectionChange}
+      placeholder={placeholder}
       ref={selectRef}
       selectedKey={selectedKey}
     >
       <Label className='select__label'>{label}</Label>
 
       <Button className='select__trigger'>
-        <SelectValue className='select__trigger__value'>
-          {({ selectedText }) => selectedText}
+        <SelectValue<PickerItem> className='select__trigger__value'>
+          {({ selectedItem }) => {
+            if (!selectedItem) {
+              return placeholder
+            }
+
+            return (
+              <>
+                {selectedItem.Icon && (
+                  <div className='select__trigger__icon'>
+                    {selectedItem.Icon}
+                  </div>
+                )}
+
+                {selectedItem.textValue}
+              </>
+            )
+          }}
         </SelectValue>
 
         <ChevronDownIcon className='select__trigger__icon' />

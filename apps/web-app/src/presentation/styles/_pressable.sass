@@ -1,13 +1,13 @@
 @use '@/presentation/styles/accessibility'
+@use '@/presentation/styles/animations'
 @use '@/presentation/styles/colors'
 @use '@/presentation/styles/interactive'
 @use '@/presentation/styles/selectors'
-@use '@/presentation/styles/transitions'
 @use '@/presentation/styles/typography'
 
 @mixin common-pressable
   @include accessibility.focus-outline
-  @include transitions.color-transition
+  @include animations.color-transition
   @include typography.label-large
   align-items: center
   border-radius: var(--radius-s, 0.25rem)
@@ -119,11 +119,10 @@
   text-underline-offset: var(--size-20, 0.125rem)
 
   @include selectors.hovered
-    color: colors.fade(var(--brand-foreground-primary), var(--alpha-2xl))
     text-decoration: underline
 
   @include selectors.pressed
-    color: colors.fade(var(--brand-foreground-primary), var(--alpha-xl))
+    color: colors.fade(var(--brand-foreground-primary), var(--alpha-2xl))
     text-decoration: underline
 
   @include selectors.disabled

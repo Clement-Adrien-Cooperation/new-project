@@ -1,7 +1,9 @@
+@use '@/presentation/styles/animations'
 @use '@/presentation/styles/colors'
 @use '@/presentation/styles/selectors'
 
 @mixin base-interactive
+  @include animations.color-transition
   cursor: pointer
 
   @include selectors.disabled

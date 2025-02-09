@@ -9,7 +9,7 @@ export const LocaleSwitcher: FC = () => {
 
   const localeSelectItems: PickerItems<Locale> = [
     { id: 'en', textValue: 'English' },
-    { id: 'fr', textValue: 'French' }
+    { id: 'fr', textValue: 'Français' }
   ]
 
   return (
