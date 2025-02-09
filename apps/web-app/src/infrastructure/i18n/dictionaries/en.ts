@@ -1,9 +1,14 @@
 export const en = {
-  features: {
-    locale: {
+  components: {
+    fallback: {
+      title: 'Oops, something went wrong',
+      description: 'An unexpected error occurred. Please try again later.',
+      retryButton: 'Go back to home'
+    },
+    localeSwitcher: {
       label: 'Language'
     },
-    theme: {
+    themeSwitcher: {
       dark: 'Dark',
       label: 'Theme',
       light: 'Light',

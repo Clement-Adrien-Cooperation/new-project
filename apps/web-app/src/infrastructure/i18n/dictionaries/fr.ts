@@ -1,11 +1,16 @@
 import type { Dictionary } from '.'
 
 export const fr = {
-  features: {
-    locale: {
+  components: {
+    fallback: {
+      title: 'Oops, une erreur s\'est produite',
+      description: 'Il y a eu une erreur imprévue. Veuillez réessayer plus tard.',
+      retryButton: 'Revenir à l\'accueil'
+    },
+    localeSwitcher: {
       label: 'Langue'
     },
-    theme: {
+    themeSwitcher: {
       dark: 'Sombre',
       label: 'Theme',
       light: 'Clair',

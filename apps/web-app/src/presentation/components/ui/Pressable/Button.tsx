@@ -7,7 +7,7 @@ import { Spinner } from '@/presentation/components'
 type ButtonProps = PressableProps & ReactAriaButtonProps
 
 const renderButtonIcon = (Icon: ButtonProps['Icon'], variant: ButtonProps['variant'], isPending: boolean) => {
-  if (variant == null) {
+  if (Icon == null || variant == null) {
     return null
   }
 

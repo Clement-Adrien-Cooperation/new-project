@@ -10,15 +10,15 @@ export const ThemeSwitcher: FC = () => {
   const { changeTheme, selectedTheme } = useTheme()
 
   const themeSelectItems: PickerItems<Theme> = [
-    { id: 'system', textValue: translate('features.theme.system'), Icon: <MonitorCogIcon /> },
-    { id: 'dark', textValue: translate('features.theme.dark'), Icon: <MoonIcon />, hasSeparatorBefore: true },
-    { id: 'light', textValue: translate('features.theme.light'), Icon: <SunIcon /> }
+    { id: 'system', textValue: translate('components.themeSwitcher.system'), Icon: <MonitorCogIcon /> },
+    { id: 'dark', textValue: translate('components.themeSwitcher.dark'), Icon: <MoonIcon />, hasSeparatorBefore: true },
+    { id: 'light', textValue: translate('components.themeSwitcher.light'), Icon: <SunIcon /> }
   ]
 
   return (
     <Select
       items={themeSelectItems}
-      label={translate('features.theme.label')}
+      label={translate('components.themeSwitcher.label')}
       onSelectionChange={selectedTheme => changeTheme(selectedTheme.id)}
       selectedKey={selectedTheme}
     />

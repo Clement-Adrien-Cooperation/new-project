@@ -1,10 +1,10 @@
 import { type ComponentType, lazy, type ReactElement, Suspense } from 'react'
 
-import { Spinner } from '@/presentation/components'
+import { Loader } from '@/presentation/components'
 
 export const lazyPage = <P extends object>(
   importPath: () => Promise<{ default: ComponentType<P> }>,
-  fallback: ReactElement = <Spinner />
+  fallback: ReactElement = <Loader />
 ) => {
   const Component = lazy(importPath)
 

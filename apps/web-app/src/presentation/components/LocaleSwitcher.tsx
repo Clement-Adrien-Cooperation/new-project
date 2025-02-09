@@ -15,7 +15,7 @@ export const LocaleSwitcher: FC = () => {
   return (
     <Select
       items={localeSelectItems}
-      label={translate('features.locale.label')}
+      label={translate('components.localeSwitcher.label')}
       onSelectionChange={newLocale => changeLocale(newLocale.id)}
       selectedKey={selectedLocale}
     />

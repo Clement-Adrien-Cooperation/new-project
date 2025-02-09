@@ -2,6 +2,7 @@ import { RouterProvider } from 'react-aria-components'
 import { useNavigate } from 'react-router'
 
 import { Router } from '@/application/router'
+import { ErrorBoundary, Fallback } from '@/presentation/components'
 import { I18nProvider, ThemeProvider } from '@/presentation/providers'
 
 import '@/presentation/styles/base.sass'
@@ -13,15 +14,17 @@ export const App = () => {
     <RouterProvider navigate={navigate}>
       <I18nProvider>
         <ThemeProvider>
+          <ErrorBoundary fallback={<Fallback />}>
 
-          <header />
+            <header />
 
-          <main>
-            <Router />
-          </main>
+            <main>
+              <Router />
+            </main>
 
-          <footer />
+            <footer />
 
+          </ErrorBoundary>
         </ThemeProvider>
       </I18nProvider>
     </RouterProvider>
