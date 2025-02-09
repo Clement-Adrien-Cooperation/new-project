@@ -1,149 +1,20 @@
 @use '@/presentation/styles/accessibility'
-@use '@/presentation/styles/colors'
-@use '@/presentation/styles/interactive'
-@use '@/presentation/styles/selectors'
-@use '@/presentation/styles/transitions'
-@use '@/presentation/styles/typography'
-
-@mixin common-pressable
-  @include accessibility.focus-outline
-  @include transitions.color-transition
-  @include typography.label-large
-  align-items: center
-  border-radius: var(--radius-s, 0.25rem)
-  cursor: pointer
-  display: flex
-  gap: var(--size-80, 0.5rem)
-
-  & svg
-    --pressable-icon-size: var(--element-icon-size, 1rem)
-    height: var(--pressable-icon-size)
-    width: var(--pressable-icon-size)
-
-  &.small
-    @include typography.label-small
-    gap: var(--size-40, 0.25rem)
-
-    & svg
-      --pressable-icon-size: var(--size-120, 0.75rem)
-      height: var(--pressable-icon-size)
-      width: var(--pressable-icon-size)
-
-  &.icon-right
-    flex-direction: row-reverse
-
-  &.icon-size
-    aspect-ratio: 1
-    justify-content: center
-    padding-inline: unset
-
-  @include selectors.pending
-    opacity: var(--alpha-l, 0.64)
-
-  &:disabled:not([data-rac]),
-  &[data-disabled='true'],
-  &[data-pending='true']
-    pointer-events: none
-
-@mixin common-button
-  @include common-pressable
-  border-radius: var(--radius-m, 0.5rem)
-  height: var(--element-size, 2.5rem)
-  padding-inline: var(--size-120, 0.75rem)
-  white-space: nowrap
-  width: fit-content
-
-  &.icon-left
-    padding-inline: var(--size-100, 0.625rem) var(--size-140, 0.875rem)
-
-  &.icon-right
-    padding-inline: var(--size-140, 0.875rem) var(--size-100, 0.625rem)
-
-  &.small
-    height: var(--size-280, 1.75rem)
-    padding-inline: var(--size-100, 0.625rem)
-
-    &.icon-left
-      padding-inline: var(--size-80, 0.5rem) var(--size-120, 0.75rem)
-
-    &.icon-right
-      padding-inline: var(--size-120, 0.75rem) var(--size-80, 0.5rem)
-
-  &.icon-size
-    aspect-ratio: 1
-    justify-content: center
-    padding-inline: unset
-
-@mixin filled
-  @include common-button
-  background-color: var(--brand-background-primary)
-  color: var(--brand-foreground-on-brand)
-
-  @include selectors.hovered
-    background-color: colors.fade(var(--brand-background-primary), var(--alpha-2xl))
-
-  @include selectors.pressed
-    background-color: colors.fade(var(--brand-background-primary), var(--alpha-xl))
-
-  @include selectors.disabled
-    background-color: var(--neutral-background-muted)
-    color: var(--neutral-foreground-muted)
-
-@mixin outlined
-  @include common-button
-  @include interactive.outlined
-
-@mixin tonal
-  @include common-button
-  background-color: var(--brand-background-secondary)
-  color: var(--brand-foreground-secondary)
-
-  @include selectors.hovered
-    background-color: colors.fade(var(--brand-background-secondary), var(--alpha-2xl))
-
-  @include selectors.pressed
-    background-color: colors.fade(var(--brand-background-secondary), var(--alpha-xl))
-
-  @include selectors.disabled
-    background-color: var(--neutral-background-muted)
-    color: var(--neutral-foreground-muted)
-
-@mixin transparent
-  @include common-button
-  @include interactive.transparent
-
-@mixin underlined
-  @include common-pressable
-  color: var(--brand-foreground-primary)
-  text-decoration-thickness: var(--stroke-m, 0.125rem)
-  text-underline-offset: var(--size-20, 0.125rem)
-
-  @include selectors.hovered
-    color: colors.fade(var(--brand-foreground-primary), var(--alpha-2xl))
-    text-decoration: underline
-
-  @include selectors.pressed
-    color: colors.fade(var(--brand-foreground-primary), var(--alpha-xl))
-    text-decoration: underline
-
-  @include selectors.disabled
-    color: var(--neutral-foreground-muted)
-    pointer-events: none
+@use '@/presentation/styles/pressable'
 
 .pressable
   @include accessibility.focus-outline
 
   &.filled
-    @include filled
+    @include pressable.filled
 
   &.outlined
-    @include outlined
+    @include pressable.outlined
 
   &.tonal
-    @include tonal
+    @include pressable.tonal
 
   &.transparent
-    @include transparent
+    @include pressable.transparent
 
   &.underlined
-    @include underlined
+    @include pressable.underlined

@@ -1,32 +1,36 @@
-import { RefreshCcwIcon } from 'lucide-react'
+import { HomeIcon } from 'lucide-react'
 import type { FC } from 'react'
 
 import { useI18n } from '@/application/hooks'
 import { ROUTE_HOME } from '@/domain/navigation'
-import { Button } from '@/presentation/components'
+import { Link } from '@/presentation/components'
 import { ErrorActions, ErrorContent, ErrorTitle, ErrorWrapper } from '@/presentation/layouts'
 
-export const Fallback: FC = () => {
+type NotFoundProps = {
+  goBackPath?: string
+}
+
+export const NotFound: FC<NotFoundProps> = ({ goBackPath = ROUTE_HOME }) => {
   const { translate } = useI18n()
 
   return (
     <ErrorWrapper>
       <ErrorTitle>
-        {translate('components.fallback.title')}
+        {translate('pages.notFound.title')}
       </ErrorTitle>
 
       <ErrorContent>
-        {translate('components.fallback.message')}
+        {translate('pages.notFound.message')}
       </ErrorContent>
 
       <ErrorActions>
-        <Button
-          Icon={<RefreshCcwIcon />}
-          onPress={() => window.location.replace(ROUTE_HOME) }
+        <Link
+          href={goBackPath}
+          Icon={<HomeIcon />}
           variant='filled'
         >
-          {translate('components.fallback.retry')}
-        </Button>
+          {translate('pages.notFound.goBack')}
+        </Link>
       </ErrorActions>
     </ErrorWrapper>
   )

@@ -1,8 +1,9 @@
+import { Fallback } from '@/presentation/components/Fallback'
 import { Component, type ReactNode } from 'react'
 
 type ErrorBoundaryProps = {
   children: ReactNode
-  fallback: ReactNode
+  fallback?: ReactNode
 }
 
 type ErrorBoundaryState = {
@@ -21,7 +22,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
 
   render() {
     if (this.state.hasError) {
-      return this.props.fallback
+      return this.props.fallback ?? <Fallback />
     }
 
     return this.props.children

@@ -3,8 +3,8 @@ import { ListBox as ReactAriaListBox, type ListBoxProps as ReactAriaListBoxProps
 import type { ListBoxItemProps } from '@/presentation/components'
 import type { Key } from '@/presentation/types'
 
-export type ListItem <K extends Key, O = object>  = ListBoxItemProps<K, O>
-export type ListItems <K extends Key, O = object>  = Iterable<ListItem<K, O>>
+export type ListItem <K extends Key = Key, O = object>  = ListBoxItemProps<K, O>
+export type ListItems <K extends Key = Key, O = object>  = Iterable<ListItem<K, O>>
 
 type ListBoxOverrideProps <K extends Key, O> = {
   /** Callback with item in parameters when user click on an item */

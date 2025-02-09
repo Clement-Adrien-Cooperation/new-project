@@ -1,0 +1,13 @@
+@use '@/presentation/styles/layout'
+@use '@/presentation/styles/pressable'
+
+.nav-bar
+  @include layout.flex-center
+  height: 100%
+
+  &__list
+    display: flex
+
+    &__item
+      @include pressable.underlined
+      padding: var(--size-160, 1rem)

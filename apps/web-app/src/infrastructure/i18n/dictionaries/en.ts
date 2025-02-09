@@ -1,9 +1,9 @@
 export const en = {
   components: {
     fallback: {
-      title: 'Oops, something went wrong',
-      description: 'An unexpected error occurred. Please try again later.',
-      retryButton: 'Go back to home'
+      message: 'An unexpected error occurred. Please try again later.',
+      retry: 'Reload',
+      title: 'Oops, something went wrong'
     },
     localeSwitcher: {
       label: 'Language'
@@ -15,7 +15,19 @@ export const en = {
       system: 'System'
     }
   },
+  layouts: {
+    navBar: {
+      ariaLabel: 'Main navigation',
+      home: 'Home',
+      settings: 'Settings'
+    }
+  },
   pages: {
+    notFound: {
+      goBack: 'Go back',
+      message: 'The page you are looking for does not exist.',
+      title: 'Not found'
+    },
     settings: {
       title: 'Settings'
     }
