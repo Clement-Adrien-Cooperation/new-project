@@ -7,6 +7,6 @@ import './Loader.styles.sass'
 
 export const Loader: FC<ComponentProps<'div'>> = ({ className, ...loaderProps }) => (
   <div {...loaderProps} className={mergeClassNames('loader', className)}>
-    <Spinner />
+    <Spinner size='3rem' />
   </div>
 )

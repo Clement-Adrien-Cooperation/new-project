@@ -1,18 +1,28 @@
 import { HomeIcon, SettingsIcon } from 'lucide-react'
-import type { FC, ReactElement } from 'react'
+import type { FC } from 'react'
 
 import { useI18n } from '@/application/hooks'
 import { ROUTE_HOME, ROUTE_SETTINGS } from '@/domain/navigation'
-import { ListBox, ListBoxItem, type ListItems } from '@/presentation/components'
+import { ListBox, type ListItems } from '@/presentation/components'
 
 import './NavBar.styles.sass'
 
 export const NavBar: FC = () => {
   const { translate } = useI18n()
 
-  const navBarItems: ListItems<string, { Icon: ReactElement }> = [
-    { id: 'home', textValue: translate('layouts.navBar.home'), href: ROUTE_HOME, Icon: <HomeIcon /> },
-    { id: 'settings', textValue: translate('layouts.navBar.settings'), href: ROUTE_SETTINGS, Icon: <SettingsIcon /> }
+  const navBarItems: ListItems = [
+    {
+      href: ROUTE_HOME,
+      Icon: <HomeIcon />,
+      id: 'home',
+      textValue: translate('layouts.navBar.home')
+    },
+    {
+      href: ROUTE_SETTINGS,
+      Icon: <SettingsIcon />,
+      id: 'settings',
+      textValue: translate('layouts.navBar.settings')
+    }
   ]
 
   return (
@@ -20,13 +30,14 @@ export const NavBar: FC = () => {
       <ListBox
         aria-label={translate('layouts.navBar.ariaLabel')}
         className='nav-bar__list'
+        itemClassName='nav-bar__list__item'
         items={navBarItems}
       >
         {item => (
-          <ListBoxItem {...item} className='nav-bar__list__item'>
+          <>
             {item.Icon}
             {item.textValue}
-          </ListBoxItem>
+          </>
         )}
       </ListBox>
     </nav>

@@ -2,13 +2,13 @@ import { ChevronDownIcon } from 'lucide-react'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Popover, Select as ReactAriaSelect, type SelectProps as ReactAriaSelectProps, SelectValue } from 'react-aria-components'
 
-import { Button, Label, ListBox, ListBoxItem, type ListBoxItemProps, Option, type OptionProps } from '@/presentation/components'
+import { Button, Label, ListBox, type ListItem, Option, type OptionProps } from '@/presentation/components'
 import type { Key, Style } from '@/presentation/types'
-
-import './Select.styles.sass'
 import { mergeReactAriaClassNames } from '@/presentation/utils'
 
-export type PickerItem <K extends Key = Key, O = object> = ListBoxItemProps<K, O & OptionProps>
+import './Select.styles.sass'
+
+export type PickerItem <K extends Key = Key, O = object> = ListItem<K, O & OptionProps>
 export type PickerItems <K extends Key = Key, O = object> = Iterable<PickerItem<K, O>>
 
 type OmittedSelectProps = 'defaultSelectedKey' | 'items' | 'onSelectionChange' | 'selectedKey'
@@ -96,20 +96,17 @@ export function Select <K extends Key, O> ({
       <Popover className='select__popover'>
         <ListBox
           className='select__list'
+          itemClassName='select__list__item'
           items={items}
           style={selectStyleVariables}
         >
           {item => (
-            <ListBoxItem {...item} className='select__list__item'>
-              {values => (
-                <Option
-                  isDisabled={values.isDisabled}
-                  isSelected={values.isSelected}
-                  Icon={item.Icon}
-                  textValue={item.textValue}
-                />
-              )}
-            </ListBoxItem>
+            <Option
+              isDisabled={item.isDisabled}
+              isSelected={item.isSelected}
+              Icon={item.Icon}
+              textValue={item.textValue}
+            />
           )}
         </ListBox>
       </Popover>
