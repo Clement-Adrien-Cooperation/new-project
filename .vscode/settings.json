@@ -1,6 +1,8 @@
 {
   "cSpell.ignorePaths": [
     ".",
+    "**/metadata.*",
+    "apps/web-app/index.html",
     "apps/web-app/src/presentation/components/LocaleSwitcher.tsx"
   ],
   "cSpell.overrides": [

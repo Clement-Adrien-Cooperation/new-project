@@ -7,13 +7,18 @@
 @use '@/presentation/styles/layout'
 @use '@/presentation/styles/scrollbar'
 
+:root
+  @include typography.body-medium
+  color-scheme: dark light
+  overflow-x: hidden
+  scroll-behavior: smooth
+
 html
   -moz-osx-font-smoothing: grayscale
   -webkit-font-smoothing: antialiased
   -webkit-tap-highlight-color: transparent
   accent-color: var(--brand-foreground-accent)
   caret-color: var(--brand-foreground-accent)
-  color-scheme: dark light
 
   ::selection
     background-color: var(--brand-background-primary)
@@ -21,7 +26,6 @@ html
 
 body
   @include animations.color-transition
-  @include typography.body-medium
   background: var(--neutral-background)
   color: var(--neutral-foreground)
   height: 100svh

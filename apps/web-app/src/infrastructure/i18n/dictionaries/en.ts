@@ -23,13 +23,21 @@ export const en = {
     }
   },
   pages: {
+    home: {
+      metadata: {
+        title: 'New project'
+      }
+    },
     notFound: {
       goBack: 'Go back',
       message: 'The page you are looking for does not exist.',
       title: 'Not found'
     },
     settings: {
-      title: 'Settings'
+      title: 'Settings',
+      metadata: {
+        title: 'Settings'
+      }
     }
   }
 }

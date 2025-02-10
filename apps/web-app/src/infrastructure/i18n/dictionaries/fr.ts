@@ -25,13 +25,21 @@ export const fr = {
     }
   },
   pages: {
+    home: {
+      metadata: {
+        title: 'New project'
+      }
+    },
     notFound: {
       goBack: 'Go back',
       message: 'La page que vous cherchez n\'existe pas.',
       title: 'Not found'
     },
     settings: {
-      title: 'Paramètres'
+      title: 'Paramètres',
+      metadata: {
+        title: 'Paramètres'
+      }
     }
   }
 } satisfies Dictionary

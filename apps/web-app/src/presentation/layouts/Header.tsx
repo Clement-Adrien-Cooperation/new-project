@@ -4,10 +4,8 @@ import { NavBar } from '@/presentation/layouts'
 
 import './Header.styles.sass'
 
-export const Header: FC = () => {
-  return (
-    <header className='header'>
-      <NavBar />
-    </header>
-  )
-}
+export const Header: FC = () => (
+  <header className='header'>
+    <NavBar />
+  </header>
+)

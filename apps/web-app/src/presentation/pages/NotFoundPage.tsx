@@ -6,11 +6,11 @@ import { ROUTE_HOME } from '@/domain/navigation'
 import { Link } from '@/presentation/components'
 import { ErrorActions, ErrorContent, ErrorTitle, ErrorWrapper } from '@/presentation/layouts'
 
-type NotFoundProps = {
+type NotFoundPageProps = {
   goBackPath?: string
 }
 
-export const NotFound: FC<NotFoundProps> = ({ goBackPath = ROUTE_HOME }) => {
+export const NotFoundPage: FC<NotFoundPageProps> = ({ goBackPath = ROUTE_HOME }) => {
   const { translate } = useI18n()
 
   return (

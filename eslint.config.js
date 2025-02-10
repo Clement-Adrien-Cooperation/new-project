@@ -1,6 +1,7 @@
 import js from '@eslint/js'
 import stylisticPlugin from '@stylistic/eslint-plugin'
 
+import stylisticJsx from '@stylistic/eslint-plugin-jsx'
 import jsxA11y from 'eslint-plugin-jsx-a11y'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
@@ -24,6 +25,7 @@ export default tseslint.config(
     },
     plugins: {
       '@stylistic': stylisticPlugin,
+      '@stylistic/jsx': stylisticJsx,
       'jsx-a11y': jsxA11y,
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh
@@ -32,6 +34,7 @@ export default tseslint.config(
       ...reactHooks.configs.recommended.rules,
       ...jsxA11y.flatConfigs.rules,
       ...reactRefresh.configs.recommended.rules,
+      ...stylisticJsx.configs.rules,
       ...stylisticPlugin.configs.rules,
 
       '@stylistic/comma-dangle': ['error', 'never'],
