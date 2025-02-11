@@ -38,5 +38,15 @@
   --element-size: var(--size-400, 2.5rem)
   --element-icon-size: var(--size-160, 1rem)
 
+  --common-max-width: calc(100vw - var(--size-240, 1.5rem))
+
+@mixin fixed ($size: 1rem)
+  height: $size
+  max-height: $size
+  max-width: $size
+  min-height: $size
+  min-width: $size
+  width: $size
+
 @mixin popover ($size: clamp(9.6rem, 7.2rem + 10.8vw, 13.44rem))
-  width: clamp(clamp(8rem, 6rem + 9vw, 12rem), $size, calc(100vw - 24px))
+  width: clamp(clamp(8rem, 6rem + 9vw, 12rem), $size, var(--common-max-width))

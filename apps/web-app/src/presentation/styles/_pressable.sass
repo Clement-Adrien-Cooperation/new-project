@@ -3,31 +3,33 @@
 @use '@/presentation/styles/colors'
 @use '@/presentation/styles/interactive'
 @use '@/presentation/styles/selectors'
+@use '@/presentation/styles/sizes'
 @use '@/presentation/styles/typography'
 
 @mixin common-pressable
+  --pressable-icon-size: var(--element-icon-size, 1rem)
   @include accessibility.focus-outline
   @include animations.color-transition
-  @include typography.label-large
   align-items: center
   border-radius: var(--radius-s, 0.25rem)
-  cursor: pointer
   display: flex
   gap: var(--size-80, 0.5rem)
+  max-width: 100%
 
-  & svg
-    --pressable-icon-size: var(--element-icon-size, 1rem)
-    height: var(--pressable-icon-size)
-    width: var(--pressable-icon-size)
+  & .pressable__icon
+    @include sizes.fixed(var(--pressable-icon-size))
+
+  & .pressable__content
+    @include typography.label-large
+    @include typography.text-ellipsis
 
   &.small
     @include typography.label-small
     gap: var(--size-40, 0.25rem)
 
-    & svg
+    & .pressable__icon
       --pressable-icon-size: var(--size-120, 0.75rem)
-      height: var(--pressable-icon-size)
-      width: var(--pressable-icon-size)
+      @include sizes.fixed(var(--pressable-icon-size))
 
   &.icon-right
     flex-direction: row-reverse
@@ -50,7 +52,6 @@
   border-radius: var(--radius-m, 0.5rem)
   height: var(--element-size, 2.5rem)
   padding-inline: var(--size-120, 0.75rem)
-  white-space: nowrap
   width: fit-content
 
   &.icon-left
