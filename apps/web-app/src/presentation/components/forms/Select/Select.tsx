@@ -1,5 +1,5 @@
 import { ChevronDownIcon } from 'lucide-react'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Popover, Select as ReactAriaSelect, type SelectProps as ReactAriaSelectProps, SelectValue } from 'react-aria-components'
 
 import { Button, Label, ListBox, type ListItem, Option, type OptionProps } from '@/presentation/components'
@@ -45,15 +45,11 @@ export function Select <K extends Key, O> ({
 
   const selectRef = useRef<HTMLDivElement>(null)
 
-  const updateSelectSize = useCallback((ref: React.RefObject<HTMLDivElement | null>) => {
-    setSelectWidth(ref.current?.offsetWidth ?? null)
-  }, [])
-
   useEffect(() => {
     if (selectRef.current) {
-      updateSelectSize(selectRef)
+      setSelectWidth(selectRef.current?.offsetWidth ?? null)
     }
-  }, [currentSelectedKey, selectRef, updateSelectSize])
+  }, [currentSelectedKey, selectRef])
 
   const onSelectSelectionChange = (key: Key) => {
     if (!items) {
@@ -91,18 +87,24 @@ export function Select <K extends Key, O> ({
         <SelectValue<PickerItem> className='select__trigger__value'>
           {({ selectedItem }) => {
             if (!selectedItem) {
-              return placeholder
+              return (
+                <div className='select__trigger__value__text'>
+                  {placeholder}
+                </div>
+              )
             }
 
             return (
               <>
                 {selectedItem.Icon && (
-                  <div className='select__trigger__icon'>
+                  <div className='select__trigger__value__icon'>
                     {selectedItem.Icon}
                   </div>
                 )}
 
-                {selectedItem.textValue}
+                <div className='select__trigger__value__text'>
+                  {selectedItem.textValue}
+                </div>
               </>
             )
           }}

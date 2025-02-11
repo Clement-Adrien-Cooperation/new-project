@@ -30,16 +30,20 @@
       padding-inline: var(--size-120, 0.75rem)
       max-width: 100%
 
-    &__value
-      @include typography.text-ellipsis
-      align-items: center
-      display: flex
-      flex: 1 0 0
-      gap: var(--size-80, 0.5rem)
-      text-align: start
-      max-width: 100%
+      &__value
+        display: grid
+        grid-template-columns: 1fr
+        gap: var(--size-80, 0.5rem)
+        max-width: 100%
 
-    &__icon
+        &:has(.select__trigger__value__icon)
+          grid-template-columns: var(--select-trigger-icon-size) 1fr
+
+        &__text
+          @include typography.text-ellipsis
+
+    &__icon,
+    &__value__icon
       @include sizes.fixed(var(--select-trigger-icon-size))
 
     & [data-placeholder]
