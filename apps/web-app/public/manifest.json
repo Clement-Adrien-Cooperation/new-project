@@ -1,7 +1,7 @@
 {
-  "name": "Mon Application",
-  "short_name": "MonApp",
-  "description": "Une application web moderne",
+  "name": "New Project",
+  "short_name": "New Project",
+  "description": "New Project",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0b0b0b",
