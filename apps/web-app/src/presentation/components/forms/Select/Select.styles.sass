@@ -1,18 +1,13 @@
 @use '@/presentation/styles/animations'
 @use '@/presentation/styles/interactive'
+@use '@/presentation/styles/selectors'
 @use '@/presentation/styles/sizes'
 @use '@/presentation/styles/typography'
 
 .select
-  display: flex
-  flex-direction: column
+  display: grid
   gap: var(--size-40, 0.25rem)
   max-width: 100%
-
-  &__label
-    @include typography.label-medium
-    @include typography.text-ellipsis
-    padding-inline: var(--size-40, 0.25rem)
 
   &__trigger
     --select-trigger-icon-size: var(--element-icon-size, 1rem)
@@ -28,16 +23,18 @@
       height: var(--element-size, 2.5rem)
       justify-content: space-between
       padding-inline: var(--size-120, 0.75rem)
-      max-width: 100%
 
       &__value
+        align-items: center
         display: grid
         grid-template-columns: 1fr
         gap: var(--size-80, 0.5rem)
-        max-width: 100%
 
         &:has(.select__trigger__value__icon)
           grid-template-columns: var(--select-trigger-icon-size) 1fr
+
+        @include selectors.placeholder
+          color: var(--neutral-foreground-muted)
 
         &__text
           @include typography.text-ellipsis
@@ -45,9 +42,6 @@
     &__icon,
     &__value__icon
       @include sizes.fixed(var(--select-trigger-icon-size))
-
-    & [data-placeholder]
-      color: var(--neutral-foreground-muted)
 
   &__list
     @include animations.color-transition

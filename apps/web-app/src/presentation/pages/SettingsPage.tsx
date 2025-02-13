@@ -1,7 +1,7 @@
 import type { FC } from 'react'
 
 import { useI18n } from '@/application/hooks'
-import { LocaleSwitcher, ThemeSwitcher } from '@/presentation/components'
+import { LocaleSwitcher, Select, TextField, ThemeSwitcher } from '@/presentation/components'
 
 import { SettingsPageMetadata } from './SettingsPage.metadata.tsx'
 
@@ -20,6 +20,17 @@ const SettingsPage: FC = () => {
         <div className='settings-page__content'>
           <LocaleSwitcher />
           <ThemeSwitcher />
+
+          <Select
+            label='test test test test test test test test test test test test test test test test test test test test test test test test test test '
+            placeholder='test test test test test test test test test test test test test test test test test test test test test test test test test test '
+          />
+
+          <TextField
+            description='je suis une description tres long pour tester une fois de plus voir si lellipsis fonctionne bien correctement'
+            label='je suis un label tres long pour tester une fois de plus voir si lellipsis fonctionne bien correctement'
+            placeholder='je suis un placeholder tres long pour tester une fois de plus voir si lellipsis fonctionne bien correctement'
+          />
         </div>
       </div>
     </>

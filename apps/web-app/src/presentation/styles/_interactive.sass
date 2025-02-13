@@ -1,8 +1,12 @@
+@use '@/presentation/styles/accessibility'
 @use '@/presentation/styles/animations'
 @use '@/presentation/styles/colors'
 @use '@/presentation/styles/selectors'
+@use '@/presentation/styles/sizes'
+@use '@/presentation/styles/typography'
 
 @mixin base-interactive
+  @include accessibility.focus-outline
   @include animations.color-transition
   cursor: pointer
 
@@ -11,7 +15,9 @@
 
 @mixin outlined
   @include base-interactive
+  background-color: transparent
   border: var(--stroke-m, 0.125rem) solid var(--border)
+  border-radius: var(--radius-m, 0.5rem)
 
   @include selectors.hovered
     background-color: var(--border)
@@ -27,6 +33,7 @@
 
 @mixin transparent
   @include base-interactive
+  background-color: transparent
 
   @include selectors.hovered
     background-color: colors.fade(var(--neutral-background-inverted), var(--alpha-2xs, 0.12))
@@ -37,3 +44,14 @@
   @include selectors.disabled
     background-color: transparent
     color: var(--neutral-foreground-muted)
+
+@mixin field
+  @include outlined
+
+  &
+    align-items: center
+    border-radius: var(--radius-m, 0.5rem)
+    display: flex
+    gap: var(--size-120, 0.75rem)
+    height: var(--element-size, 2.5rem)
+    padding-inline: var(--size-120, 0.75rem)

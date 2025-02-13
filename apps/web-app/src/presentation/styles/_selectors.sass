@@ -22,6 +22,11 @@
   &[data-pending='true']
     @content
 
+@mixin placeholder
+  &[data-placeholder='true'],
+  &::placeholder
+    @content
+
 @mixin pressed
   &:active:not([data-rac]),
   &[data-pressed='true']

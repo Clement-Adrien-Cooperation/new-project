@@ -1,0 +1,23 @@
+@use '@/presentation/styles/interactive'
+@use '@/presentation/styles/selectors'
+@use '@/presentation/styles/typography'
+
+.text-field
+  display: grid
+  gap: var(--size-40, 0.25rem)
+
+  &__input
+    @include interactive.field
+
+    &
+      @include typography.label-large
+      @include typography.text-ellipsis
+      max-width: 100%
+      min-width: 100%
+
+      @include selectors.placeholder
+        color: var(--neutral-foreground-muted)
+
+  &__description
+    @include typography.body-small
+    padding-inline: var(--size-40, 0.25rem)

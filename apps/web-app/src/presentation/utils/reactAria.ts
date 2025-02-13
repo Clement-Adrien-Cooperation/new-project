@@ -1,4 +1,4 @@
-import type { ButtonRenderProps, LinkRenderProps, ListBoxItemRenderProps, ListBoxRenderProps, SelectRenderProps } from 'react-aria-components'
+import type { ButtonRenderProps, LinkRenderProps, ListBoxItemRenderProps, ListBoxRenderProps, SelectRenderProps, TextFieldRenderProps } from 'react-aria-components'
 
 import { type ClassNames, mergeClassNames } from './classNames'
 
@@ -8,6 +8,7 @@ export type ElementRenderProps
   | ListBoxRenderProps
   | ListBoxItemRenderProps
   | SelectRenderProps
+  | TextFieldRenderProps
 
 export type RenderPropsValues <T extends ElementRenderProps> = T & {
   defaultClassName: string | undefined

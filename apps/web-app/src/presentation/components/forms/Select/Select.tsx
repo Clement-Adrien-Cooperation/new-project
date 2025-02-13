@@ -81,55 +81,61 @@ export function Select <K extends Key, O> ({
       ref={selectRef}
       selectedKey={selectedKey}
     >
-      <Label className='select__label'>{label}</Label>
+      {({ isRequired }) => (
+        <>
+          <Label isRequired={isRequired}>
+            {label}
+          </Label>
 
-      <Button className='select__trigger'>
-        <SelectValue<PickerItem> className='select__trigger__value'>
-          {({ selectedItem }) => {
-            if (!selectedItem) {
-              return (
-                <div className='select__trigger__value__text'>
-                  {placeholder}
-                </div>
-              )
-            }
+          <Button className='select__trigger'>
+            <SelectValue<PickerItem> className='select__trigger__value'>
+              {({ selectedItem }) => {
+                if (!selectedItem) {
+                  return (
+                    <div className='select__trigger__value__text'>
+                      {placeholder}
+                    </div>
+                  )
+                }
 
-            return (
-              <>
-                {selectedItem.Icon && (
-                  <div className='select__trigger__value__icon'>
-                    {selectedItem.Icon}
-                  </div>
-                )}
+                return (
+                  <>
+                    {selectedItem.Icon && (
+                      <div className='select__trigger__value__icon'>
+                        {selectedItem.Icon}
+                      </div>
+                    )}
 
-                <div className='select__trigger__value__text'>
-                  {selectedItem.textValue}
-                </div>
-              </>
-            )
-          }}
-        </SelectValue>
+                    <div className='select__trigger__value__text'>
+                      {selectedItem.textValue}
+                    </div>
+                  </>
+                )
+              }}
+            </SelectValue>
 
-        <ChevronDownIcon className='select__trigger__icon' />
-      </Button>
+            <ChevronDownIcon className='select__trigger__icon' />
+          </Button>
 
-      <Popover className='select__popover'>
-        <ListBox
-          className='select__list'
-          itemClassName='select__list__item'
-          items={items}
-          style={selectStyleVariables}
-        >
-          {item => (
-            <Option
-              isDisabled={item.isDisabled}
-              isSelected={item.isSelected}
-              Icon={item.Icon}
-              textValue={item.textValue}
-            />
-          )}
-        </ListBox>
-      </Popover>
+          <Popover className='select__popover'>
+            <ListBox
+              className='select__list'
+              itemClassName='select__list__item'
+              items={items}
+              style={selectStyleVariables}
+            >
+              {item => (
+                <Option
+                  isDisabled={item.isDisabled}
+                  isSelected={item.isSelected}
+                  Icon={item.Icon}
+                  textValue={item.textValue}
+                />
+              )}
+            </ListBox>
+          </Popover>
+        </>
+      )}
     </ReactAriaSelect>
   )
 }
