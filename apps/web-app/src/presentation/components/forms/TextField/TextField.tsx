@@ -1,4 +1,4 @@
-import type { FC } from 'react'
+import type { FC, ReactElement } from 'react'
 import { Input, TextField as ReactAreaTextField, type TextFieldProps as ReactAriaTextFieldProps } from 'react-aria-components'
 
 import { FieldError, Label, Text } from '@/presentation/components'
@@ -6,22 +6,30 @@ import { mergeReactAriaClassNames } from '@/presentation/utils'
 
 import './TextField.styles.sass'
 
-type TextFieldProps = ReactAriaTextFieldProps & {
+export type TextFieldProps = ReactAriaTextFieldProps & {
   /** The description of the text field. */
   description?: string
 
   /** The label of the text field. */
   label?: string
 
+  /** The icon to display on the left side of the text field. */
+  LeftIcon?: ReactElement
+
   /** The placeholder of the text field. */
   placeholder?: string
+
+  /** The icon to display on the right side of the text field. */
+  RightIcon?: ReactElement
 }
 
 export const TextField: FC<TextFieldProps> = ({
   className,
   description,
   label,
+  LeftIcon,
   placeholder,
+  RightIcon,
   ...textFieldProps
 }) => (
   <ReactAreaTextField
@@ -30,17 +38,31 @@ export const TextField: FC<TextFieldProps> = ({
   >
     {({ isInvalid, isRequired }) => (
       <>
-        <Label isRequired={isRequired}>
+        <Label className='text-field__label' isRequired={isRequired}>
           {label}
         </Label>
 
-        <Input
-          className='text-field__input'
-          placeholder={placeholder}
-        />
+        <div className='text-field__wrapper'>
+          {LeftIcon && (
+            <div className='text-field__wrapper__left-icon'>
+              {LeftIcon}
+            </div>
+          )}
+
+          <Input
+            className='text-field__wrapper__input'
+            placeholder={placeholder}
+          />
+
+          {RightIcon && (
+            <div className='text-field__wrapper__right-icon'>
+              {RightIcon}
+            </div>
+          )}
+        </div>
 
         {isInvalid
-          ? <FieldError />
+          ? <FieldError className='text-field__error'>error</FieldError>
           : <Text className='text-field__description' slot='description'>
               {description}
             </Text>

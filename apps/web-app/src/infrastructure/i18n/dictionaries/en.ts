@@ -5,6 +5,12 @@ export const en = {
       retry: 'Reload',
       title: 'Oops, something went wrong'
     },
+    forms: {
+      passwordField: {
+        label: 'Password',
+        placeholder: 'Enter your password'
+      }
+    },
     localeSwitcher: {
       label: 'Language'
     },
@@ -19,6 +25,7 @@ export const en = {
     navBar: {
       ariaLabel: 'Main navigation',
       home: 'Home',
+      login: 'Login',
       settings: 'Settings'
     }
   },

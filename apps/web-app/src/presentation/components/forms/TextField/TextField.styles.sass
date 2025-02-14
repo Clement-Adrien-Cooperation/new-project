@@ -1,23 +1,61 @@
+@use '@/presentation/styles/layout'
 @use '@/presentation/styles/interactive'
 @use '@/presentation/styles/selectors'
+@use '@/presentation/styles/sizes'
 @use '@/presentation/styles/typography'
 
 .text-field
   display: grid
   gap: var(--size-40, 0.25rem)
 
-  &__input
-    @include interactive.field
+  &__wrapper
+    --text-field-input-padding-inline: var(--size-120, 0.75rem)
+    --text-field-icon-size: var(--element-icon-size, 1rem)
+    max-width: 100%
+    min-width: 100%
+    position: relative
 
-    &
-      @include typography.label-large
-      @include typography.text-ellipsis
-      max-width: 100%
-      min-width: 100%
+    &__input
+      @include interactive.field
 
-      @include selectors.placeholder
-        color: var(--neutral-foreground-muted)
+      &
+        @include typography.label-large
+        @include typography.text-ellipsis
+        max-width: 100%
+        min-width: 100%
+        padding-inline: var(--text-field-input-padding-inline)
+
+        @include selectors.placeholder
+          color: var(--neutral-foreground-muted)
+
+    &__left-icon,
+    &__right-icon
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+
+    &__left-icon
+      @include sizes.fixed(var(--text-field-icon-size))
+      left: var(--text-field-input-padding-inline)
+      pointer-events: none
+
+    &__right-icon
+      @include layout.center
+      height: 100%
+      right: 0
+
+    &:has(.text-field__wrapper__left-icon)
+      & .text-field__wrapper__input
+        padding-inline-start: calc(var(--text-field-input-padding-inline) * 1.5 + var(--text-field-icon-size))
+
+    &:has(.text-field__wrapper__right-icon)
+      & .text-field__wrapper__input
+        padding-inline-end: calc(var(--text-field-input-padding-inline) * 2 + var(--text-field-icon-size))
 
   &__description
     @include typography.body-small
+
+  &__description,
+  &__error,
+  &__label
     padding-inline: var(--size-40, 0.25rem)

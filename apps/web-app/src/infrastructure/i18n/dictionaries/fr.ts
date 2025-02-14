@@ -7,6 +7,12 @@ export const fr = {
       retry: 'Rafraîchir',
       title: 'Oops, une erreur s\'est produite'
     },
+    forms: {
+      passwordField: {
+        label: 'Mot de passe',
+        placeholder: 'Entrez votre mot de passe'
+      }
+    },
     localeSwitcher: {
       label: 'Langue'
     },
@@ -21,6 +27,7 @@ export const fr = {
     navBar: {
       ariaLabel: 'Navigation principale',
       home: 'Accueil',
+      login: 'Connexion',
       settings: 'Paramètres'
     }
   },

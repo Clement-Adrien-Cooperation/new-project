@@ -83,7 +83,7 @@ export function Select <K extends Key, O> ({
     >
       {({ isRequired }) => (
         <>
-          <Label isRequired={isRequired}>
+          <Label className='select__label' isRequired={isRequired}>
             {label}
           </Label>
 

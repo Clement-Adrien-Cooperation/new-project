@@ -35,14 +35,14 @@ const meta: Meta<typeof Select> = {
     onSelectionChange: fn()
   },
   component: Select,
-  title: 'Select',
   decorators: [
     (Story) => (
       <div style={{ maxWidth: 300, height: 800 }}>
         <Story />
       </div>
     )
-  ]
+  ],
+  title: 'Select'
 }
 
 export default meta

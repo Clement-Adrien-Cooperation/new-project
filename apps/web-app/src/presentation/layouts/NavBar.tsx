@@ -1,8 +1,8 @@
-import { HomeIcon, SettingsIcon } from 'lucide-react'
+import { HomeIcon, SettingsIcon, UserIcon } from 'lucide-react'
 import type { FC } from 'react'
 
 import { useI18n } from '@/application/hooks'
-import { ROUTE_HOME, ROUTE_SETTINGS } from '@/domain/navigation'
+import { ROUTE_HOME, ROUTE_LOGIN, ROUTE_SETTINGS } from '@/domain/navigation'
 
 import './NavBar.styles.sass'
 import { Link } from '@/presentation/components'
@@ -16,6 +16,12 @@ export const NavBar: FC = () => {
       Icon: <HomeIcon />,
       id: 'home',
       textValue: translate('layouts.navBar.home')
+    },
+    {
+      href: ROUTE_LOGIN,
+      Icon: <UserIcon />,
+      id: 'login',
+      textValue: translate('layouts.navBar.login')
     },
     {
       href: ROUTE_SETTINGS,

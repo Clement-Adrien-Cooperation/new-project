@@ -1,4 +1,5 @@
 export * from './FieldError'
 export * from './Form'
+export * from './PasswordField'
 export * from './Select'
 export * from './TextField'

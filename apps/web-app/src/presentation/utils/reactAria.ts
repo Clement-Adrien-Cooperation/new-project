@@ -1,9 +1,10 @@
-import type { ButtonRenderProps, LinkRenderProps, ListBoxItemRenderProps, ListBoxRenderProps, SelectRenderProps, TextFieldRenderProps } from 'react-aria-components'
+import type { ButtonRenderProps, FieldErrorRenderProps, LinkRenderProps, ListBoxItemRenderProps, ListBoxRenderProps, SelectRenderProps, TextFieldRenderProps } from 'react-aria-components'
 
 import { type ClassNames, mergeClassNames } from './classNames'
 
 export type ElementRenderProps
   = ButtonRenderProps
+  | FieldErrorRenderProps
   | LinkRenderProps
   | ListBoxRenderProps
   | ListBoxItemRenderProps
