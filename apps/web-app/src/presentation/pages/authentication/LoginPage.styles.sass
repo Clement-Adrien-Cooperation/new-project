@@ -1,3 +1,10 @@
+@use '@/presentation/styles/typography'
+
 .login-page
-  margin-inline: auto
-  width: min(40ch, 100%)
+  &__title
+    @include typography.title-large
+    text-align: center
+
+  &__form
+    margin-inline: auto
+    width: min(40ch, 100%)

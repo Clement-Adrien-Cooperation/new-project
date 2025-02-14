@@ -7,6 +7,9 @@ import { Button } from './Button'
 const meta: Meta<typeof Button> = {
   args: { onPress: fn() },
   argTypes: {
+    isDisabled: {
+      control: 'boolean'
+    },
     size: {
       control: 'inline-radio',
       options: ['medium', 'small']

@@ -2,7 +2,7 @@ import { HomeIcon } from 'lucide-react'
 import type { FC } from 'react'
 
 import { useI18n } from '@/application/hooks'
-import { ROUTE_HOME } from '@/domain/navigation'
+import { ROUTE_DEFAULT } from '@/domain/navigation'
 import { Link } from '@/presentation/components'
 import { ErrorActions, ErrorContent, ErrorTitle, ErrorWrapper } from '@/presentation/layouts'
 
@@ -10,7 +10,7 @@ type NotFoundPageProps = {
   goBackPath?: string
 }
 
-export const NotFoundPage: FC<NotFoundPageProps> = ({ goBackPath = ROUTE_HOME }) => {
+export const NotFoundPage: FC<NotFoundPageProps> = ({ goBackPath = ROUTE_DEFAULT }) => {
   const { translate } = useI18n()
 
   return (

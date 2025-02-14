@@ -31,3 +31,8 @@
   &:active:not([data-rac]),
   &[data-pressed='true']
     @content
+
+@mixin selected
+  &.selected:not([data-rac]),
+  &[data-selected='true']
+    @content

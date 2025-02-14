@@ -4,7 +4,7 @@ import { type ButtonRenderProps, Button as ReactAriaButton, type ButtonProps as 
 import { mergeReactAriaPressableClassNames, type PressableProps } from '@/presentation/components/ui/Pressable'
 import { Spinner } from '@/presentation/components'
 
-type ButtonProps = PressableProps & ReactAriaButtonProps
+export type ButtonProps = PressableProps & ReactAriaButtonProps
 
 type ButtonRenderPropsValues = ButtonRenderProps & { defaultChildren: ReactNode | undefined }
 

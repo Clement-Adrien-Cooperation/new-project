@@ -6,7 +6,9 @@ import { Button, TextField, type TextFieldProps } from '@/presentation/component
 
 import './PasswordField.styles.sass'
 
-export const PasswordField: FC<TextFieldProps> = ({
+export type PasswordFieldProps = TextFieldProps
+
+export const PasswordField: FC<PasswordFieldProps> = ({
   label,
   LeftIcon,
   placeholder,

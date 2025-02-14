@@ -1,36 +1,34 @@
 import type { FC } from 'react'
 import { Form as ReactAriaForm, type FormProps as ReactAriaFormProps } from 'react-aria-components'
 
-type FormProps = ReactAriaFormProps & {
+export type FormProps = Omit<ReactAriaFormProps, 'onSubmit'> & {
   /** Disable form and every interactive element in it */
   isDisabled?: boolean
+
+  /** Callback to be called when the form is submitted */
+  onSubmit?: (formData: FormData) => void
 }
 
 export const Form: FC<FormProps> = ({
-  action,
   children,
   className,
   isDisabled = false,
   onSubmit,
   ...formProps
 }) => {
-  const onFormAction = (formData: FormData) => {
-    if (!isDisabled && typeof action === 'function') {
-      action(formData)
-    }
-  }
-
   const onFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    if (!isDisabled) {
-      onSubmit?.(event)
+    if (isDisabled || !onSubmit) {
+      return
     }
+
+    const formData = new FormData(event.currentTarget)
+    onSubmit(formData)
   }
 
   return (
     <ReactAriaForm
-      action={typeof action === 'function' ? onFormAction : action}
       onSubmit={onFormSubmit}
       {...formProps}
     >

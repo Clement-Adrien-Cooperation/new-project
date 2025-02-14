@@ -6,10 +6,25 @@ export const en = {
       title: 'Oops, something went wrong'
     },
     forms: {
+      fields: {
+        rememberMeCheckboxLabel: 'Remember me',
+        userName: {
+          label: 'Username',
+          placeholder: 'Enter your username'
+        },
+        userPassword: {
+          label: 'Password',
+          placeholder: 'Enter your password'
+        }
+      },
+      loginForm: {
+        submit: 'Login'
+      },
       passwordField: {
         label: 'Password',
         placeholder: 'Enter your password'
-      }
+      },
+      requiredFieldsMessage: 'Fields marked with * are required.'
     },
     localeSwitcher: {
       label: 'Language'
