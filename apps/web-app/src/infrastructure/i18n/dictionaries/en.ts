@@ -38,13 +38,17 @@ export const en = {
   },
   layouts: {
     navBar: {
-      ariaLabel: 'Main navigation',
       home: 'Home',
       login: 'Login',
       settings: 'Settings'
     }
   },
   pages: {
+    authentication: {
+      login: {
+        title: 'Login'
+      }
+    },
     home: {
       metadata: {
         title: 'New project'

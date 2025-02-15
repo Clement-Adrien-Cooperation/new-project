@@ -1,8 +1,10 @@
 import type { FC } from 'react'
 
+import { PageTitle } from '@/presentation/components'
+
 const HomePage: FC = () => (
   <>
-    <h1>Home</h1>
+    <PageTitle>Home</PageTitle>
   </>
 )
 

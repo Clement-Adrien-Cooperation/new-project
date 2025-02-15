@@ -14,11 +14,17 @@
 
   &__trigger
     --select-trigger-icon-size: var(--element-icon-size, 1rem)
-    @include interactive.outlined
+
+    &
+      @include interactive.outlined
 
     &
       @include sizes.popover(var(--select-width, 100%))
+
+    &
       @include typography.label-large
+
+    &
       align-items: center
       border-radius: var(--radius-m, 0.5rem)
       display: flex
@@ -47,14 +53,15 @@
       @include sizes.fixed(var(--select-trigger-icon-size))
 
   &__list
-    @include animations.color-transition
     @include sizes.popover(var(--select-width, 100%))
-    background-color: var(--neutral-background)
-    border: var(--stroke-m, 0.125rem) solid var(--border)
-    border-radius: var(--radius-m, 0.5rem)
-    max-height: clamp(10rem, 45vh, 30rem)
-    overflow-y: auto
-    padding: var(--size-40, 0.3125rem)
+
+    &
+      background-color: var(--neutral-background)
+      border: var(--stroke-m, 0.125rem) solid var(--border)
+      border-radius: var(--radius-m, 0.5rem)
+      max-height: clamp(10rem, 45vh, 30rem)
+      overflow-y: auto
+      padding: var(--size-40, 0.3125rem)
 
     &__item
       @include interactive.transparent

@@ -40,13 +40,17 @@ export const fr = {
   },
   layouts: {
     navBar: {
-      ariaLabel: 'Navigation principale',
       home: 'Accueil',
       login: 'Connexion',
       settings: 'Paramètres'
     }
   },
   pages: {
+    authentication: {
+      login: {
+        title: 'Se connecter'
+      }
+    },
     home: {
       metadata: {
         title: 'New project'

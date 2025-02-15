@@ -16,11 +16,15 @@
     position: relative
 
     &__input
-      @include interactive.field
+      // @include interactive.field
 
       &
         @include typography.label-large
+
+      &
         @include typography.text-ellipsis
+
+      &
         cursor: text
         max-width: 100%
         min-width: 100%
@@ -37,13 +41,17 @@
 
     &__left-icon
       @include sizes.fixed(var(--text-field-icon-size))
-      left: var(--text-field-input-padding-inline)
-      pointer-events: none
+
+      &
+        left: var(--text-field-input-padding-inline)
+        pointer-events: none
 
     &__right-icon
       @include layout.center
-      height: 100%
-      right: 0
+
+      &
+        height: 100%
+        right: 0
 
     &:has(.text-field__wrapper__left-icon)
       & .text-field__wrapper__input

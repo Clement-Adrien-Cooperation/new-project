@@ -7,17 +7,23 @@
 
 @mixin base-interactive
   @include accessibility.focus-outline
-  @include animations.color-transition
-  cursor: pointer
+
+  &
+    @include animations.color-transition
+
+    &
+      cursor: pointer
 
   @include selectors.disabled
     pointer-events: none
 
 @mixin outlined
   @include base-interactive
-  background-color: transparent
-  border: var(--stroke-m, 0.125rem) solid var(--border)
-  border-radius: var(--radius-m, 0.5rem)
+
+  &
+    background-color: transparent
+    border: var(--stroke-m, 0.125rem) solid var(--border)
+    border-radius: var(--radius-m, 0.5rem)
 
   @include selectors.hovered
     background-color: var(--border)
@@ -33,7 +39,9 @@
 
 @mixin transparent
   @include base-interactive
-  background-color: transparent
+
+  &
+    background-color: transparent
 
   @include selectors.hovered
     background-color: colors.fade(var(--neutral-background-inverted), var(--alpha-2xs, 0.12))

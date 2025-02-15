@@ -15,11 +15,15 @@
   transition-duration: var(--transition-150, 0)
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke
   transition-timing-function: var(--timing, ease-in-out)
-  @include respect-reduced-motion
+
+  // &
+  //   @include respect-reduced-motion
 
 @mixin spin
   animation: spin 1s linear infinite
-  @include respect-reduced-motion
+
+  // &
+  //   @include respect-reduced-motion
 
 @keyframes spin
   to
