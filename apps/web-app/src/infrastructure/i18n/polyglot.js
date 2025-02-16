@@ -1,4 +1,7 @@
 'use strict'
+
+const DEFAULT_LOCALE = 'fr'
+
 const entries = Object.entries
 const has = (o, arg) => {
   if (!o) return false
@@ -150,7 +153,7 @@ function pluralTypeName (pluralRules, locale) {
   return (
     langToPluralType[locale]
     || langToPluralType[split.call(locale, /-/, 1)[0]]
-    || langToPluralType.en
+    || langToPluralType[DEFAULT_LOCALE]
   )
 }
 
@@ -225,7 +228,7 @@ function transformPhrase (
   if (options.smart_count != null && phrase) {
     const pluralRulesOrDefault = pluralRules || defaultPluralRules
     const texts = split.call(phrase, delimiter)
-    const bestLocale = locale || 'en'
+    const bestLocale = locale || DEFAULT_LOCALE
     const pluralType = memoizedPluralTypeName(pluralRulesOrDefault, bestLocale)
     const pluralTypeWithCount = pluralTypeIndex(
       pluralRulesOrDefault,
@@ -254,7 +257,7 @@ function Polyglot (options) {
   const opts = options || {}
   this.phrases = {}
   this.extend(opts.phrases || {})
-  this.currentLocale = opts.locale || 'en'
+  this.currentLocale = opts.locale || DEFAULT_LOCALE
   const allowMissing = opts.allowMissing ? transformPhrase : null
   this.onMissingKey = typeof opts.onMissingKey === 'function'
     ? opts.onMissingKey

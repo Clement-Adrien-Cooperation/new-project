@@ -12,18 +12,18 @@ const SettingsPage: FC = () => {
   const { translate } = useI18n()
 
   return (
-    <Main>
+    <>
       <SettingsPageMetadata />
 
-      <div className='settings-page'>
+      <Main className='settings-page'>
         <PageTitle>{translate('pages.settings.title')}</PageTitle>
 
         <div className='settings-page__content'>
           <LocaleSwitcher />
           <ThemeSwitcher />
         </div>
-      </div>
-    </Main>
+      </Main>
+    </>
   )
 }
 

@@ -1,8 +1,9 @@
 import { HomeIcon, LogOutIcon, SettingsIcon, UserIcon } from 'lucide-react'
 import type { FC } from 'react'
+import { useLocation } from 'react-router'
 
 import { useAuth, useI18n } from '@/application/hooks'
-import { ROUTE_HOME, ROUTE_LOGIN, ROUTE_LOGOUT, ROUTE_SETTINGS } from '@/domain/navigation'
+import { ROUTES } from '@/domain/navigation'
 import { Link } from '@/presentation/components'
 
 import './NavBar.styles.sass'
@@ -10,29 +11,30 @@ import './NavBar.styles.sass'
 export const NavBar: FC = () => {
   const { auth } = useAuth()
   const { translate } = useI18n()
+  const location = useLocation()
 
   const navBarItems = [
     {
-      href: ROUTE_HOME,
+      href: ROUTES.home,
       Icon: <HomeIcon />,
       id: 'home',
       textValue: translate('layouts.navBar.home')
     },
     {
-      href: ROUTE_LOGIN,
+      href: ROUTES.login,
       Icon: <UserIcon />,
       id: 'login',
       isVisible: auth.status === 'unauthenticated',
       textValue: translate('layouts.navBar.login')
     },
     {
-      href: ROUTE_SETTINGS,
+      href: ROUTES.settings,
       Icon: <SettingsIcon />,
       id: 'settings',
       textValue: translate('layouts.navBar.settings')
     },
     {
-      href: ROUTE_LOGOUT,
+      href: ROUTES.logout,
       Icon: <LogOutIcon />,
       id: 'logout',
       isVisible: auth.status === 'authenticated',
@@ -51,6 +53,7 @@ export const NavBar: FC = () => {
               className='nav-bar__list__item'
               href={item.href}
               Icon={item.Icon}
+              isDisabled={location.pathname === item.href}
               variant='underlined'
             >
               {item.textValue}

@@ -1,20 +1,37 @@
 import type { FC } from 'react'
 
 import { useI18n } from '@/application/hooks'
-import { LoginForm, PageTitle } from '@/presentation/components'
+import { ROUTES } from '@/domain/navigation'
+import { Link, LoginForm, PageTitle } from '@/presentation/components'
 import { Main } from '@/presentation/layouts'
+
+import { LoginPageMetadata } from './LoginPage.metadata.tsx'
+
+import './LoginPage.styles.sass'
 
 const LoginPage: FC = () => {
   const { translate } = useI18n()
 
   return (
-    <Main>
-      <PageTitle>
-        {translate('pages.auth.login.title')}
-      </PageTitle>
+    <>
+      <LoginPageMetadata />
 
-      <LoginForm />
-    </Main>
+      <Main>
+        <PageTitle>
+          {translate('pages.auth.login.title')}
+        </PageTitle>
+
+        <LoginForm />
+
+        <Link
+          className='login-page__register-link'
+          href={ROUTES.register}
+          variant='underlined'
+        >
+          {translate('pages.auth.login.registerLink')}
+        </Link>
+      </Main>
+    </>
   )
 }
 
