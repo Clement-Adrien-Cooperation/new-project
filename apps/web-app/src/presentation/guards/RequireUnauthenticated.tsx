@@ -1,14 +1,14 @@
 import type { FC } from 'react'
 import { Navigate, Outlet } from 'react-router'
 
-import { useAuthentication } from '@/application/hooks'
+import { useAuth } from '@/application/hooks'
 import { ROUTE_DEFAULT } from '@/domain/navigation'
 import { Fallback, Loader } from '@/presentation/components'
 
 export const RequireUnauthenticated: FC = () => {
-  const { authentication } = useAuthentication()
+  const { auth } = useAuth()
 
-  switch (authentication.status) {
+  switch (auth.status) {
     case 'authenticated':
       return <Navigate to={ROUTE_DEFAULT} />
     case 'unauthenticated':
@@ -16,7 +16,7 @@ export const RequireUnauthenticated: FC = () => {
     case 'loading':
       return <Loader />
     default:
-      console.error('Unexpected authentication status:', { authentication })
+      console.error('Unexpected auth status:', { auth })
       return <Fallback />
   }
 }

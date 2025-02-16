@@ -1,3 +1,5 @@
+import { BrowserRouter } from 'react-router'
+
 import { Router } from '@/application/router'
 
 import { ErrorBoundary } from '@/presentation/components'
@@ -7,11 +9,13 @@ import { Providers } from '@/presentation/providers'
 import '@/presentation/styles/base.sass'
 
 export const App = () => (
-  <Providers>
-    <ErrorBoundary>
-      <AppLayout>
-        <Router />
-      </AppLayout>
-    </ErrorBoundary>
-  </Providers>
+  <BrowserRouter>
+    <Providers>
+      <ErrorBoundary>
+        <AppLayout>
+          <Router />
+        </AppLayout>
+      </ErrorBoundary>
+    </Providers>
+  </BrowserRouter>
 )

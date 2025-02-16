@@ -46,7 +46,7 @@ export const fr = {
     }
   },
   pages: {
-    authentication: {
+    auth: {
       login: {
         title: 'Se connecter'
       }

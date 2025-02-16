@@ -19,8 +19,8 @@ export type TextFieldProps = ReactAriaTextFieldProps & {
   /** The placeholder of the text field. */
   placeholder?: string
 
-  /** The icon to display on the right side of the text field. */
-  RightIcon?: ReactElement
+  /** The content to display on the right side of the text field. */
+  RightContent?: ReactElement
 }
 
 export const TextField: FC<TextFieldProps> = ({
@@ -29,7 +29,7 @@ export const TextField: FC<TextFieldProps> = ({
   label,
   LeftIcon,
   placeholder,
-  RightIcon,
+  RightContent,
   ...textFieldProps
 }) => (
   <ReactAreaTextField
@@ -54,15 +54,15 @@ export const TextField: FC<TextFieldProps> = ({
             placeholder={placeholder}
           />
 
-          {RightIcon && (
-            <div className='text-field__wrapper__right-icon'>
-              {RightIcon}
+          {RightContent && (
+            <div className='text-field__wrapper__right-content'>
+              {RightContent}
             </div>
           )}
         </div>
 
         {isInvalid
-          ? <FieldError className='text-field__error'>error</FieldError>
+          ? <FieldError className='text-field__error' />
           : <Text className='text-field__description' slot='description'>
               {description}
             </Text>

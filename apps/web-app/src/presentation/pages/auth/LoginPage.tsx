@@ -9,7 +9,7 @@ const LoginPage: FC = () => {
   return (
     <>
       <PageTitle>
-        {translate('pages.authentication.login.title')}
+        {translate('pages.auth.login.title')}
       </PageTitle>
 
       <LoginForm />

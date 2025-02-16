@@ -1,7 +1,7 @@
 import type { FC } from 'react'
 
 import { useI18n } from '@/application/hooks'
-import { AUTHENTICATION_FORM_FIELDS } from '@/domain/authentication'
+import { AUTH_FORM_FIELDS } from '@/domain/auth'
 import { PasswordField, type PasswordFieldProps } from '@/presentation/components'
 
 export const UserPasswordField: FC<PasswordFieldProps> = (userPasswordFieldProps) => {
@@ -11,7 +11,7 @@ export const UserPasswordField: FC<PasswordFieldProps> = (userPasswordFieldProps
     <PasswordField
       isRequired
       label={translate('components.forms.fields.userPassword.label')}
-      name={AUTHENTICATION_FORM_FIELDS.password}
+      name={AUTH_FORM_FIELDS.password}
       placeholder={translate('components.forms.fields.userPassword.placeholder')}
       {...userPasswordFieldProps}
     />

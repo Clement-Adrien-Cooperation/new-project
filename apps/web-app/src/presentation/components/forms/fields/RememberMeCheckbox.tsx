@@ -1,7 +1,7 @@
 import type { FC } from 'react'
 
 import { useI18n } from '@/application/hooks'
-import { AUTHENTICATION_FORM_FIELDS } from '@/domain/authentication'
+import { AUTH_FORM_FIELDS } from '@/domain/auth'
 import { Checkbox, type CheckboxProps } from '@/presentation/components/forms/Checkbox'
 
 import './RememberMeCheckbox.styles.sass'
@@ -12,7 +12,7 @@ export const RememberMeCheckbox: FC<CheckboxProps> = (rememberMeCheckboxProps) =
   return (
     <Checkbox
       className='remember-me-checkbox'
-      name={AUTHENTICATION_FORM_FIELDS.rememberMe}
+      name={AUTH_FORM_FIELDS.shouldRemember}
       {...rememberMeCheckboxProps}
     >
       {translate('components.forms.fields.rememberMeCheckboxLabel')}

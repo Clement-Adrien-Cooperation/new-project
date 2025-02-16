@@ -1,5 +1,5 @@
-export * from './AuthenticationContext'
-export * from './AuthenticationProvider'
+export * from './AuthContext'
+export * from './AuthProvider'
 
 export * from './I18nContext'
 export * from './I18nProvider'

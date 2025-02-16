@@ -16,7 +16,7 @@
     position: relative
 
     &__input
-      // @include interactive.field
+      @include interactive.field
 
       &
         @include typography.label-large
@@ -34,7 +34,7 @@
           color: var(--neutral-foreground-muted)
 
     &__left-icon,
-    &__right-icon
+    &__right-content
       position: absolute
       top: 50%
       transform: translateY(-50%)
@@ -46,7 +46,7 @@
         left: var(--text-field-input-padding-inline)
         pointer-events: none
 
-    &__right-icon
+    &__right-content
       @include layout.center
 
       &
@@ -57,7 +57,7 @@
       & .text-field__wrapper__input
         padding-inline-start: calc(var(--text-field-input-padding-inline) * 1.5 + var(--text-field-icon-size))
 
-    &:has(.text-field__wrapper__right-icon)
+    &:has(.text-field__wrapper__right-content)
       & .text-field__wrapper__input
         padding-inline-end: calc(var(--text-field-input-padding-inline) * 2 + var(--text-field-icon-size))
 

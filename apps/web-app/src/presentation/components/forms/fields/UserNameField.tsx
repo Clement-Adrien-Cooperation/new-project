@@ -2,7 +2,7 @@ import { UserIcon } from 'lucide-react'
 import type { FC } from 'react'
 
 import { useI18n } from '@/application/hooks'
-import { AUTHENTICATION_FORM_FIELDS } from '@/domain/authentication'
+import { AUTH_FORM_FIELDS } from '@/domain/auth'
 import { TextField, type TextFieldProps } from '@/presentation/components'
 
 export const UserNameField: FC<TextFieldProps> = (userNameFieldProps) => {
@@ -13,7 +13,7 @@ export const UserNameField: FC<TextFieldProps> = (userNameFieldProps) => {
       isRequired
       LeftIcon={<UserIcon />}
       label={translate('components.forms.fields.userName.label')}
-      name={AUTHENTICATION_FORM_FIELDS.username}
+      name={AUTH_FORM_FIELDS.username}
       placeholder={translate('components.forms.fields.userName.placeholder')}
       {...userNameFieldProps}
     />

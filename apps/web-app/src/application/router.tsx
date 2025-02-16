@@ -7,7 +7,7 @@ import { NotFoundPage } from '@/presentation/pages'
 import { RequireUnauthenticated } from '@/presentation/guards'
 
 const HomePage = lazyPage(() => import('@/presentation/pages/home/HomePage'))
-const LoginPage = lazyPage(() => import('@/presentation/pages/authentication/LoginPage'))
+const LoginPage = lazyPage(() => import('@/presentation/pages/auth/LoginPage'))
 const SettingsPage = lazyPage(() => import('@/presentation/pages/settings/SettingsPage'))
 
 export const Router: FC = () => (

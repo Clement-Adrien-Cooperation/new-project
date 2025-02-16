@@ -1,13 +1,24 @@
-export const failure = <E = string>(error: E) => ({
+export const DEFAULT_ERROR_KEY = 'unexpected-error'
+
+export const failure = <E>(error?: E) => ({
   status: 'error' as const,
-  error
+  error: error ?? DEFAULT_ERROR_KEY
 })
 
-export const success = <T = void>(data: T) => ({
-  status: 'success' as const,
-  data
-})
+export function success(): { status: 'success' }
+export function success<T>(data: T): { status: 'success', data: T }
+export function success<T>(data?: T) {
+  if (data === undefined) {
+    return { status: 'success' }
+  }
 
-export type ErrorResult<E = string> = ReturnType<typeof failure<E>>
-export type SuccessResult<T = void> = ReturnType<typeof success<T>>
-export type Result<T = void, E = string> = ErrorResult<E> | SuccessResult<T>
+  return { status: 'success', data }
+}
+
+export type ErrorResult<E = undefined> = ReturnType<typeof failure<E>>
+
+export type SuccessResult<T = undefined> = T extends undefined
+  ? { status: 'success' }
+  : { status: 'success', data: T }
+
+export type Result<E = undefined, T = undefined> = ErrorResult<E> | SuccessResult<T>

@@ -1,29 +1,45 @@
-import type { FC } from 'react'
+import { type FC, useState } from 'react'
 
-import { useI18n } from '@/application/hooks'
-import { AUTHENTICATION_FORM_FIELDS } from '@/domain/authentication'
+import type { LoginCredentials } from '@shared-types/auth'
+
+import { useAuth, useI18n } from '@/application/hooks'
+import { AuthService } from '@/application/services'
+import { AUTH_FORM_FIELDS, type AuthFormFields } from '@/domain/auth'
 import { Form, type FormProps, RememberMeCheckbox, RequiredFieldsMessage, SubmitButton, UserNameField, UserPasswordField } from '@/presentation/components'
-import { mergeClassNames } from '@/presentation/utils'
+import { mergeClassNames, type ValidationErrors } from '@/presentation/utils'
 
 import './LoginForm.styles.sass'
 
+type LoginFormValidationErrors = ValidationErrors<AuthFormFields>
+
 export const LoginForm: FC<FormProps> = ({ className, ...loginFormProps }) => {
+  const [loginFormValidationErrors, _setLoginFormValidationErrors] = useState<LoginFormValidationErrors>()
+
+  const { setAuthenticatedUser } = useAuth()
   const { translate } = useI18n()
 
-  const onLoginFormSubmit = (formData: FormData) => {
-    const username = formData.get(AUTHENTICATION_FORM_FIELDS.username)
-    const password = formData.get(AUTHENTICATION_FORM_FIELDS.password)
-    const shouldRemember = formData.get(AUTHENTICATION_FORM_FIELDS.rememberMe) === 'on'
+  const onLoginFormSubmit = async (formData: FormData) => {
+    const username = formData.get(AUTH_FORM_FIELDS.username) as string
+    const password = formData.get(AUTH_FORM_FIELDS.password) as string
+    const shouldRemember = formData.get(AUTH_FORM_FIELDS.shouldRemember) === 'on'
 
-    console.log('username:', username)
-    console.log('password:', password)
-    console.log('rememberMe:', shouldRemember)
+    const credentials: LoginCredentials = { username, password }
+    const loginResult = await AuthService.login(credentials, shouldRemember)
+    console.log(loginResult)
+
+    if (loginResult.status === 'error') {
+      //! display error messages
+      return
+    }
+
+    setAuthenticatedUser(loginResult.data)
   }
 
   return (
     <Form
       className={mergeClassNames('login-form', className)}
       onSubmit={onLoginFormSubmit}
+      validationErrors={loginFormValidationErrors}
       {...loginFormProps}
     >
       <UserNameField />

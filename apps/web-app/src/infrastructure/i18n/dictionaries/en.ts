@@ -44,7 +44,7 @@ export const en = {
     }
   },
   pages: {
-    authentication: {
+    auth: {
       login: {
         title: 'Login'
       }

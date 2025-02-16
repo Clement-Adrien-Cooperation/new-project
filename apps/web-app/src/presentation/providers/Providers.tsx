@@ -2,7 +2,7 @@ import type { FC, PropsWithChildren } from 'react'
 import { RouterProvider } from 'react-aria-components'
 import { useNavigate } from 'react-router'
 
-import { AuthenticationProvider, I18nProvider, ThemeProvider } from '@/presentation/providers'
+import { AuthProvider, I18nProvider, ThemeProvider } from '@/presentation/providers'
 
 export const Providers: FC<PropsWithChildren> = ({ children }) => {
   const navigate = useNavigate()
@@ -11,9 +11,9 @@ export const Providers: FC<PropsWithChildren> = ({ children }) => {
     <RouterProvider navigate={navigate}>
       <I18nProvider>
         <ThemeProvider>
-          <AuthenticationProvider>
+          <AuthProvider>
             {children}
-          </AuthenticationProvider>
+          </AuthProvider>
         </ThemeProvider>
       </I18nProvider>
     </RouterProvider>

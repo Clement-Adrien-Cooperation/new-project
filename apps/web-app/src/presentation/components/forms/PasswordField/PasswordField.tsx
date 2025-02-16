@@ -11,23 +11,31 @@ export type PasswordFieldProps = TextFieldProps
 export const PasswordField: FC<PasswordFieldProps> = ({
   label,
   LeftIcon,
+  onChange,
   placeholder,
-  RightIcon,
+  RightContent,
   type,
+  value,
   ...passwordFieldProps
 }) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
+  const [passwordFieldValue, setPasswordFieldValue] = useState(value ?? '')
 
   const { translate } = useI18n()
 
-  const renderPasswordFieldRightIcon = () => {
-    if (RightIcon) {
-      return RightIcon
+  const onPasswordFieldChange = (value: string) => {
+    setPasswordFieldValue(value)
+    onChange?.(value)
+  }
+
+  const renderPasswordFieldRightContent = () => {
+    if (!passwordFieldValue) {
+      return undefined
     }
 
     return (
       <Button
-        className='password-field__right-icon-button'
+        className='password-field__right-content'
         onPress={() => setIsPasswordVisible(prev => !prev)}
       >
         {isPasswordVisible ? <EyeOffIcon /> : <EyeIcon />}
@@ -40,9 +48,11 @@ export const PasswordField: FC<PasswordFieldProps> = ({
       {...passwordFieldProps}
       label={label ?? translate('components.forms.passwordField.label')}
       LeftIcon={LeftIcon ?? <LockIcon />}
+      onChange={onPasswordFieldChange}
       placeholder={placeholder ?? translate('components.forms.passwordField.placeholder')}
-      RightIcon={renderPasswordFieldRightIcon()}
+      RightContent={RightContent ?? renderPasswordFieldRightContent()}
       type={type ?? isPasswordVisible ? 'text' : 'password'}
+      value={passwordFieldValue}
     />
   )
 }
