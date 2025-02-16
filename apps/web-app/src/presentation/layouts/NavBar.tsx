@@ -1,13 +1,14 @@
-import { HomeIcon, SettingsIcon, UserIcon } from 'lucide-react'
+import { HomeIcon, LogOutIcon, SettingsIcon, UserIcon } from 'lucide-react'
 import type { FC } from 'react'
 
-import { useI18n } from '@/application/hooks'
-import { ROUTE_HOME, ROUTE_LOGIN, ROUTE_SETTINGS } from '@/domain/navigation'
-
-import './NavBar.styles.sass'
+import { useAuth, useI18n } from '@/application/hooks'
+import { ROUTE_HOME, ROUTE_LOGIN, ROUTE_LOGOUT, ROUTE_SETTINGS } from '@/domain/navigation'
 import { Link } from '@/presentation/components'
 
+import './NavBar.styles.sass'
+
 export const NavBar: FC = () => {
+  const { auth } = useAuth()
   const { translate } = useI18n()
 
   const navBarItems = [
@@ -21,6 +22,7 @@ export const NavBar: FC = () => {
       href: ROUTE_LOGIN,
       Icon: <UserIcon />,
       id: 'login',
+      isVisible: auth.status === 'unauthenticated',
       textValue: translate('layouts.navBar.login')
     },
     {
@@ -28,13 +30,22 @@ export const NavBar: FC = () => {
       Icon: <SettingsIcon />,
       id: 'settings',
       textValue: translate('layouts.navBar.settings')
+    },
+    {
+      href: ROUTE_LOGOUT,
+      Icon: <LogOutIcon />,
+      id: 'logout',
+      isVisible: auth.status === 'authenticated',
+      textValue: translate('layouts.navBar.logout')
     }
   ]
+
+  const filteredNavBarItems = navBarItems.filter(item => item.isVisible !== false)
 
   return (
     <nav className='nav-bar'>
       <ul className='nav-bar__list'>
-        {navBarItems.map(item => (
+        {filteredNavBarItems.map(item => (
           <li key={item.id} role='none'>
             <Link
               className='nav-bar__list__item'

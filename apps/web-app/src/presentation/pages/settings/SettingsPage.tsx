@@ -2,6 +2,7 @@ import type { FC } from 'react'
 
 import { useI18n } from '@/application/hooks'
 import { LocaleSwitcher, PageTitle, ThemeSwitcher } from '@/presentation/components'
+import { Main } from '@/presentation/layouts'
 
 import { SettingsPageMetadata } from './SettingsPage.metadata.tsx'
 
@@ -11,7 +12,7 @@ const SettingsPage: FC = () => {
   const { translate } = useI18n()
 
   return (
-    <>
+    <Main>
       <SettingsPageMetadata />
 
       <div className='settings-page'>
@@ -22,7 +23,7 @@ const SettingsPage: FC = () => {
           <ThemeSwitcher />
         </div>
       </div>
-    </>
+    </Main>
   )
 }
 

@@ -12,10 +12,23 @@ const fakeAuthUser: AuthUserDTO = {
 }
 
 export const authApi = {
-  login: async (credentials: LoginCredentials): Promise<LoginResponse>  => {
+  getAuthUserByCredentials: async (credentials: LoginCredentials): Promise<LoginResponse>  => {
     await sleep()
 
     console.log(credentials)
+
+    const loginResponse = {
+      token: 'token',
+      user: fakeAuthUser
+    }
+
+    return success(loginResponse)
+  },
+
+  getAuthUserByToken: async (authToken: string): Promise<LoginResponse>  => {
+    await sleep()
+
+    console.log(authToken)
 
     const loginResponse = {
       token: 'token',

@@ -42,6 +42,7 @@ export const fr = {
     navBar: {
       home: 'Accueil',
       login: 'Connexion',
+      logout: 'Déconnexion',
       settings: 'Paramètres'
     }
   },
@@ -49,6 +50,11 @@ export const fr = {
     auth: {
       login: {
         title: 'Se connecter'
+      },
+      logout: {
+        buttonLabel: 'Oui, se déconnecter',
+        subtitle: 'Voulez-vous vraiment vous déconnecter ?',
+        title: 'Déconnexion'
       }
     },
     home: {

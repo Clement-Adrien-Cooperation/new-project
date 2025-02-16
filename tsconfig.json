@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "composite": true,
+    "lib": ["ES2024"],
     "strict": true
   },
   "include": ["packages/shared-types", "apps/web-app", "apps/backend-api"],

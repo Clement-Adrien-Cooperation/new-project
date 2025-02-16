@@ -40,6 +40,7 @@ export const en = {
     navBar: {
       home: 'Home',
       login: 'Login',
+      logout: 'Logout',
       settings: 'Settings'
     }
   },
@@ -47,6 +48,11 @@ export const en = {
     auth: {
       login: {
         title: 'Login'
+      },
+      logout: {
+        buttonLabel: 'Yes, logout',
+        subtitle: 'Are you sure you want to log out?',
+        title: 'Logout'
       }
     },
     home: {
