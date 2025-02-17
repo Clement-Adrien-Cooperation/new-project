@@ -8,8 +8,8 @@ export const ErrorWrapper: FC<ComponentProps<'div'>> = ({ className, ...errorWra
   <div className={mergeClassNames('error-wrapper', className)} {...errorWrapperProps} />
 )
 
-export const ErrorTitle: FC<ComponentProps<'h2'>> = ({ className, ...errorTitleProps }) => (
-  <h2 className={mergeClassNames('error-title', className)} {...errorTitleProps} />
+export const ErrorTitle: FC<ComponentProps<'h2'>> = ({ children, className, ...errorTitleProps }) => (
+  <h2 className={mergeClassNames('error-title', className)} {...errorTitleProps}>{children}</h2>
 )
 
 export const ErrorContent: FC<ComponentProps<'div'>> = ({ className, ...errorContentProps }) => (

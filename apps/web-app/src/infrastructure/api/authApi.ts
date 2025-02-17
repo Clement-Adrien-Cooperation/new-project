@@ -28,7 +28,7 @@ export const authApi = {
   getAuthUserByToken: async (authToken: string): Promise<LoginResponse>  => {
     await sleep()
 
-    console.log(authToken)
+    console.info(authToken)
 
     const loginResponse = {
       token: 'token',

@@ -1,6 +1,7 @@
 export * from './fields'
 
 export * from './Checkbox'
+export * from './DatePicker'
 export * from './FieldError'
 export * from './Form'
 export * from './FieldSet'

@@ -1,0 +1,32 @@
+@use '@/presentation/styles/interactive'
+@use '@/presentation/styles/layout'
+@use '@/presentation/styles/typography'
+
+.calendar
+  @include typography.label-large
+
+  &__header
+    align-items: center
+    display: flex
+    gap: var(--size-80, 0.5rem)
+    justify-content: space-between
+
+  &__separator
+    margin: var(--size-40, 0.25rem) auto
+    height: var(--size-10, 0.125rem)
+    background-color: var(--border)
+    width: calc(100% - var(--size-80, 0.5rem))
+
+  &__grid
+    width: 100%
+
+    &__header-cell
+      padding-block: var(--size-80, 0.125rem)
+
+    &__cell
+      @include interactive.transparent
+      aspect-ratio: 1
+      border-radius: var(--radius-s, 0.25rem)
+      display: grid
+      min-height: 2.5rem
+      place-items: center

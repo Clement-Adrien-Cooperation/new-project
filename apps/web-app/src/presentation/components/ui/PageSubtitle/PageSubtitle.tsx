@@ -6,6 +6,6 @@ import './PageSubtitle.styles.sass'
 
 type PageSubtitleProps = ComponentProps<'h2'>
 
-export const PageSubtitle: FC<PageSubtitleProps> = ({ className, ...pageSubtitleProps }) => (
-  <h2 className={mergeClassNames('page-subtitle', className)} {...pageSubtitleProps} />
+export const PageSubtitle: FC<PageSubtitleProps> = ({ children, className, ...pageSubtitleProps }) => (
+  <h2 className={mergeClassNames('page-subtitle', className)} {...pageSubtitleProps}>{children}</h2>
 )

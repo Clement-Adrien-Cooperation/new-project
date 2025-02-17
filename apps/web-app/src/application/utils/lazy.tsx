@@ -1,16 +1,20 @@
-import { type ComponentType, lazy, type ReactElement, Suspense } from 'react'
+import { type ComponentType, type FC, lazy, type ReactElement, Suspense } from 'react'
 
 import { Loader } from '@/presentation/components'
 
-export const lazyPage = <P extends object>(
+export const lazyComponent = <P extends object>(
   importPath: () => Promise<{ default: ComponentType<P> }>,
   fallback: ReactElement = <Loader />
 ) => {
-  const Component = lazy(importPath)
+  const LazyComponent = lazy(importPath)
 
-  return (props: P) => (
+  const Component: FC<P> = (props) => (
     <Suspense fallback={fallback}>
-      <Component {...props} />
+      <LazyComponent {...props} />
     </Suspense>
   )
+
+  Component.displayName = 'LazyComponent'
+
+  return Component
 }

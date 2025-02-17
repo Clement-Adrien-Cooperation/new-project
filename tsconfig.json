@@ -7,5 +7,6 @@
   "include": ["packages/shared-types", "apps/web-app", "apps/backend-api"],
   "references": [
     { "path": "packages/shared-types" },
+    { "path": "apps/web-app" },
   ]
 }

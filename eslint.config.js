@@ -1,12 +1,13 @@
 import js from '@eslint/js'
 import stylisticPlugin from '@stylistic/eslint-plugin'
-
-import jsxA11y from 'eslint-plugin-jsx-a11y'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-
+import promisePlugin from 'eslint-plugin-promise'
 import globals from 'globals'
 import tseslint from 'typescript-eslint'
+
+import jsxA11yPlugin from 'eslint-plugin-jsx-a11y'
+import reactPlugin from 'eslint-plugin-react'
+import reactHooksPlugin from 'eslint-plugin-react-hooks'
+import reactRefreshPlugin from 'eslint-plugin-react-refresh'
 
 export default tseslint.config(
   ...tseslint.configs.strict,
@@ -19,19 +20,28 @@ export default tseslint.config(
     ],
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
-      ecmaVersion: 2020,
+      ecmaVersion: 2024,
       globals: globals.browser
     },
     plugins: {
       '@stylistic': stylisticPlugin,
-      'jsx-a11y': jsxA11y,
-      'react-hooks': reactHooks,
-      'react-refresh': reactRefresh
+      'promise': promisePlugin,
+      'jsx-a11y': jsxA11yPlugin,
+      'react': reactPlugin,
+      'react-hooks': reactHooksPlugin,
+      'react-refresh': reactRefreshPlugin
+    },
+    settings:{
+      react: {
+        version: 'detect'
+      }
     },
     rules: {
-      ...reactHooks.configs.recommended.rules,
-      ...jsxA11y.flatConfigs.rules,
-      ...reactRefresh.configs.recommended.rules,
+      ...reactPlugin.configs.flat.recommended.rules,
+      ...reactHooksPlugin.configs.recommended.rules,
+      ...jsxA11yPlugin.flatConfigs.recommended.rules,
+      ...reactRefreshPlugin.configs.recommended.rules,
+      ...promisePlugin.configs.recommended.rules,
       ...stylisticPlugin.configs.rules,
 
       '@stylistic/comma-dangle': ['error', 'never'],
@@ -54,7 +64,14 @@ export default tseslint.config(
       '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/no-unused-vars': ['error', { 'argsIgnorePattern': '^_', 'varsIgnorePattern': '^_' }],
 
+      'jsx-a11y/anchor-is-valid': ['error', { aspects: ['invalidHref', 'preferButton'] }],
+      'jsx-a11y/no-autofocus': ['error', { ignoreNonDOM: true }],
+      
+      'no-console': ['warn', { allow: ['error', 'info', 'warn'] }],
+      'no-debugger': 'error',
+      'no-unused-private-class-members': 'error',
       'no-useless-return': 'error',
+
       'sort-imports': ['error', {
         'ignoreCase': true,
         'ignoreDeclarationSort': true,
@@ -63,7 +80,7 @@ export default tseslint.config(
         'allowSeparatedGroups': true
       }],
 
-      'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+      'react/react-in-jsx-scope': 'off'
     }
   }
 )

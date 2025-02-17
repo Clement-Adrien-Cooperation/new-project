@@ -1,7 +1,7 @@
 import type { FC } from 'react'
 
 import { useI18n } from '@/application/hooks'
-import { LocaleSwitcher, PageTitle, ThemeSwitcher } from '@/presentation/components'
+import { Calendar, DatePicker, LocaleSwitcher, PageTitle, ThemeSwitcher } from '@/presentation/components'
 import { Main } from '@/presentation/layouts'
 
 import { SettingsPageMetadata } from './SettingsPage.metadata.tsx'
@@ -21,6 +21,10 @@ const SettingsPage: FC = () => {
         <div className='settings-page__content'>
           <LocaleSwitcher />
           <ThemeSwitcher />
+
+          <Calendar />
+
+          <DatePicker aria-label='date' />
         </div>
       </Main>
     </>

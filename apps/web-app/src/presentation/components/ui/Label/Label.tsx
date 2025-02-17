@@ -15,7 +15,8 @@ export const Label: FC<LabelProps> = ({ children, className, isRequired, ...labe
 
   return (
     <ReactAriaLabel className={mergeClassNames('label', className)} {...labelProps}>
-      {children}{isRequired && ' *'}
+      {children}
+      {isRequired && <span aria-hidden> *</span>}
     </ReactAriaLabel>
   )
 }

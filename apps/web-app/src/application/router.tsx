@@ -1,16 +1,16 @@
 import type { FC } from 'react'
 import { Navigate, Route, Routes } from 'react-router'
 
-import { lazyPage } from '@/application/utils'
+import { lazyComponent } from '@/application/utils'
 import { ROUTES } from '@/domain/navigation'
 import { NotFoundPage } from '@/presentation/pages'
 import { RequireAuthenticated, RequireUnauthenticated } from '@/presentation/guards'
 
-const HomePage = lazyPage(() => import('@/presentation/pages/home/HomePage'))
-const LoginPage = lazyPage(() => import('@/presentation/pages/auth/LoginPage'))
-const LogoutPage = lazyPage(() => import('@/presentation/pages/auth/LogoutPage'))
-const RegisterPage = lazyPage(() => import('@/presentation/pages/auth/RegisterPage'))
-const SettingsPage = lazyPage(() => import('@/presentation/pages/settings/SettingsPage'))
+const HomePage = lazyComponent(() => import('@/presentation/pages/home/HomePage'))
+const LoginPage = lazyComponent(() => import('@/presentation/pages/auth/LoginPage'))
+const LogoutPage = lazyComponent(() => import('@/presentation/pages/auth/LogoutPage'))
+const RegisterPage = lazyComponent(() => import('@/presentation/pages/auth/RegisterPage'))
+const SettingsPage = lazyComponent(() => import('@/presentation/pages/settings/SettingsPage'))
 
 export const Router: FC = () => (
   <Routes>

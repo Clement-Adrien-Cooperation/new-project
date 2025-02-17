@@ -1,4 +1,4 @@
-import { type FC, type PropsWithChildren, useEffect, useState } from 'react'
+import { type FC, type PropsWithChildren, useCallback, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 
 import type { AuthUserDTO } from '@shared-types/dto'
@@ -12,16 +12,20 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 
   const navigate = useNavigate()
 
-  const setAuthenticatedUser = (user: AuthUserDTO) => setAuth({ status: 'authenticated', user })
+  const setAuthenticatedUser = useCallback((user: AuthUserDTO) => {
+    setAuth({ status: 'authenticated', user })
+  }, [])
 
-  const logout = () => {
+  const logout = useCallback(() => {
     AuthService.logout()
     setAuth({ status: 'unauthenticated' })
     navigate(ROUTE_DEFAULT)
-  }
+  }, [navigate])
 
   useEffect(() => {
-    AuthService.getInitialAuthState().then(setAuth)
+    AuthService.getInitialAuthState()
+      .then(setAuth)
+      .catch(console.error)
   }, [])
 
   return (
