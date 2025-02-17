@@ -24,15 +24,16 @@ const passwordSchema = z
     message: 'password-require-special-char' as RegisterErrorKey
   })
 
-export const RegisterCredentialsSchema = z.object({
+export const RegisterRequestSchema = z.object({
   username: usernameSchema,
+  email: z.string().email(),
   password: passwordSchema
 })
 
-export type RegisterCredentialsCredentials = z.infer<typeof RegisterCredentialsSchema>
+export type RegisterRequest = z.infer<typeof RegisterRequestSchema>
 
 export const LoginCredentialsSchema = z.object({
-  username: z.string(),
+  userNameOrEmail: z.string(),
   password: z.string()
 })
 

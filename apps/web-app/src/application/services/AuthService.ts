@@ -38,7 +38,7 @@ export const AuthService = {
 
     if (loginResponse.status === 'error') {
       //! handle errors
-      return failure(loginResponse.error)
+      return failure(loginResponse.errors)
     }
 
     if (shouldRemember) {

@@ -9,13 +9,11 @@ import { AUTH_FORM_FIELDS, type AuthFormFields } from '@/domain/auth'
 import { FieldSet, Form, RememberMeCheckbox, RequiredFieldsMessage, SubmitButton, UserNameField, UserPasswordField } from '@/presentation/components'
 import type { ValidationErrors } from '@/presentation/utils'
 
-import './LoginForm.styles.sass'
-
 type LoginFormValidationErrors = ValidationErrors<AuthFormFields>
 
 export const LoginForm: FC = () => {
   const [isLoginFormSubmitting, setIsLoginFormSubmitting] = useState(false)
-  const [loginFormValidationErrors, setLoginFormValidationErrors] = useState<LoginFormValidationErrors>()
+  const [loginFormValidationErrors, _setLoginFormValidationErrors] = useState<LoginFormValidationErrors>()
 
   const { setAuthenticatedUser } = useAuth()
   const { translate } = useI18n()
@@ -23,11 +21,11 @@ export const LoginForm: FC = () => {
   const onLoginFormSubmit = async (formData: FormData) => {
     setIsLoginFormSubmitting(true)
 
-    const username = formData.get(AUTH_FORM_FIELDS.username) as string
+    const userNameOrEmail = formData.get(AUTH_FORM_FIELDS.usernameOrEmail) as string
     const password = formData.get(AUTH_FORM_FIELDS.password) as string
     const shouldRemember = formData.get(AUTH_FORM_FIELDS.shouldRemember) === 'on'
 
-    const credentials: LoginCredentials = { username, password }
+    const credentials: LoginCredentials = { userNameOrEmail, password }
     const loginResult = await AuthService.login(credentials, shouldRemember)
 
     console.log(loginResult)
@@ -44,15 +42,15 @@ export const LoginForm: FC = () => {
 
   return (
     <Form
-      className='login-form'
       onSubmit={onLoginFormSubmit}
       validationErrors={loginFormValidationErrors}
     >
-      <FieldSet
-        className='login-form__field-set'
-        isDisabled={isLoginFormSubmitting}
-      >
-        <UserNameField />
+      <FieldSet isDisabled={isLoginFormSubmitting}>
+        <UserNameField
+          label={translate('components.forms.loginForm.userNameOrEmail.label')}
+          name={AUTH_FORM_FIELDS.usernameOrEmail}
+          placeholder={translate('components.forms.loginForm.userNameOrEmail.placeholder')}
+        />
 
         <UserPasswordField />
 

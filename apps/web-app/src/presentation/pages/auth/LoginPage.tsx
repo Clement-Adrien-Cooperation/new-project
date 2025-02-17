@@ -17,19 +17,20 @@ const LoginPage: FC = () => {
       <LoginPageMetadata />
 
       <Main>
-        <PageTitle>
-          {translate('pages.auth.login.title')}
-        </PageTitle>
+        <PageTitle>{translate('pages.auth.login.title')}</PageTitle>
 
         <LoginForm />
 
-        <Link
-          className='login-page__register-link'
-          href={ROUTES.register}
-          variant='underlined'
-        >
-          {translate('pages.auth.login.registerLink')}
-        </Link>
+        <div className='login-page__register'>
+          {translate('pages.auth.login.register.message')}
+
+          <Link
+            href={ROUTES.register}
+            variant='underlined'
+          >
+            {translate('pages.auth.login.register.link')}
+          </Link>
+        </div>
       </Main>
     </>
   )

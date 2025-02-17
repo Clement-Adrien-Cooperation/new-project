@@ -1,8 +1,8 @@
 export const DEFAULT_ERROR_KEY = 'unexpected-error'
 
-export const failure = <E>(error?: E) => ({
-  status: 'error' as const,
-  error: error ?? DEFAULT_ERROR_KEY
+export const failure = <E>(errors?: E) => ({
+  errors: errors ?? [DEFAULT_ERROR_KEY],
+  status: 'error' as const
 })
 
 export function success(): { status: 'success' }

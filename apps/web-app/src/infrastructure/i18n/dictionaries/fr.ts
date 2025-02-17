@@ -10,6 +10,14 @@ export const fr = {
     },
     forms: {
       fields: {
+        email: {
+          label: 'Adresse mail',
+          placeholder: 'Entrez votre email'
+        },
+        passwordsValidation: {
+          confirmPasswordLabel: 'Confirmer le mot de passe',
+          confirmPasswordPlaceholder: 'Retapez votre mot de passe'
+        },
         rememberMeCheckboxLabel: 'Se souvenir de moi',
         userName: {
           label: 'Nom d\'utilisateur',
@@ -21,11 +29,18 @@ export const fr = {
         }
       },
       loginForm: {
-        submit: 'Connexion'
+        submit: 'Connexion',
+        userNameOrEmail: {
+          label: 'Nom d\'utilisateur ou email',
+          placeholder: 'Entrez votre nom d\'utilisateur ou email'
+        }
       },
       passwordField: {
         label: 'Mot de passe',
         placeholder: 'Entrez votre mot de passe'
+      },
+      registerForm: {
+        submit: 'Créer un compte'
       },
       requiredFieldsMessage: 'Les champs marqués d\'un * sont obligatoires.'
     },
@@ -57,7 +72,10 @@ export const fr = {
           keywords: 'connexion, authentification, compte, mot de passe, sécurité, accès',
           title: 'Connexion à votre compte'
         },
-        registerLink: 'Vous n\'avez pas de compte ? Inscrivez-vous maintenant.',
+        register: {
+          link: 'Inscrivez-vous.',
+          message: 'Vous n\'avez pas de compte ?'
+        },
         title: 'Se connecter'
       },
       logout: {
@@ -73,6 +91,10 @@ export const fr = {
         title: 'Déconnexion'
       },
       register: {
+        login: {
+          link: 'Connectez-vous.',
+          message: 'Vous avez déjà un compte ?'
+        },
         metadata: {
           category: 'Authentification et Sécurité',
           classification: 'Création de Compte et Inscription',

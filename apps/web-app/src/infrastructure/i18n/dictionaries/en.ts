@@ -8,6 +8,14 @@ export const en = {
     },
     forms: {
       fields: {
+        email: {
+          label: 'Email',
+          placeholder: 'Enter your email'
+        },
+        passwordsValidation: {
+          confirmPasswordLabel: 'Confirm password',
+          confirmPasswordPlaceholder: 'Re-enter your password'
+        },
         rememberMeCheckboxLabel: 'Remember me',
         userName: {
           label: 'Username',
@@ -19,11 +27,18 @@ export const en = {
         }
       },
       loginForm: {
-        submit: 'Login'
+        submit: 'Login',
+        userNameOrEmail: {
+          label: 'Username or email',
+          placeholder: 'Enter your username or email'
+        }
       },
       passwordField: {
         label: 'Password',
         placeholder: 'Enter your password'
+      },
+      registerForm: {
+        submit: 'Register'
       },
       requiredFieldsMessage: 'Fields marked with * are required.'
     },
@@ -55,7 +70,10 @@ export const en = {
           keywords: 'login, authentication, account, password, security, access',
           title: 'Login to Your Account'
         },
-        registerLink: 'Don\'t have an account? Register now.',
+        register: {
+          link: 'Register now.',
+          message: 'Don\'t have an account?'
+        },
         title: 'Login'
       },
       logout: {
@@ -71,6 +89,10 @@ export const en = {
         title: 'Logout'
       },
       register: {
+        login: {
+          link: 'Log in.',
+          message: 'Already have an account?'
+        },
         metadata: {
           category: 'Authentication and Security',
           classification: 'Account Creation and Registration',

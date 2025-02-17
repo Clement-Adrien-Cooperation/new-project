@@ -1,4 +1,4 @@
-import { EyeIcon, EyeOffIcon, LockIcon } from 'lucide-react'
+import { EyeIcon, EyeOffIcon, LockKeyholeIcon } from 'lucide-react'
 import { type FC, useState } from 'react'
 
 import { useI18n } from '@/application/hooks'
@@ -47,7 +47,7 @@ export const PasswordField: FC<PasswordFieldProps> = ({
     <TextField
       {...passwordFieldProps}
       label={label ?? translate('components.forms.passwordField.label')}
-      LeftIcon={LeftIcon ?? <LockIcon />}
+      LeftIcon={LeftIcon ?? <LockKeyholeIcon />}
       onChange={onPasswordFieldChange}
       placeholder={placeholder ?? translate('components.forms.passwordField.placeholder')}
       RightContent={RightContent ?? renderPasswordFieldRightContent()}
