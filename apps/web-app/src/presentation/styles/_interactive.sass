@@ -11,9 +11,6 @@
   &
     @include animations.color-transition
 
-    &
-      cursor: pointer
-
   @include selectors.disabled
     pointer-events: none
 
@@ -52,14 +49,3 @@
   @include selectors.disabled
     background-color: transparent
     color: var(--neutral-foreground-muted)
-
-@mixin field
-  @include outlined
-
-  &
-    align-items: center
-    border-radius: var(--radius-m, 0.5rem)
-    display: flex
-    gap: var(--size-120, 0.75rem)
-    height: var(--element-size, 2.5rem)
-    padding-inline: var(--size-120, 0.75rem)

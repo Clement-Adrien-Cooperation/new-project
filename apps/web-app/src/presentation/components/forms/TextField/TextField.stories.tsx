@@ -23,7 +23,7 @@ const meta: Meta<typeof TextField> = {
 export default meta
 type Story = StoryObj<typeof TextField>
 
-export const BaseTextField: Story = {
+export const TextFieldStory: Story = {
   argTypes: {
     label: { control: 'text' },
     placeholder: { control: 'text' }
@@ -31,7 +31,7 @@ export const BaseTextField: Story = {
   name: 'Text Field'
 }
 
-export const TextFieldWithLeftIcon: Story = {
+export const TextFieldWithLeftIconStory: Story = {
   args: {
     LeftIcon: <UserIcon />
   },

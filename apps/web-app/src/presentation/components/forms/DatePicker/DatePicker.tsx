@@ -11,11 +11,17 @@ import {
   type DatePickerProps as ReactAriaDatePickerProps
 } from 'react-aria-components'
 
-import { Button, Calendar, Label } from '@/presentation/components'
+import { Button, Calendar, type DateCellRenderProps, Label } from '@/presentation/components'
 import type { Style } from '@/presentation/types'
 import { mergeReactAriaClassNames } from '@/presentation/utils'
 
 import './DatePicker.styles.sass'
+
+const renderDateCell = (values: DateCellRenderProps) => (
+  <div className='date-picker__calendar__cell'>
+    {values.formattedDate}
+  </div>
+)
 
 type DatePickerProps <T extends DateValue> = ReactAriaDatePickerProps<T> & {
   /** The label of the date picker. */
@@ -46,7 +52,7 @@ export function DatePicker <T extends DateValue> ({
       className={values => mergeReactAriaClassNames(values, className, 'date-picker')}
       {...datePickerProps}
     >
-      <Label>{label}</Label>
+      <Label className='date-picker__label'>{label}</Label>
 
       <Group className='date-picker__group' ref={datePickerRef}>
         <CalendarIcon className='date-picker__group__icon' />
@@ -67,7 +73,10 @@ export function DatePicker <T extends DateValue> ({
 
       <Popover>
         <Dialog className='date-picker__dialog' style={datePickerStyleVariables}>
-          <Calendar className='date-picker__calendar' />
+          <Calendar
+            className='date-picker__calendar'
+            renderDateCell={renderDateCell}
+          />
         </Dialog>
       </Popover>
     </ReactAriaDatePicker>

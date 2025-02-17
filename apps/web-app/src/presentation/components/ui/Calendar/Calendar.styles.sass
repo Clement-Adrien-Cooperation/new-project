@@ -1,15 +1,20 @@
 @use '@/presentation/styles/interactive'
 @use '@/presentation/styles/layout'
+@use '@/presentation/styles/selectors'
 @use '@/presentation/styles/typography'
 
 .calendar
-  @include typography.label-large
+  --calendar-cell-min-size: var(--size-280, 1.75rem)
+  @include typography.body-medium
 
   &__header
     align-items: center
     display: flex
     gap: var(--size-80, 0.5rem)
     justify-content: space-between
+
+    &__heading
+      text-align: center
 
   &__separator
     margin: var(--size-40, 0.25rem) auto
@@ -24,9 +29,15 @@
       padding-block: var(--size-80, 0.125rem)
 
     &__cell
-      @include interactive.transparent
-      aspect-ratio: 1
-      border-radius: var(--radius-s, 0.25rem)
-      display: grid
-      min-height: 2.5rem
-      place-items: center
+      @include typography.label-large
+
+      &
+        @include interactive.transparent
+
+      &
+        cursor: pointer
+        border-radius: var(--radius-s, 0.25rem)
+        display: grid
+        min-height: var(--calendar-cell-min-size)
+        min-width: var(--calendar-cell-min-size)
+        place-items: center

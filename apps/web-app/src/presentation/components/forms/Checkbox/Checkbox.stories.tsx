@@ -29,6 +29,6 @@ const meta: Meta<typeof Checkbox> = {
 export default meta
 type Story = StoryObj<typeof Checkbox>
 
-export const BaseCheckbox: Story = {
+export const CheckboxStory: Story = {
   name: 'Checkbox'
 }

@@ -1,20 +1,24 @@
 @use '@/presentation/styles/accessibility'
+@use '@/presentation/styles/forms'
 @use '@/presentation/styles/interactive'
 @use '@/presentation/styles/layout'
 @use '@/presentation/styles/sizes'
 @use '@/presentation/styles/typography'
 
 .date-picker
+  @include forms.field-wrapper
+
+  &__label
+    @include forms.field-label
+
   &__group
-    @include interactive.outlined
+    @include forms.field-content
 
     &
       @include typography.label-large
 
     &
-      align-items: center
-      display: flex
-      height: var(--element-size, 2.5rem)
+      cursor: text
       justify-content: space-between
       min-width: 100%
       position: relative

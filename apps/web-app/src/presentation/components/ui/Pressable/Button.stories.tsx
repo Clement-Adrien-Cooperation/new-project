@@ -28,7 +28,7 @@ type Story = StoryObj<typeof Button>
 
 const BUTTON_LABEL = 'Press me'
 
-export const ButtonWithLabel: Story = {
+export const ButtonWithLabelStory: Story = {
   args: {
     children: BUTTON_LABEL,
     variant: 'filled'
@@ -36,7 +36,7 @@ export const ButtonWithLabel: Story = {
   name: 'Button with label'
 }
 
-export const IconButton: Story = {
+export const IconButtonStory: Story = {
   args: {
     Icon: <SettingsIcon />,
     variant: 'outlined'
@@ -44,7 +44,7 @@ export const IconButton: Story = {
   name: 'Button with icon'
 }
 
-export const IconButtonWithLabel: Story = {
+export const IconButtonWithLabelStory: Story = {
   args: {
     children: BUTTON_LABEL,
     Icon: <SettingsIcon />,

@@ -55,6 +55,6 @@ const meta: Meta<typeof Select> = {
 export default meta
 type Story = StoryObj<typeof Select>
 
-export const SelectWithItems: Story = {
+export const SelectStory: Story = {
   name: 'Select'
 }

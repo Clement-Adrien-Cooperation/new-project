@@ -2,7 +2,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react'
 import type { ReactNode } from 'react'
 import {
   CalendarCell,
-  type CalendarCellProps,
+  type CalendarCellRenderProps,
   CalendarGrid,
   CalendarGridBody,
   CalendarGridHeader,
@@ -18,8 +18,10 @@ import { mergeReactAriaClassNames } from '@/presentation/utils'
 
 import './Calendar.styles.sass'
 
+export type DateCellRenderProps = CalendarCellRenderProps
+
 type CalendarProps <T extends DateValue> = ReactAriaCalendarProps<T> & {
-  renderDateCell?: (date: CalendarCellProps) => ReactNode
+  renderDateCell?: (date: DateCellRenderProps) => ReactNode
 }
 
 export function Calendar <T extends DateValue> ({
@@ -39,7 +41,7 @@ export function Calendar <T extends DateValue> ({
           variant='transparent'
         />
 
-        <Heading />
+        <Heading className='calendar__header__heading' />
 
         <Button
           Icon={<ChevronRightIcon />}
