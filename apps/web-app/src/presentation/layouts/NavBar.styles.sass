@@ -9,9 +9,10 @@
     align-items: center
     display: flex
     flex-wrap: wrap
+    justify-content: flex-end
 
     &__item
-      @include pressable.underlined
+      padding: var(--size-80, 0.5rem) var(--size-160, 1rem)
 
-      &
-        padding: var(--size-160, 1rem)
+      &.active
+        color: var(--neutral-foreground-muted)

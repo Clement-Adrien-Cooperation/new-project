@@ -11,10 +11,10 @@ export const RequireAuthenticated: FC = () => {
   switch (auth.status) {
     case 'authenticated':
       return <Outlet />
-    case 'unauthenticated':
-      return <Navigate to={ROUTE_DEFAULT} />
     case 'loading':
       return <Loader />
+    case 'unauthenticated':
+      return <Navigate to={ROUTE_DEFAULT} />
     default:
       console.error('Unexpected auth status:', { auth })
       return <Fallback />

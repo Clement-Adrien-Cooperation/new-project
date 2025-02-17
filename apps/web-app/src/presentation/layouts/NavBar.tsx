@@ -5,13 +5,14 @@ import { useLocation } from 'react-router'
 import { useAuth, useI18n } from '@/application/hooks'
 import { ROUTES } from '@/domain/navigation'
 import { Link } from '@/presentation/components'
+import { mergeClassNames } from '@/presentation/utils'
 
 import './NavBar.styles.sass'
 
 export const NavBar: FC = () => {
   const { auth } = useAuth()
   const { translate } = useI18n()
-  const location = useLocation()
+  const { pathname } = useLocation()
 
   const navBarItems = [
     {
@@ -48,12 +49,11 @@ export const NavBar: FC = () => {
     <nav className='nav-bar'>
       <ul className='nav-bar__list'>
         {filteredNavBarItems.map(item => (
-          <li key={item.id} role='none'>
+          <li key={item.id}>
             <Link
-              className='nav-bar__list__item'
+              className={mergeClassNames('nav-bar__list__item', pathname === item.href && 'active')}
               href={item.href}
               Icon={item.Icon}
-              isDisabled={location.pathname === item.href}
               variant='underlined'
             >
               {item.textValue}

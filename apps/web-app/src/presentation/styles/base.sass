@@ -8,7 +8,6 @@
 @use '@/presentation/styles/scrollbar'
 
 :root
-  @include typography.body-medium
   color-scheme: dark light
   overflow-x: hidden
   scroll-behavior: smooth
@@ -26,7 +25,8 @@ html
 
 body
   @include animations.color-transition
-  background: var(--neutral-background)
+  @include typography.body-medium
+  background-color: var(--neutral-background)
   color: var(--neutral-foreground)
   height: 100svh
 

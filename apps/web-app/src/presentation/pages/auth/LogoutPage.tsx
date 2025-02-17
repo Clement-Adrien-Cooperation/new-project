@@ -17,19 +17,21 @@ const LogoutPage: FC = () => {
         {translate('pages.auth.logout.title')}
       </PageTitle>
 
-      <PageSubtitle>
-        {translate('pages.auth.logout.subtitle')}
-      </PageSubtitle>
+      <div className='logout-page__content'>
+        <PageSubtitle>
+          {translate('pages.auth.logout.subtitle')}
+        </PageSubtitle>
 
-      <Button
-        className='logout-page__confirm-button'
-        Icon={<LogOutIcon />}
-        iconSide='right'
-        onPress={logout}
-        variant='filled'
-      >
-        {translate('pages.auth.logout.buttonLabel')}
-      </Button>
+        <Button
+          className='logout-page__content__confirm-button'
+          Icon={<LogOutIcon />}
+          iconSide='right'
+          onPress={logout}
+          variant='filled'
+        >
+          {translate('pages.auth.logout.buttonLabel')}
+        </Button>
+      </div>
     </Main>
   )
 }
