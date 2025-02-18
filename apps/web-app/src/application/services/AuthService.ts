@@ -4,13 +4,13 @@ import { failure, type Result, success } from '@shared-types/result'
 
 import type { AuthState } from '@/domain/auth'
 import { authApi } from '@/infrastructure/api'
-import { getStoredItem, removeStoredItem, storeItem } from '@/infrastructure/storage'
+import { AuthRepository } from '@/infrastructure/repositories'
 
 type AuthServiceLoginResponse = Result<LoginErrorKey, AuthUserDTO>
 
 export const AuthService = {
   getInitialAuthState: async (): Promise<AuthState> => {
-    const authToken = getStoredItem('authToken')
+    const authToken = AuthRepository.getAuthToken()
 
     if (!authToken) {
       return { status: 'unauthenticated' }
@@ -42,13 +42,13 @@ export const AuthService = {
     }
 
     if (shouldRemember) {
-      storeItem('authToken', loginResponse.data.token)
+      AuthRepository.saveAuthToken(loginResponse.data.token)
     }
 
     return success(loginResponse.data.user)
   },
 
   logout: () => {
-    removeStoredItem('authToken')
+    AuthRepository.removeAuthToken()
   }
 }

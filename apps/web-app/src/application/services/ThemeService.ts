@@ -1,6 +1,5 @@
 import { DEFAULT_THEME, PREFERS_DARK_COLOR_SCHEME_MATCHER, SUPPORTED_THEMES, type Theme } from '@/domain/theme'
-
-import { getStoredItem, storeItem } from '@/infrastructure/storage'
+import { ThemeRepository } from '@/infrastructure/repositories'
 
 type ColorScheme = Extract<Theme, 'dark' | 'light'>
 
@@ -20,7 +19,7 @@ export const ThemeService = {
   },
 
   getInitialTheme: (): Theme => {
-    const storedTheme = getStoredItem('theme')
+    const storedTheme = ThemeRepository.getTheme()
 
     if (storedTheme != null && SUPPORTED_THEMES.includes(storedTheme)) {
       return storedTheme
@@ -30,7 +29,7 @@ export const ThemeService = {
   },
 
   saveFavoriteTheme: (theme: Theme) => {
-    storeItem('theme', theme)
+    ThemeRepository.saveTheme(theme)
   },
 
   subscribeToSystemThemeChanges: () => {
