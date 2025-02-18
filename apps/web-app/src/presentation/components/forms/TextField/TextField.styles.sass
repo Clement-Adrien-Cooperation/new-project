@@ -49,8 +49,8 @@
       @include layout.center
 
       &
-        height: 100%
-        right: 0
+        height: calc(100% - var(--stroke-m, 0.125rem) * 2)
+        right: var(--stroke-m, 0.125rem)
 
     &:has(.text-field__wrapper__left-icon)
       & .text-field__wrapper__input

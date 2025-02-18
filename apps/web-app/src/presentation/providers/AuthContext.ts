@@ -1,16 +1,14 @@
 import { createContext } from 'react'
 
-import type { AuthUserDTO } from '@shared-types/dto'
+import type { AuthUser } from '@shared-types/dto'
 
-import type { AuthState } from '@/domain/auth'
+import type { Auth } from '@/domain/auth'
 
-export type AuthStateWithLoading =
-  | AuthState
-  | { status: 'loading' }
+export type AuthWithLoading = | Auth | { status: 'loading' }
 
 type AuthContextValue = {
-  auth: AuthStateWithLoading
-  setAuthenticatedUser: (user: AuthUserDTO) => void
+  auth: AuthWithLoading
+  setAuthenticatedUser: (user: AuthUser) => void
   logout: () => void
 }
 

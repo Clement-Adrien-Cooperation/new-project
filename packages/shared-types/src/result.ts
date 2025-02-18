@@ -1,6 +1,3 @@
-export const DEFAULT_ERROR_KEY = 'unexpected-error' as const
-export type DefaultErrorKey = typeof DEFAULT_ERROR_KEY
-
 export function failure(): { status: 'error' }
 export function failure<E>(errors: E): { errors: E, status: 'error' }
 export function failure<E>(errors?: E) {
@@ -21,11 +18,11 @@ export function success<T>(data?: T) {
   return { data, status: 'success' }
 }
 
-export type ErrorResult<E = undefined> = E extends undefined
+export type ErrorResult<E = undefined> = E extends undefined | null
   ? { status: 'error' }
   : { errors: E, status: 'error' }
 
-export type SuccessResult<T = undefined> = T extends undefined
+export type SuccessResult<T = undefined> = T extends undefined | null
   ? { status: 'success' }
   : { data: T, status: 'success' }
 

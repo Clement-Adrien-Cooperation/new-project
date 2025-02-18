@@ -1,40 +1,57 @@
-import type { LoginCredentials, LoginResponse } from '@shared-types/auth'
-import type { AuthUserDTO } from '@shared-types/dto'
-import { success } from '@shared-types/result'
+import type { AuthUser, LoginRequest, LoginResponse, RegisterRequest, RegisterResponse } from '@shared-types/dto'
+import { failure, success } from '@shared-types/result'
 
 const sleep = (ms = 2000) => new Promise((resolve) => setTimeout(resolve, ms))
 
-const fakeAuthUser: AuthUserDTO = {
+const fakeAuthUser: AuthUser = {
   id: '1',
   username: 'user',
   email: 'user@gmail.com',
   permissions: []
 }
 
+const fakeLoginResponse = {
+  token: 'token',
+  user: fakeAuthUser
+}
+
 export const authApi = {
-  getAuthUserByCredentials: async (credentials: LoginCredentials): Promise<LoginResponse>  => {
-    await sleep()
+  getAuthUserByCredentials: async (loginRequest: LoginRequest): Promise<LoginResponse>  => {
+    try {
+      console.log(loginRequest)
 
-    console.log(credentials)
+      await sleep()
 
-    const loginResponse = {
-      token: 'token',
-      user: fakeAuthUser
+      return success(fakeLoginResponse)
+    } catch (error) {
+      console.error(error)
+      return failure('unexpected-error')
     }
-
-    return success(loginResponse)
   },
 
   getAuthUserByToken: async (authToken: string): Promise<LoginResponse>  => {
-    await sleep()
+    try {
+      console.log(authToken)
 
-    console.info(authToken)
+      await sleep()
 
-    const loginResponse = {
-      token: 'token',
-      user: fakeAuthUser
+      return success(fakeLoginResponse)
+    } catch (error) {
+      console.error(error)
+      return failure('unexpected-error')
     }
+  },
 
-    return success(loginResponse)
+  createUser: async (registerRequest: RegisterRequest): Promise<RegisterResponse>  => {
+    try {
+      console.log(registerRequest)
+
+      await sleep()
+
+      return success(fakeLoginResponse)
+    } catch (error) {
+      console.error(error)
+      return failure(['unexpected-error'])
+    }
   }
 }

@@ -1,20 +1,18 @@
 import { LogInIcon } from 'lucide-react'
 import { type FC, useState } from 'react'
 
-import type { LoginCredentials, LoginErrorKey } from '@shared-types/auth'
-import type { ErrorResult } from '@shared-types/result'
+import type { LoginErrorKey } from '@shared-types/dto'
 
 import { useAuth, useI18n } from '@/application/hooks'
-import { AuthService } from '@/application/services'
+import { AuthService, type LoginCredentials } from '@/application/services'
 import { AUTH_FORM_FIELDS, type AuthFormField } from '@/domain/auth'
 import type { Translate } from '@/domain/i18n'
 import { FieldSet, Form, FormErrors, RememberMeCheckbox, RequiredFieldsMessage, SubmitButton, UserNameField, UserPasswordField } from '@/presentation/components'
 import type { ValidationErrors } from '@/presentation/utils'
 
 type LoginFormValidationErrors = ValidationErrors<AuthFormField>
-type LoginErrors = ErrorResult<LoginErrorKey>['errors']
 
-const getLoginFormValidationErrors = (errors: LoginErrors, translate: Translate): LoginFormValidationErrors => {
+const getLoginFormValidationErrors = (errors: LoginErrorKey, translate: Translate): LoginFormValidationErrors => {
   const formErrors: string[] = []
   const usernameOrEmailErrors: string[] = []
   const passwordErrors: string[] = []
@@ -52,8 +50,8 @@ export const LoginForm: FC = () => {
     const password = formData.get(AUTH_FORM_FIELDS.password) as string
     const shouldRemember = formData.get(AUTH_FORM_FIELDS.shouldRemember) === 'on'
 
-    const credentials: LoginCredentials = { userNameOrEmail, password }
-    const loginResult = await AuthService.login(credentials, shouldRemember)
+    const credentials: LoginCredentials = { userNameOrEmail, password, shouldRemember }
+    const loginResult = await AuthService.login(credentials)
 
     if (loginResult.status === 'error') {
       const newValidationErrors = getLoginFormValidationErrors(loginResult.errors, translate)

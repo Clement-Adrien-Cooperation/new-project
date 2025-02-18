@@ -1,18 +1,18 @@
 import { type FC, type PropsWithChildren, useCallback, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 
-import type { AuthUserDTO } from '@shared-types/dto'
+import type { AuthUser } from '@shared-types/dto'
 
 import { AuthService } from '@/application/services'
 import { ROUTE_DEFAULT } from '@/domain/navigation'
-import { AuthContext, type AuthStateWithLoading } from '@/presentation/providers'
+import { AuthContext, type AuthWithLoading } from '@/presentation/providers'
 
 export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [auth, setAuth] = useState<AuthStateWithLoading>({ status: 'loading' })
+  const [auth, setAuth] = useState<AuthWithLoading>({ status: 'loading' })
 
   const navigate = useNavigate()
 
-  const setAuthenticatedUser = useCallback((user: AuthUserDTO) => {
+  const setAuthenticatedUser = useCallback((user: AuthUser) => {
     setAuth({ status: 'authenticated', user })
   }, [])
 
@@ -23,7 +23,7 @@ export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   }, [navigate])
 
   useEffect(() => {
-    AuthService.getInitialAuthState()
+    AuthService.getInitialAuth()
       .then(setAuth)
       .catch(console.error)
   }, [])

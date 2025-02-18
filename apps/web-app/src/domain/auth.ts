@@ -1,7 +1,7 @@
-import type { AuthUserDTO } from '@shared-types/dto'
+import type { AuthUser } from '@shared-types/dto'
 
-export type AuthState =
-  | { status: 'authenticated', user: AuthUserDTO }
+export type Auth =
+  | { status: 'authenticated', user: AuthUser }
   | { status: 'unauthenticated' }
 
 export const AUTH_FORM_FIELDS = {
