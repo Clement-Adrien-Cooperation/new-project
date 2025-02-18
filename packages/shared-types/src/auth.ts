@@ -1,7 +1,7 @@
 import { z } from 'zod'
 
 import type { AuthUserDTO } from './dto'
-import type { Result } from './result'
+import type { DefaultErrorKey, Result } from './result'
 
 import { PASSWORD_RULES, type RegisterErrorKey, USERNAME_RULES } from './auth.validation'
 
@@ -39,7 +39,7 @@ export const LoginCredentialsSchema = z.object({
 
 export type LoginCredentials = z.infer<typeof LoginCredentialsSchema>
 
-export type LoginErrorKey = 'invalid-credentials'
+export type LoginErrorKey = DefaultErrorKey | 'invalid-credentials'
 
 export type LoginResponseData = {
   token: string

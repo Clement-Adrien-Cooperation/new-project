@@ -49,7 +49,12 @@ export const AuthService = {
   },
 
   test: (): Result => {
-    return failure()
+    const test = 'test'
+
+    if (test.length > 2) {
+      return failure()
+    }
+
     return success()
   },
 

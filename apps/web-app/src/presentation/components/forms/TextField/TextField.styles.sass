@@ -60,6 +60,10 @@
       & .text-field__wrapper__input
         padding-inline-end: calc(var(--text-field-input-padding-inline) * 2 + var(--text-field-icon-size))
 
+  @include selectors.invalid
+    & .text-field__wrapper__input
+      border-color: var(--status-error-border)
+
   &__description
     @include typography.body-small
 

@@ -16,20 +16,25 @@ type LoginErrors = ErrorResult<LoginErrorKey>['errors']
 
 const getLoginFormValidationErrors = (errors: LoginErrors, translate: Translate): LoginFormValidationErrors => {
   const formErrors: string[] = []
+  const usernameOrEmailErrors: string[] = []
+  const passwordErrors: string[] = []
 
-  for (const error of errors) {
-    switch (error) {
-      case 'invalid-credentials':
-        formErrors.push(translate('components.forms.loginForm.errors.invalidCredentials'))
-        break
-      case 'unexpected-error':
-      default:
-        formErrors.push(translate('errors.unexpected'))
-        break
-    }
+  switch (errors) {
+    case 'invalid-credentials':
+      usernameOrEmailErrors.push(translate('components.forms.loginForm.errors.invalidCredentials'))
+      passwordErrors.push(translate('components.forms.loginForm.errors.invalidCredentials'))
+      break
+    case 'unexpected-error':
+    default:
+      formErrors.push(translate('errors.unexpected'))
+      break
   }
 
-  return { form: formErrors }
+  return {
+    form: formErrors,
+    usernameOrEmail: usernameOrEmailErrors,
+    password: passwordErrors
+  }
 }
 
 export const LoginForm: FC = () => {

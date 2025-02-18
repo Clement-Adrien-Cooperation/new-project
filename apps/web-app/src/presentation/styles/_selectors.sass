@@ -17,6 +17,11 @@
   &[data-hovered='true']
     @content
 
+@mixin invalid
+  &:invalid:not([data-rac]),
+  &[data-invalid='true']
+    @content
+
 @mixin pending
   &.pending:not([data-rac]),
   &[data-pending='true']

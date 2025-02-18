@@ -1,14 +1,14 @@
 export const DEFAULT_ERROR_KEY = 'unexpected-error' as const
 export type DefaultErrorKey = typeof DEFAULT_ERROR_KEY
 
-export const failure = <E extends string>(...args: (E | E[])[]): { errors: (E | DefaultErrorKey)[], status: 'error' } => {
-  const flattenedErrors = args.flat()
-  const uniqueErrors = [...new Set(flattenedErrors)] as (E | DefaultErrorKey)[]
-
-  return {
-    errors: uniqueErrors.length > 0 ? uniqueErrors : [DEFAULT_ERROR_KEY],
-    status: 'error' as const
+export function failure(): { status: 'error' }
+export function failure<E>(errors: E): { errors: E, status: 'error' }
+export function failure<E>(errors?: E) {
+  if (errors == null) {
+    return { status: 'error' }
   }
+
+  return { errors, status: 'error' }
 }
 
 export function success(): { status: 'success' }
@@ -21,12 +21,14 @@ export function success<T>(data?: T) {
   return { data, status: 'success' }
 }
 
-export type ErrorResult<E extends string | undefined = undefined> = { errors: (E | DefaultErrorKey)[], status: 'error' }
+export type ErrorResult<E = undefined> = E extends undefined
+  ? { status: 'error' }
+  : { errors: E, status: 'error' }
 
 export type SuccessResult<T = undefined> = T extends undefined
   ? { status: 'success' }
-  : { status: 'success', data: T }
+  : { data: T, status: 'success' }
 
-export type Result<E extends string = DefaultErrorKey, T = undefined>
-  = ErrorResult<E | DefaultErrorKey>
+export type Result<E = undefined, T = undefined>
+  = ErrorResult<E>
   | SuccessResult<T>
