@@ -39,7 +39,7 @@ export const LoginCredentialsSchema = z.object({
 
 export type LoginCredentials = z.infer<typeof LoginCredentialsSchema>
 
-export type LoginErrorKey = 'invalid-credentials' | 'unexpected-error'
+export type LoginErrorKey = 'invalid-credentials'
 
 export type LoginResponseData = {
   token: string

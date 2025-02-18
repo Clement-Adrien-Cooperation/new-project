@@ -29,6 +29,9 @@ export const fr = {
         }
       },
       loginForm: {
+        errors: {
+          invalidCredentials: 'Les identifiants fournis sont incorrects. Veuillez réessayer.'
+        },
         submit: 'Connexion',
         userNameOrEmail: {
           label: 'Nom d\'utilisateur ou email',
@@ -53,6 +56,9 @@ export const fr = {
       light: 'Clair',
       system: 'Système'
     }
+  },
+  errors: {
+    unexpected: 'Il y a eu une erreur imprévue. Veuillez réessayer plus tard.'
   },
   layouts: {
     navBar: {

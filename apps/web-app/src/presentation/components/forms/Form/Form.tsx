@@ -11,6 +11,7 @@ export type FormProps = Omit<ReactAriaFormProps, 'onSubmit'> & {
 }
 
 export const Form: FC<FormProps> = ({
+  children,
   className,
   onSubmit,
   ...formProps
@@ -31,6 +32,8 @@ export const Form: FC<FormProps> = ({
       className={mergeClassNames('form', className)}
       onSubmit={onFormSubmit}
       {...formProps}
-    />
+    >
+      {children}
+    </ReactAriaForm>
   )
 }

@@ -27,6 +27,9 @@ export const en = {
         }
       },
       loginForm: {
+        errors: {
+          invalidCredentials: 'The provided credentials are incorrect. Please try again.'
+        },
         submit: 'Login',
         userNameOrEmail: {
           label: 'Username or email',
@@ -51,6 +54,9 @@ export const en = {
       light: 'Light',
       system: 'System'
     }
+  },
+  errors: {
+    unexpected: 'An unexpected error occurred. Please try again later.'
   },
   layouts: {
     navBar: {

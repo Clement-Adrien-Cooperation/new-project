@@ -31,7 +31,7 @@ export const AuthService = {
 
     if (!credentialsValidationResult.success) {
       //! handle errors
-      return failure()
+      return failure('invalid-credentials')
     }
 
     const loginResponse = await authApi.getAuthUserByCredentials(credentials)
@@ -46,6 +46,11 @@ export const AuthService = {
     }
 
     return success(loginResponse.data.user)
+  },
+
+  test: (): Result => {
+    return failure()
+    return success()
   },
 
   logout: () => {

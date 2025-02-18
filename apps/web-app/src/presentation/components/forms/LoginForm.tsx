@@ -1,25 +1,47 @@
 import { LogInIcon } from 'lucide-react'
 import { type FC, useState } from 'react'
 
-import type { LoginCredentials } from '@shared-types/auth'
+import type { LoginCredentials, LoginErrorKey } from '@shared-types/auth'
+import type { ErrorResult } from '@shared-types/result'
 
 import { useAuth, useI18n } from '@/application/hooks'
 import { AuthService } from '@/application/services'
-import { AUTH_FORM_FIELDS, type AuthFormFields } from '@/domain/auth'
-import { FieldSet, Form, RememberMeCheckbox, RequiredFieldsMessage, SubmitButton, UserNameField, UserPasswordField } from '@/presentation/components'
+import { AUTH_FORM_FIELDS, type AuthFormField } from '@/domain/auth'
+import type { Translate } from '@/domain/i18n'
+import { FieldSet, Form, FormErrors, RememberMeCheckbox, RequiredFieldsMessage, SubmitButton, UserNameField, UserPasswordField } from '@/presentation/components'
 import type { ValidationErrors } from '@/presentation/utils'
 
-type LoginFormValidationErrors = ValidationErrors<AuthFormFields>
+type LoginFormValidationErrors = ValidationErrors<AuthFormField>
+type LoginErrors = ErrorResult<LoginErrorKey>['errors']
+
+const getLoginFormValidationErrors = (errors: LoginErrors, translate: Translate): LoginFormValidationErrors => {
+  const formErrors: string[] = []
+
+  for (const error of errors) {
+    switch (error) {
+      case 'invalid-credentials':
+        formErrors.push(translate('components.forms.loginForm.errors.invalidCredentials'))
+        break
+      case 'unexpected-error':
+      default:
+        formErrors.push(translate('errors.unexpected'))
+        break
+    }
+  }
+
+  return { form: formErrors }
+}
 
 export const LoginForm: FC = () => {
   const [isLoginFormSubmitting, setIsLoginFormSubmitting] = useState(false)
-  const [loginFormValidationErrors, _setLoginFormValidationErrors] = useState<LoginFormValidationErrors>()
+  const [loginFormValidationErrors, setLoginFormValidationErrors] = useState<LoginFormValidationErrors>()
 
   const { setAuthenticatedUser } = useAuth()
   const { translate } = useI18n()
 
   const onLoginFormSubmit = async (formData: FormData) => {
     setIsLoginFormSubmitting(true)
+    setLoginFormValidationErrors(undefined)
 
     const userNameOrEmail = formData.get(AUTH_FORM_FIELDS.usernameOrEmail) as string
     const password = formData.get(AUTH_FORM_FIELDS.password) as string
@@ -28,11 +50,10 @@ export const LoginForm: FC = () => {
     const credentials: LoginCredentials = { userNameOrEmail, password }
     const loginResult = await AuthService.login(credentials, shouldRemember)
 
-    console.log(loginResult)
-
     if (loginResult.status === 'error') {
+      const newValidationErrors = getLoginFormValidationErrors(loginResult.errors, translate)
+      setLoginFormValidationErrors(newValidationErrors)
       setIsLoginFormSubmitting(false)
-      //! display error messages
       return
     }
 
@@ -53,6 +74,8 @@ export const LoginForm: FC = () => {
         />
 
         <UserPasswordField />
+
+        <FormErrors errors={loginFormValidationErrors} />
 
         <RememberMeCheckbox />
 

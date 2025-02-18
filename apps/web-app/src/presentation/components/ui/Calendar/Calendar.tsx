@@ -37,6 +37,7 @@ export function Calendar <T extends DateValue> ({
       <header className='calendar__header'>
         <Button
           Icon={<ChevronLeftIcon />}
+          size='small'
           slot='previous'
           variant='transparent'
         />
@@ -45,6 +46,7 @@ export function Calendar <T extends DateValue> ({
 
         <Button
           Icon={<ChevronRightIcon />}
+          size='small'
           slot='next'
           variant='transparent'
         />

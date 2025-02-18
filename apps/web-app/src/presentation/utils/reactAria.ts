@@ -34,4 +34,5 @@ export const mergeReactAriaClassNames = <T extends ElementRenderProps> (
   return mergeClassNames(...baseClassName, classNameOverride)
 }
 
-export type ValidationErrors <T extends string = string> = Partial<Record<T, string | string[]>>
+export type GlobalFormErrors = 'form'
+export type ValidationErrors <T extends string = string> = Partial<Record<T | GlobalFormErrors, string | string[]>>

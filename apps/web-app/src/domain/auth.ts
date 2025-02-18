@@ -13,4 +13,4 @@ export const AUTH_FORM_FIELDS = {
   shouldRemember: 'shouldRemember'
 } as const
 
-export type AuthFormFields = keyof typeof AUTH_FORM_FIELDS
+export type AuthFormField = keyof typeof AUTH_FORM_FIELDS

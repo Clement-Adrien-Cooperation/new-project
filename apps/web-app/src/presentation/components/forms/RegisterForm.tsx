@@ -2,11 +2,11 @@ import { UserPlusIcon } from 'lucide-react'
 import { type FC, useState } from 'react'
 
 import { useI18n } from '@/application/hooks'
-import { AUTH_FORM_FIELDS, type AuthFormFields } from '@/domain/auth'
+import { AUTH_FORM_FIELDS, type AuthFormField } from '@/domain/auth'
 import { EmailField, FieldSet, Form, PasswordsValidationFields, RememberMeCheckbox, RequiredFieldsMessage, SubmitButton, UserNameField } from '@/presentation/components'
 import type { ValidationErrors } from '@/presentation/utils'
 
-type RegisterFormValidationErrors = ValidationErrors<AuthFormFields>
+type RegisterFormValidationErrors = ValidationErrors<AuthFormField>
 
 export const RegisterForm: FC = () => {
   const [isRegisterFormSubmitting, setIsRegisterFormSubmitting] = useState(false)
