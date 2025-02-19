@@ -6,7 +6,7 @@ import { useI18n } from '@/application/hooks'
 import { AUTH_FORM_FIELDS } from '@/domain/auth'
 import { PasswordField, type PasswordFieldProps } from '@/presentation/components'
 
-export const UserPasswordField: FC<PasswordFieldProps> = ({ validate, ...userPasswordFieldProps}) => {
+export const UserPasswordField: FC<PasswordFieldProps> = ({ validate, ...userPasswordFieldProps }) => {
   const { translate } = useI18n()
 
   const passwordTooLong = translate('components.forms.fields.userPassword.errors.tooLong', { smart_count: PASSWORD_RULES.maxLength })
@@ -15,19 +15,20 @@ export const UserPasswordField: FC<PasswordFieldProps> = ({ validate, ...userPas
   const passwordRequireSpecialCharacter = translate('components.forms.fields.userPassword.errors.requireSpecialCharacter')
   const unexpectedError = translate('errors.unexpected')
 
-  //?
-  //! que faire du validate que j'ai extrait des props
-  //! pour l'utiliser à la fois dans UserPasswordField et PasswordsValidationFields ?
-  //?
-
   const validatePasswordField = (value: string) => {
     const passwordValidationResult = validatePassword(value)
 
-    if (passwordValidationResult.status === 'success') {
-      return null
-    }
+    const baseValidation = validate?.(value)
 
-    const passwordFieldsErrors: string[] = []
+    const passwordFieldsErrors = Array.isArray(baseValidation)
+      ? baseValidation.filter((v): v is string => Boolean(v))
+      : typeof baseValidation === 'string'
+        ? [baseValidation]
+        : []
+
+    if (passwordValidationResult.status === 'success') {
+      return passwordFieldsErrors
+    }
 
     for (const error of passwordValidationResult.errors) {
       switch (error) {
