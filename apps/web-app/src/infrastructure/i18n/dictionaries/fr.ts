@@ -11,19 +11,37 @@ export const fr = {
     forms: {
       fields: {
         email: {
+          errors: {
+            invalid: 'Cette adresse email est invalide.'
+          },
           label: 'Adresse mail',
           placeholder: 'Entrez votre email'
         },
         passwordsValidation: {
+          errors: {
+            passwordsDonTMatch: 'Les mots de passe ne correspondent pas.'
+          },
           confirmPasswordLabel: 'Confirmer le mot de passe',
           confirmPasswordPlaceholder: 'Retapez votre mot de passe'
         },
         rememberMeCheckboxLabel: 'Se souvenir de moi',
         userName: {
+          errors: {
+            invalidCharacters: 'Le nom d\'utilisateur ne peut contenir que des lettres, des chiffres, des tirets et des underscores.',
+            noSpaces: 'Le nom d\'utilisateur ne peut pas contenir d\'espaces.',
+            tooLong: 'Le nom d\'utilisateur doit contenir au maximum %{smart_count} caractère. |||| Le nom d\'utilisateur doit contenir au maximum %{smart_count} caractères.',
+            tooShort: 'Le nom d\'utilisateur doit contenir au minimum %{smart_count} caractère. |||| Le nom d\'utilisateur doit contenir au minimum %{smart_count} caractères.'
+          },
           label: 'Nom d\'utilisateur',
           placeholder: 'Entrez votre nom d\'utilisateur'
         },
         userPassword: {
+          errors: {
+            requireNumber: 'Le mot de passe doit contenir au moins un chiffre.',
+            requireSpecialCharacter: 'Le mot de passe doit contenir au moins un caractère spécial.',
+            tooLong: 'Le mot de passe doit contenir au maximum %{smart_count} caractère. |||| Le mot de passe doit contenir au maximum %{smart_count} caractères.',
+            tooShort: 'Le mot de passe doit contenir au minimum %{smart_count} caractère. |||| Le mot de passe doit contenir au minimum %{smart_count} caractères.'
+          },
           label: 'Mot de passe',
           placeholder: 'Entrez votre mot de passe'
         }
@@ -43,6 +61,10 @@ export const fr = {
         placeholder: 'Entrez votre mot de passe'
       },
       registerForm: {
+        errors: {
+          emailAlreadyExists: 'Cette adresse email est déjà utilisée. Veuillez en choisir une autre.',
+          usernameAlreadyExists: 'Ce nom d\'utilisateur est déjà utilisé. Veuillez en choisir un autre.'
+        },
         submit: 'Créer un compte'
       },
       requiredFieldsMessage: 'Les champs marqués d\'un * sont obligatoires.'
@@ -58,6 +80,7 @@ export const fr = {
     }
   },
   errors: {
+    badRequest: 'La requête est incorrecte. Veuillez vérifier les données envoyées.',
     unexpected: 'Il y a eu une erreur imprévue. Veuillez réessayer plus tard.'
   },
   layouts: {

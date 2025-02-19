@@ -12,7 +12,7 @@ export type LoginCredentials = LoginRequest & ShouldRememberAuth
 type LoginResult = Result<LoginErrorKey, AuthUser>
 
 export type RegisterCredentials = RegisterRequest & ShouldRememberAuth & { confirmPassword: string }
-type AuthServiceRegisterErrorKey = RegisterErrorKey | 'passwords-don\'t-match'
+export type AuthServiceRegisterErrorKey = RegisterErrorKey | 'passwords-don\'t-match'
 type RegisterResult = Result<AuthServiceRegisterErrorKey[], AuthUser>
 
 export const AuthService = {

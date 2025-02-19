@@ -1,8 +1,82 @@
-import type { RegisterErrorKey, RegisterRequest } from '../dto'
+import type { DefaultErrorKey, EmailErrorKey, PasswordErrorKey, RegisterErrorKey, RegisterRequest, UsernameErrorKey } from '../dto'
 import { failure, type Result, success } from '../result'
 
 import { EMAIL_ERRORS, PASSWORD_ERRORS, USERNAME_ERRORS } from './auth.errors'
-import { RegisterRequestSchema } from './auth.schema'
+import { emailSchema, passwordSchema, RegisterRequestSchema, usernameSchema } from './auth.schema'
+
+// PASSWORD VALIDATION
+
+const isPasswordError = (error: string): error is PasswordErrorKey => Object.values(PASSWORD_ERRORS).includes(error as PasswordErrorKey)
+
+export const validatePassword = (password: unknown): Result<Array<PasswordErrorKey | DefaultErrorKey>> => {
+  const passwordValidationResult = passwordSchema.safeParse(password)
+
+  if (passwordValidationResult.success) {
+    return success()
+  }
+
+  const errors: Array<PasswordErrorKey | DefaultErrorKey> = passwordValidationResult.error.issues.map(issue => {
+    const message = issue.message
+
+    return isPasswordError(message)
+      ? message
+      : 'unexpected-error'
+  })
+
+  const validErrors = errors.filter((error): error is PasswordErrorKey => error !== null)
+  const uniqueErrors = Array.from(new Set(validErrors))
+  return failure(uniqueErrors)
+}
+
+// USERNAME VALIDATION
+
+const isUsernameError = (error: string): error is UsernameErrorKey => Object.values(USERNAME_ERRORS).includes(error as UsernameErrorKey)
+
+export const validateUsername = (username: unknown): Result<Array<UsernameErrorKey | DefaultErrorKey>> => {
+  const usernameValidationResult = usernameSchema.safeParse(username)
+
+  if (usernameValidationResult.success) {
+    return success()
+  }
+
+  const errors: Array<UsernameErrorKey | DefaultErrorKey> = usernameValidationResult.error.issues.map(issue => {
+    const message = issue.message
+
+    return isUsernameError(message)
+      ? message
+      : 'unexpected-error'
+  })
+
+  const validErrors = errors.filter((error): error is UsernameErrorKey => error !== null)
+  const uniqueErrors = Array.from(new Set(validErrors))
+  return failure(uniqueErrors)
+}
+
+// EMAIL VALIDATION
+
+const isEmailError = (error: string): error is EmailErrorKey => Object.values(EMAIL_ERRORS).includes(error as EmailErrorKey)
+
+export const validateEmail = (email: unknown): Result<Array<EmailErrorKey | DefaultErrorKey>> => {
+  const emailValidationResult = emailSchema.safeParse(email)
+
+  if (emailValidationResult.success) {
+    return success()
+  }
+
+  const errors: Array<EmailErrorKey | DefaultErrorKey> = emailValidationResult.error.issues.map(issue => {
+    const message = issue.message
+
+    return isEmailError(message)
+      ? message
+      : 'unexpected-error'
+  })
+
+  const validErrors = errors.filter((error): error is EmailErrorKey => error !== null)
+  const uniqueErrors = Array.from(new Set(validErrors))
+  return failure(uniqueErrors)
+}
+
+// REGISTER VALIDATION
 
 type RegisterRequestKey = keyof RegisterRequest
 
@@ -25,13 +99,13 @@ const isRegisterErrorByField = (field: string, error: string): error is Register
 }
 
 export const validateRegisterRequest = (registerRequest: unknown): Result<RegisterErrorKey[], RegisterRequest> => {
-  const validationResult = RegisterRequestSchema.safeParse(registerRequest)
+  const registerRequestValidationResult = RegisterRequestSchema.safeParse(registerRequest)
 
-  if (validationResult.success) {
-    return success(validationResult.data)
+  if (registerRequestValidationResult.success) {
+    return success(registerRequestValidationResult.data)
   }
 
-  const errors: RegisterErrorKey[] = validationResult.error.issues.map(issue => {
+  const errors: RegisterErrorKey[] = registerRequestValidationResult.error.issues.map(issue => {
     const field = String(issue.path[0])
     const message = issue.message
 

@@ -9,19 +9,37 @@ export const en = {
     forms: {
       fields: {
         email: {
+          errors: {
+            invalid: 'This email address is invalid.'
+          },
           label: 'Email',
           placeholder: 'Enter your email'
         },
         passwordsValidation: {
+          errors: {
+            passwordsDonTMatch: 'The passwords do not match.'
+          },
           confirmPasswordLabel: 'Confirm password',
           confirmPasswordPlaceholder: 'Re-enter your password'
         },
         rememberMeCheckboxLabel: 'Remember me',
         userName: {
+          errors: {
+            invalidCharacters: 'The username can only contain letters, numbers, dashes, and underscores.',
+            noSpaces: 'The username cannot contain spaces.',
+            tooLong: 'The username must contain at most %{smart_count} character. |||| The username must contain at most %{smart_count} characters.',
+            tooShort: 'The username must contain at least %{smart_count} character. |||| The username must contain at least %{smart_count} characters.'
+          },
           label: 'Username',
           placeholder: 'Enter your username'
         },
         userPassword: {
+          errors: {
+            requireNumber: 'The password must contain at least one number.',
+            requireSpecialCharacter: 'The password must contain at least one special character.',
+            tooLong: 'The password must contain at most %{smart_count} character. |||| The password must contain at most %{smart_count} characters.',
+            tooShort: 'The password must contain at least %{smart_count} character. |||| The password must contain at least %{smart_count} characters.'
+          },
           label: 'Password',
           placeholder: 'Enter your password'
         }
@@ -41,6 +59,10 @@ export const en = {
         placeholder: 'Enter your password'
       },
       registerForm: {
+        errors: {
+          emailAlreadyExists: 'This email address is already in use. Please choose another one.',
+          usernameAlreadyExists: 'This username is already in use. Please choose another one.'
+        },
         submit: 'Register'
       },
       requiredFieldsMessage: 'Fields marked with * are required.'
@@ -56,6 +78,7 @@ export const en = {
     }
   },
   errors: {
+    badRequest: 'Bad request: Please fill in all required fields.',
     unexpected: 'An unexpected error occurred. Please try again later.'
   },
   layouts: {

@@ -21,7 +21,7 @@ export const FormErrors: FC<FormErrorsProps> = ({ className, errors, ...formErro
     <ul className={mergeClassNames('form-errors', className)} {...formErrorProps}>
       {Array.isArray(errorsList)
         ? errorsList.map(error => <div key={error}>• {error}</div>)
-        : <li className='unique'>{errorsList}</li>
+        : <li>{errorsList}</li>
       }
     </ul>
   )
