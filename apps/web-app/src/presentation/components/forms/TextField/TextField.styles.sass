@@ -1,0 +1,73 @@
+@use '@/presentation/styles/forms'
+@use '@/presentation/styles/layout'
+@use '@/presentation/styles/selectors'
+@use '@/presentation/styles/sizes'
+@use '@/presentation/styles/typography'
+
+.text-field
+  @include forms.field-wrapper
+
+  &__wrapper
+    --text-field-input-padding-inline: var(--size-120, 0.75rem)
+    --text-field-icon-size: var(--element-icon-size, 1rem)
+    max-width: 100%
+    min-width: 100%
+    position: relative
+
+    &__input
+      @include forms.field-content
+
+      &
+        @include typography.label-large
+
+      &
+        @include typography.text-ellipsis
+
+      &
+        cursor: text
+        max-width: 100%
+        min-width: 100%
+        padding-inline: var(--text-field-input-padding-inline)
+
+        @include selectors.placeholder
+          color: var(--neutral-foreground-muted)
+
+    &__left-icon,
+    &__right-content
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+
+    &__left-icon
+      @include sizes.fixed(var(--text-field-icon-size))
+
+      &
+        left: var(--text-field-input-padding-inline)
+        pointer-events: none
+
+    &__right-content
+      @include layout.center
+
+      &
+        height: calc(100% - var(--stroke-m, 0.125rem) * 2)
+        right: var(--stroke-m, 0.125rem)
+
+    &:has(.text-field__wrapper__left-icon)
+      & .text-field__wrapper__input
+        padding-inline-start: calc(var(--text-field-input-padding-inline) * 1.5 + var(--text-field-icon-size))
+
+    &:has(.text-field__wrapper__right-content)
+      & .text-field__wrapper__input
+        padding-inline-end: calc(var(--text-field-input-padding-inline) * 2 + var(--text-field-icon-size))
+
+  @include selectors.invalid
+    & .text-field__wrapper__input
+      border-color: var(--status-error-border)
+
+  &__description
+    @include typography.body-small
+
+  &__description,
+  &__error,
+  &__label
+    @include forms.field-label

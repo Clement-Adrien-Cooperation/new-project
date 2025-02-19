@@ -1,0 +1,76 @@
+@use '@/presentation/styles/accessibility'
+@use '@/presentation/styles/animations'
+@use '@/presentation/styles/colors'
+@use '@/presentation/styles/layout'
+@use '@/presentation/styles/selectors'
+@use '@/presentation/styles/sizes'
+@use '@/presentation/styles/typography'
+
+.checkbox
+  @include animations.color-transition
+
+  &
+    @include accessibility.focus-outline
+
+  &
+    @include typography.label-large
+
+  &
+    align-items: center
+    border-radius: var(--radius-s, 0.25rem)
+    display: flex
+    gap: var(--size-80, 0.75rem)
+    width: fit-content
+
+  &.right
+    flex-direction: row-reverse
+
+  &__icon
+    @include sizes.fixed(1.25rem)
+
+    &
+      @include layout.center
+
+    &
+      @include animations.color-transition
+
+    &
+      border: var(--stroke-m, 0.125rem) solid var(--border)
+      border-radius: var(--radius-s, 0.25rem)
+      padding: var(--size-20, 0.125rem)
+
+  @include selectors.hovered
+    color: colors.fade(var(--neutral-foreground), var(--alpha-2xl, 0.88))
+
+    & .checkbox__icon
+      background-color: var(--border)
+
+  @include selectors.pressed
+    color: colors.fade(var(--neutral-foreground), var(--alpha-xl, 0.76))
+
+    & .checkbox__icon
+      background-color: colors.fade(var(--border), var(--alpha-2xl, 0.88))
+      border-color: colors.fade(var(--border), var(--alpha-2xl, 0.88))
+
+  @include selectors.selected
+    & .checkbox__icon
+      background-color: var(--brand-background-primary)
+      border-color: var(--brand-background-primary)
+      color: var(--brand-foreground-on-brand)
+
+    @include selectors.hovered
+      & .checkbox__icon
+        background-color: colors.fade(var(--brand-background-primary), var(--alpha-2xl, 0.88))
+        border-color: colors.fade(var(--brand-background-primary), var(--alpha-2xl, 0.88))
+
+    @include selectors.pressed
+      & .checkbox__icon
+        background-color: colors.fade(var(--brand-background-primary), var(--alpha-xl, 0.76))
+        border-color: colors.fade(var(--brand-background-primary), var(--alpha-xl, 0.76))
+
+  @include selectors.disabled
+    color: var(--neutral-foreground-muted)
+    pointer-events: none
+
+    & .checkbox__icon
+      opacity: var(--alpha-s, 0.36)

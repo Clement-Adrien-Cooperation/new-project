@@ -1,3 +1,7 @@
+@mixin center
+  align-content: center
+  justify-items: center
+
 @mixin absolute-center
   inset: 50% auto auto 50%
   position: absolute
@@ -8,13 +12,21 @@
   position: fixed
   transform: translate(-50%, -50%)
 
-@mixin flex-center
-  align-items: center
-  display: flex
-  justify-content: center
-
 @mixin full-screen
   height: 100svh
   inset: 0
   position: fixed
   width: 100vw
+
+@mixin main-content
+  display: flex
+  flex: 1
+  flex-direction: column
+  gap: var(--size-480, 3rem)
+  margin-inline: auto
+  padding-block: clamp(2rem, 1.25rem + 5vw, 4rem) clamp(5rem, 20%, 20rem)
+  width: min(50rem, var(--common-max-width, 95%))
+
+@mixin popover
+  background-color: var(--neutral-background)
+  border: var(--stroke-m, 0.125rem) solid var(--border)

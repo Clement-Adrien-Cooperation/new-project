@@ -9,13 +9,13 @@ export const LocaleSwitcher: FC = () => {
 
   const localeSelectItems: PickerItems<Locale> = [
     { id: 'en', textValue: 'English' },
-    { id: 'fr', textValue: 'French' }
+    { id: 'fr', textValue: 'Français' }
   ]
 
   return (
     <Select
       items={localeSelectItems}
-      label={translate('features.locale.label')}
+      label={translate('components.localeSwitcher.label')}
       onSelectionChange={newLocale => changeLocale(newLocale.id)}
       selectedKey={selectedLocale}
     />

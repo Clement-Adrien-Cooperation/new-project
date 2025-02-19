@@ -10,7 +10,7 @@ export type DotNestedKeys<T> = (
 
 export type ValueOf <T extends object> = T[keyof T]
 
-export const getObjectEntries = <T extends Record<string, T[keyof T]>> (obj: T): Array<[keyof T, T[keyof T]]> => {
+export const getObjectEntries = <T extends Record<string, ValueOf<T>>> (obj: T): Array<[keyof T, ValueOf<T>]> => {
   return Object.entries(obj)
 }
 

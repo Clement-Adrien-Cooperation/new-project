@@ -1,18 +1,24 @@
-import type { FC } from 'react'
-import { Button as ReactAriaButton, type ButtonProps as ReactAriaButtonProps } from 'react-aria-components'
+import type { FC, ReactNode } from 'react'
+import { type ButtonRenderProps, Button as ReactAriaButton, type ButtonProps as ReactAriaButtonProps } from 'react-aria-components'
 
 import { mergeReactAriaPressableClassNames, type PressableProps } from '@/presentation/components/ui/Pressable'
 import { Spinner } from '@/presentation/components'
 
-type ButtonProps = PressableProps & ReactAriaButtonProps
+export type ButtonProps = PressableProps & ReactAriaButtonProps
+
+type ButtonRenderPropsValues = ButtonRenderProps & { defaultChildren: ReactNode | undefined }
+
+const renderButtonChildren = (children: ButtonProps['children'], renderValues: ButtonRenderPropsValues) => {
+  return typeof children === 'function' ? children(renderValues) : children
+}
 
 const renderButtonIcon = (Icon: ButtonProps['Icon'], variant: ButtonProps['variant'], isPending: boolean) => {
-  if (variant == null) {
+  if (Icon == null || variant == null) {
     return null
   }
 
   return (
-    <div role='presentation'>
+    <div className='pressable__icon' role='presentation'>
       {isPending && Icon != null ? <Spinner /> : Icon}
     </div>
   )
@@ -39,15 +45,17 @@ export const Button: FC<ButtonProps> = ({
     )}
     {...buttonProps}
   >
-    {(values) => (
-      <>
-        {renderButtonIcon(Icon, variant, values.isPending)}
+    {(values) => variant == null
+      ? renderButtonChildren(children, values)
+      : <>
+          {renderButtonIcon(Icon, variant, values.isPending)}
 
-        {typeof children === 'function'
-          ? children(values)
-          : children
-        }
-      </>
-    )}
+          {children != null && (
+            <div className='pressable__content'>
+              {renderButtonChildren(children, values)}
+            </div>
+          )}
+        </>
+    }
   </ReactAriaButton>
 )

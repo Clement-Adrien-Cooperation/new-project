@@ -34,24 +34,27 @@ const meta: Meta<typeof Select> = {
     placeholder: 'Select an option',
     onSelectionChange: fn()
   },
+  argTypes: {
+    isDisabled: {
+      control: 'boolean'
+    },
+    label: { control: 'text' },
+    placeholder: { control: 'text' }
+  },
   component: Select,
-  title: 'Select',
   decorators: [
     (Story) => (
-      <div style={{ maxWidth: 300, height: 800 }}>
+      <div style={{ maxWidth: 300 }}>
         <Story />
       </div>
     )
-  ]
+  ],
+  title: 'Select'
 }
 
 export default meta
 type Story = StoryObj<typeof Select>
 
-export const SelectWithItems: Story = {
-  argTypes: {
-    label: { control: 'text' },
-    placeholder: { control: 'text' }
-  },
+export const SelectStory: Story = {
   name: 'Select'
 }

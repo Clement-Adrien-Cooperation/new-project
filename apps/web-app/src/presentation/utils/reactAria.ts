@@ -1,13 +1,17 @@
-import type { ButtonRenderProps, LinkRenderProps, ListBoxItemRenderProps, ListBoxRenderProps, SelectRenderProps } from 'react-aria-components'
+import type { ButtonRenderProps, CalendarRenderProps, DatePickerProps, DateValue, FieldErrorRenderProps, LinkRenderProps, ListBoxItemRenderProps, ListBoxRenderProps, SelectRenderProps, TextFieldRenderProps } from 'react-aria-components'
 
 import { type ClassNames, mergeClassNames } from './classNames'
 
 export type ElementRenderProps
   = ButtonRenderProps
+  | CalendarRenderProps
+  | DatePickerProps<DateValue>
+  | FieldErrorRenderProps
   | LinkRenderProps
   | ListBoxRenderProps
   | ListBoxItemRenderProps
   | SelectRenderProps
+  | TextFieldRenderProps
 
 export type RenderPropsValues <T extends ElementRenderProps> = T & {
   defaultClassName: string | undefined
@@ -29,3 +33,6 @@ export const mergeReactAriaClassNames = <T extends ElementRenderProps> (
 
   return mergeClassNames(...baseClassName, classNameOverride)
 }
+
+export type GlobalFormErrors = 'form'
+export type ValidationErrors <T extends string = string> = Partial<Record<T | GlobalFormErrors, string | string[]>>

@@ -1,14 +1,14 @@
 import { ChevronDownIcon } from 'lucide-react'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Popover, Select as ReactAriaSelect, type SelectProps as ReactAriaSelectProps, SelectValue } from 'react-aria-components'
 
-import { Button, Label, ListBox, ListBoxItem, type ListBoxItemProps, Option, type OptionProps } from '@/presentation/components'
+import { Button, Label, ListBox, type ListItem, Option, type OptionProps } from '@/presentation/components'
 import type { Key, Style } from '@/presentation/types'
-
-import './Select.styles.sass'
 import { mergeReactAriaClassNames } from '@/presentation/utils'
 
-export type PickerItem <K extends Key = Key, O = object> = ListBoxItemProps<K, O & OptionProps>
+import './Select.styles.sass'
+
+export type PickerItem <K extends Key = Key, O = object> = ListItem<K, O & OptionProps>
 export type PickerItems <K extends Key = Key, O = object> = Iterable<PickerItem<K, O>>
 
 type OmittedSelectProps = 'defaultSelectedKey' | 'items' | 'onSelectionChange' | 'selectedKey'
@@ -36,6 +36,7 @@ export function Select <K extends Key, O> ({
   items,
   label,
   onSelectionChange,
+  placeholder,
   selectedKey,
   ...selectProps
 }: SelectProps<K, O>) {
@@ -44,15 +45,11 @@ export function Select <K extends Key, O> ({
 
   const selectRef = useRef<HTMLDivElement>(null)
 
-  const updateSelectSize = useCallback((ref: React.RefObject<HTMLDivElement | null>) => {
-    setSelectWidth(ref.current?.offsetWidth ?? null)
-  }, [])
-
   useEffect(() => {
     if (selectRef.current) {
-      updateSelectSize(selectRef)
+      setSelectWidth(selectRef.current?.offsetWidth ?? null)
     }
-  }, [currentSelectedKey, selectRef, updateSelectSize])
+  }, [currentSelectedKey, selectRef])
 
   const onSelectSelectionChange = (key: Key) => {
     if (!items) {
@@ -80,39 +77,65 @@ export function Select <K extends Key, O> ({
       {...selectProps}
       className={values => mergeReactAriaClassNames(values, className, 'select')}
       onSelectionChange={onSelectSelectionChange}
+      placeholder={placeholder}
       ref={selectRef}
       selectedKey={selectedKey}
     >
-      <Label className='select__label'>{label}</Label>
+      {({ isRequired }) => (
+        <>
+          <Label className='select__label' isRequired={isRequired}>
+            {label}
+          </Label>
 
-      <Button className='select__trigger'>
-        <SelectValue className='select__trigger__value'>
-          {({ selectedText }) => selectedText}
-        </SelectValue>
+          <Button className='select__trigger'>
+            <SelectValue<PickerItem> className='select__trigger__value'>
+              {({ selectedItem }) => {
+                if (!selectedItem) {
+                  return (
+                    <div className='select__trigger__value__text'>
+                      {placeholder}
+                    </div>
+                  )
+                }
 
-        <ChevronDownIcon className='select__trigger__icon' />
-      </Button>
+                return (
+                  <>
+                    {selectedItem.Icon && (
+                      <div className='select__trigger__value__icon'>
+                        {selectedItem.Icon}
+                      </div>
+                    )}
 
-      <Popover className='select__popover'>
-        <ListBox
-          className='select__list'
-          items={items}
-          style={selectStyleVariables}
-        >
-          {item => (
-            <ListBoxItem {...item} className='select__list__item'>
-              {values => (
+                    <div className='select__trigger__value__text'>
+                      {selectedItem.textValue}
+                    </div>
+                  </>
+                )
+              }}
+            </SelectValue>
+
+            <ChevronDownIcon className='select__trigger__icon' />
+          </Button>
+
+          <Popover className='select__popover'>
+            <ListBox
+              className='select__list'
+              itemClassName='select__list__item'
+              items={items}
+              style={selectStyleVariables}
+            >
+              {item => (
                 <Option
-                  isDisabled={values.isDisabled}
-                  isSelected={values.isSelected}
+                  isDisabled={item.isDisabled}
+                  isSelected={item.isSelected}
                   Icon={item.Icon}
                   textValue={item.textValue}
                 />
               )}
-            </ListBoxItem>
-          )}
-        </ListBox>
-      </Popover>
+            </ListBox>
+          </Popover>
+        </>
+      )}
     </ReactAriaSelect>
   )
 }

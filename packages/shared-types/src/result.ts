@@ -1,13 +1,31 @@
-export const failure = <E = string>(error: E) => ({
-  status: 'error' as const,
-  error
-})
+export function failure(): { status: 'error' }
+export function failure<E>(errors: E): { errors: E, status: 'error' }
+export function failure<E>(errors?: E) {
+  if (errors == null) {
+    return { status: 'error' }
+  }
 
-export const success = <T = void>(data: T) => ({
-  status: 'success' as const,
-  data
-})
+  return { errors, status: 'error' }
+}
 
-export type ErrorResult<E = string> = ReturnType<typeof failure<E>>
-export type SuccessResult<T = void> = ReturnType<typeof success<T>>
-export type Result<T = void, E = string> = ErrorResult<E> | SuccessResult<T>
+export function success(): { status: 'success' }
+export function success<T>(data: T): { data: T, status: 'success' }
+export function success<T>(data?: T) {
+  if (data == null) {
+    return { status: 'success' }
+  }
+
+  return { data, status: 'success' }
+}
+
+export type ErrorResult<E = undefined> = E extends undefined | null
+  ? { status: 'error' }
+  : { errors: E, status: 'error' }
+
+export type SuccessResult<T = undefined> = T extends undefined | null
+  ? { status: 'success' }
+  : { data: T, status: 'success' }
+
+export type Result<E = undefined, T = undefined>
+  = ErrorResult<E>
+  | SuccessResult<T>

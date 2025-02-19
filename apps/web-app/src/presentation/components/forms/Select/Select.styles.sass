@@ -1,52 +1,67 @@
+@use '@/presentation/styles/animations'
 @use '@/presentation/styles/interactive'
+@use '@/presentation/styles/selectors'
 @use '@/presentation/styles/sizes'
 @use '@/presentation/styles/typography'
 
 .select
-  display: flex
-  flex-direction: column
+  display: grid
   gap: var(--size-40, 0.25rem)
+  max-width: 100%
 
   &__label
-    @include typography.label-medium
-    @include typography.text-ellipsis
     padding-inline: var(--size-40, 0.25rem)
 
   &__trigger
-    @include interactive.outlined
+    --select-trigger-icon-size: var(--element-icon-size, 1rem)
 
     &
-      @include sizes.popover(var(--select-width, 100%))
+      @include interactive.outlined
+
+    &
       @include typography.label-large
+
+    &
       align-items: center
-      border-radius: var(--radius-m, 0.5rem)
       display: flex
       gap: var(--size-120, 0.75rem)
       height: var(--element-size, 2.5rem)
       justify-content: space-between
+      min-width: 100%
       padding-inline: var(--size-120, 0.75rem)
 
-    &__value
-      @include typography.text-ellipsis
-      flex: 1 0 0
-      text-align: start
+      &__value
+        align-items: center
+        display: grid
+        grid-template-columns: 1fr
+        gap: var(--size-80, 0.5rem)
 
-    &__icon
-      --select-trigger-icon-size: var(--element-icon-size, 1rem)
-      height: var(--select-trigger-icon-size)
-      width: var(--select-trigger-icon-size)
+        &:has(.select__trigger__value__icon)
+          grid-template-columns: var(--select-trigger-icon-size) 1fr
 
-    & [data-placeholder]
-      color: var(--neutral-foreground-muted)
+        @include selectors.placeholder
+          color: var(--neutral-foreground-muted)
+
+        &__text
+          @include typography.text-ellipsis
+
+    &__icon,
+    &__value__icon
+      @include sizes.fixed(var(--select-trigger-icon-size))
 
   &__list
     @include sizes.popover(var(--select-width, 100%))
-    background-color: var(--neutral-background)
-    border: var(--stroke-m, 0.125rem) solid var(--border)
-    border-radius: var(--radius-m, 0.5rem)
-    max-height: clamp(10rem, 45vh, 30rem)
-    overflow-y: auto
-    padding: var(--size-40, 0.3125rem)
+
+    &
+      background-color: var(--neutral-background)
+      border: var(--stroke-m, 0.125rem) solid var(--border)
+      border-radius: var(--radius-m, 0.5rem)
+      max-height: clamp(10rem, 45vh, 30rem)
+      overflow-y: auto
+      padding: var(--size-40, 0.3125rem)
 
     &__item
       @include interactive.transparent
+
+      &
+        cursor: pointer

@@ -27,7 +27,7 @@ const LINK_ICON = <Link2Icon />
 const LINK_LABEL = 'Go to page'
 const LINK_VARIANT = 'underlined'
 
-export const LinkWithLabel: Story = {
+export const LinkWithLabelStory: Story = {
   args: {
     children: LINK_LABEL,
     variant: LINK_VARIANT
@@ -35,7 +35,7 @@ export const LinkWithLabel: Story = {
   name: 'Link with label'
 }
 
-export const IconLink: Story = {
+export const IconLinkStory: Story = {
   args: {
     Icon: LINK_ICON,
     variant: 'tonal'
@@ -43,7 +43,7 @@ export const IconLink: Story = {
   name: 'Link with icon'
 }
 
-export const IconLinkWithLabel: Story = {
+export const IconLinkWithLabelStory: Story = {
   args: {
     children: LINK_LABEL,
     Icon: LINK_ICON,

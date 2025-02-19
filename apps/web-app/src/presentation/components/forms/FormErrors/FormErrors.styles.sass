@@ -1,0 +1,13 @@
+@use '@/presentation/styles/typography'
+
+.form-errors
+  @include typography.label-medium
+
+  &
+    color: var(--status-error-foreground)
+    display: grid
+    gap: var(--size-80, 0.25rem)
+    padding-inline: var(--size-40, 0.25rem)
+    text-align: center
+    text-wrap: pretty
+    width: 100%

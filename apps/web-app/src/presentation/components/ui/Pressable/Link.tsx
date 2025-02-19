@@ -1,9 +1,15 @@
-import type { FC } from 'react'
-import { Link as ReactAriaLink, type LinkProps as ReactAriaLinkProps } from 'react-aria-components'
+import type { FC, ReactNode } from 'react'
+import { type LinkRenderProps, Link as ReactAriaLink, type LinkProps as ReactAriaLinkProps } from 'react-aria-components'
 
 import { mergeReactAriaPressableClassNames, type PressableProps } from '@/presentation/components/ui/Pressable'
 
 type LinkProps = PressableProps & ReactAriaLinkProps
+
+type LinkRenderPropsValues = LinkRenderProps & { defaultChildren: ReactNode | undefined }
+
+const renderLinkChildren = (children: LinkProps['children'], renderValues: LinkRenderPropsValues) => {
+  return typeof children === 'function' ? children(renderValues) : children
+}
 
 export const Link: FC<LinkProps> = ({
   children,
@@ -26,15 +32,21 @@ export const Link: FC<LinkProps> = ({
     )}
     {...linkProps}
   >
-    {(values) => (
-      <>
-        {Icon}
+    {(values) => variant == null
+      ? renderLinkChildren(children, values)
+      : <>
+          {Icon && (
+            <div className='pressable__icon' role='presentation'>
+              {Icon}
+            </div>
+          )}
 
-        {typeof children === 'function'
-          ? children(values)
-          : children
-        }
-      </>
-    )}
+          {children != null && (
+            <div className='pressable__content'>
+              {renderLinkChildren(children, values)}
+            </div>
+          )}
+        </>
+    }
   </ReactAriaLink>
 )

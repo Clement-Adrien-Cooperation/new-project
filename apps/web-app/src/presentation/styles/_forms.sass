@@ -1,0 +1,19 @@
+@use '@/presentation/styles/interactive'
+
+@mixin field-wrapper
+  display: grid
+  gap: var(--size-40, 0.25rem)
+  max-width: 100%
+
+@mixin field-label
+  padding-inline: var(--size-40, 0.25rem)
+
+@mixin field-content
+  @include interactive.outlined
+
+  &
+    align-items: center
+    border-radius: var(--radius-m, 0.5rem)
+    display: flex
+    gap: var(--size-120, 0.75rem)
+    height: var(--element-size, 2.5rem)

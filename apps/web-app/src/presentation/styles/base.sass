@@ -1,12 +1,16 @@
 @use '@/presentation/styles/normalize'
 @use '@/presentation/styles/sizes'
 @use '@/presentation/styles/colors'
-@use '@/presentation/styles/transitions'
+@use '@/presentation/styles/animations'
 @use '@/presentation/styles/typography'
-@use '@/presentation/styles/accessibility'
-@use '@/presentation/styles/interactive'
 @use '@/presentation/styles/shadows'
+@use '@/presentation/styles/layout'
 @use '@/presentation/styles/scrollbar'
+
+:root
+  color-scheme: dark light
+  overflow-x: hidden
+  scroll-behavior: smooth
 
 html
   -moz-osx-font-smoothing: grayscale
@@ -14,15 +18,15 @@ html
   -webkit-tap-highlight-color: transparent
   accent-color: var(--brand-foreground-accent)
   caret-color: var(--brand-foreground-accent)
-  color-scheme: dark light
 
   ::selection
     background-color: var(--brand-background-primary)
     color: var(--brand-foreground-on-brand)
 
 body
+  @include animations.color-transition
   @include typography.body-medium
-  background: var(--neutral-background)
+  background-color: var(--neutral-background)
   color: var(--neutral-foreground)
   height: 100svh
 
@@ -30,19 +34,6 @@ body
   display: flex
   flex-direction: column
   height: 100%
-
-main
-  flex: 1
-  display: flex
-  flex-direction: column
-  gap: 2rem
-  margin-inline: auto
-  padding-block: 5rem
-  width: min(20rem, calc(100% - 4rem))
-
-header, footer
-  height: 100px
-  background: red
 
 h1, h2, h3, h4, h5, h6
   @include typography.title-medium

@@ -1,7 +1,10 @@
+@use '@/presentation/styles/animations'
+
 .separator
+  @include animations.color-transition
   --separator-size: var(--stroke-m, 0.125rem)
   --separator-spacing: var(--size-40, 0.25rem)
-  background-color: var(--neutral-background-muted)
+  background-color: var(--border)
 
   &.horizontal
     height: var(--separator-size)

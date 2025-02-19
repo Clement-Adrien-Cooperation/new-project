@@ -1,0 +1,18 @@
+@use '@/presentation/styles/layout'
+@use '@/presentation/styles/pressable'
+
+.nav-bar
+  @include layout.center
+  height: 100%
+
+  &__list
+    align-items: center
+    display: flex
+    flex-wrap: wrap
+    justify-content: flex-end
+
+    &__item
+      padding: var(--size-80, 0.5rem) var(--size-160, 1rem)
+
+      &.active
+        color: var(--neutral-foreground-muted)
