@@ -10,13 +10,12 @@ export const FieldError: FC<FieldErrorProps> = ({ className, ...fieldErrorProps 
     className={values => mergeReactAriaClassNames(values, className, 'field-error')}
     {...fieldErrorProps}
   >
-    {values => values.validationErrors.length === 1
-      ? <div>{values.validationErrors[0]}</div>
-      : values.validationErrors.map(error => (
-          <div key={error}>
-            • {error}
-          </div>
-        ))
-    }
+    {({ validationErrors }) => {
+      if (validationErrors.length === 1) {
+        return <div>{validationErrors[0]}</div>
+      }
+
+      return validationErrors.map(error => <div key={error}>• {error}</div>)
+    }}
   </ReactAriaFieldError>
 )

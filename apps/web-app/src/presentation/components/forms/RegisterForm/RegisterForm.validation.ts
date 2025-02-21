@@ -25,7 +25,7 @@ export const getRegisterFormValidationErrors = (errors: AuthServiceRegisterError
         emailErrors.push(translate('components.forms.fields.email.errors.invalid'))
         break
       case 'passwords-don\'t-match':
-        confirmPasswordErrors.push(translate('components.forms.registerForm.errors.passwordsDonTMatch'))
+        confirmPasswordErrors.push(translate('components.forms.fields.passwordsValidation.errors.passwordsDonTMatch'))
         break
       case 'password-require-number':
         passwordErrors.push(translate('components.forms.fields.userPassword.errors.requireNumber'))

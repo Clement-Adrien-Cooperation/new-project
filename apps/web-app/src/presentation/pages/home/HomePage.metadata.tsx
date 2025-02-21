@@ -13,11 +13,11 @@ export const HomePageMetadata: FC = () => {
   const homePageMetadata: Metadata = {
     ...DEFAULT_METADATA,
     applicationName: appName,
-    title: mergeTitle(appName, translate('pages.home.metadata.title')),
-    description: translate('pages.home.metadata.description'),
-    keywords: translate('pages.home.metadata.keywords'),
     category: translate('pages.home.metadata.category'),
     classification: translate('pages.home.metadata.classification'),
+    description: translate('pages.home.metadata.description'),
+    keywords: translate('pages.home.metadata.keywords'),
+    title: mergeTitle(appName, translate('pages.home.metadata.title')),
     url: mergeUrl(ROUTES.home)
   }
 

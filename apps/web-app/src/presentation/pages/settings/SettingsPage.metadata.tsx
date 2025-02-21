@@ -13,11 +13,11 @@ export const SettingsPageMetadata: FC = () => {
   const settingsPageMetadata: Metadata = {
     ...DEFAULT_METADATA,
     applicationName: appName,
-    title: mergeTitle(translate('pages.settings.metadata.title'), appName),
-    description: translate('pages.settings.metadata.description'),
-    keywords: translate('pages.settings.metadata.keywords'),
     category: translate('pages.settings.metadata.category'),
     classification: translate('pages.settings.metadata.classification'),
+    description: translate('pages.settings.metadata.description'),
+    keywords: translate('pages.settings.metadata.keywords'),
+    title: mergeTitle(translate('pages.settings.metadata.title'), appName),
     url: mergeUrl(ROUTES.settings)
   }
 

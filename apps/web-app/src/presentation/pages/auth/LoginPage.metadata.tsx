@@ -13,11 +13,11 @@ export const LoginPageMetadata: FC = () => {
   const loginPageMetadata: Metadata = {
     ...DEFAULT_METADATA,
     applicationName: appName,
-    title: mergeTitle(translate('pages.auth.login.metadata.title'), appName),
-    description: translate('pages.auth.login.metadata.description'),
-    keywords: translate('pages.auth.login.metadata.keywords'),
     category: translate('pages.auth.login.metadata.category'),
     classification: translate('pages.auth.login.metadata.classification'),
+    description: translate('pages.auth.login.metadata.description'),
+    keywords: translate('pages.auth.login.metadata.keywords'),
+    title: mergeTitle(translate('pages.auth.login.metadata.title'), appName),
     url: mergeUrl(ROUTES.login)
   }
 

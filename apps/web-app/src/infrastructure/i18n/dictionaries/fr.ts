@@ -88,6 +88,7 @@ export const fr = {
       home: 'Accueil',
       login: 'Connexion',
       logout: 'Déconnexion',
+      profile: 'Profil',
       settings: 'Paramètres'
     }
   },
@@ -118,6 +119,16 @@ export const fr = {
         },
         subtitle: 'Voulez-vous vraiment vous déconnecter ?',
         title: 'Déconnexion'
+      },
+      profile: {
+        metadata: {
+          category: 'Profil et Informations Utilisateur',
+          classification: 'Données Personnelles et Paramètres',
+          description: 'Consultez et mettez à jour vos informations personnelles sur votre profil.',
+          keywords: 'profil, utilisateur, informations, paramètres, avatar, identité',
+          title: 'Mon Profil'
+        },
+        title: 'Profil'
       },
       register: {
         login: {

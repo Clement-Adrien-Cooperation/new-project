@@ -13,11 +13,11 @@ export const NotFoundPageMetadata: FC = () => {
   const notFoundPageMetadata: Metadata = {
     ...DEFAULT_METADATA,
     applicationName: appName,
-    title: mergeTitle(translate('pages.notFound.metadata.title'), appName),
-    description: translate('pages.notFound.metadata.description'),
-    keywords: translate('pages.notFound.metadata.keywords'),
     category: translate('pages.notFound.metadata.category'),
     classification: translate('pages.notFound.metadata.classification'),
+    description: translate('pages.notFound.metadata.description'),
+    keywords: translate('pages.notFound.metadata.keywords'),
+    title: mergeTitle(translate('pages.notFound.metadata.title'), appName),
     url: mergeUrl(ROUTES.notFound)
   }
 

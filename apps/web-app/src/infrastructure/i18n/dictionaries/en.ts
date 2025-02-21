@@ -86,6 +86,7 @@ export const en = {
       home: 'Home',
       login: 'Login',
       logout: 'Logout',
+      profile: 'Profile',
       settings: 'Settings'
     }
   },
@@ -116,6 +117,16 @@ export const en = {
         },
         subtitle: 'Are you sure you want to log out?',
         title: 'Logout'
+      },
+      profile: {
+        metadata: {
+          category: 'Profile and User Information',
+          classification: 'Personal Data and Settings',
+          description: 'View and update your personal information on your profile.',
+          keywords: 'profile, user, information, settings, avatar, identity',
+          title: 'My Profile'
+        },
+        title: 'Profile'
       },
       register: {
         login: {

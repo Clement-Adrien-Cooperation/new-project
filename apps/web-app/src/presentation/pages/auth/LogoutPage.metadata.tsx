@@ -13,11 +13,11 @@ export const LogoutPageMetadata: FC = () => {
   const logoutPageMetadata: Metadata = {
     ...DEFAULT_METADATA,
     applicationName: appName,
-    title: mergeTitle(translate('pages.auth.logout.metadata.title'), appName),
-    description: translate('pages.auth.logout.metadata.description'),
-    keywords: translate('pages.auth.logout.metadata.keywords'),
     category: translate('pages.auth.logout.metadata.category'),
     classification: translate('pages.auth.logout.metadata.classification'),
+    description: translate('pages.auth.logout.metadata.description'),
+    keywords: translate('pages.auth.logout.metadata.keywords'),
+    title: mergeTitle(translate('pages.auth.logout.metadata.title'), appName),
     url: mergeUrl(ROUTES.logout)
   }
 

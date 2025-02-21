@@ -13,11 +13,11 @@ export const RegisterPageMetadata: FC = () => {
   const registerPageMetadata: Metadata = {
     ...DEFAULT_METADATA,
     applicationName: appName,
-    title: mergeTitle(translate('pages.auth.register.metadata.title'), appName),
-    description: translate('pages.auth.register.metadata.description'),
-    keywords: translate('pages.auth.register.metadata.keywords'),
     category: translate('pages.auth.register.metadata.category'),
     classification: translate('pages.auth.register.metadata.classification'),
+    description: translate('pages.auth.register.metadata.description'),
+    keywords: translate('pages.auth.register.metadata.keywords'),
+    title: mergeTitle(translate('pages.auth.register.metadata.title'), appName),
     url: mergeUrl(ROUTES.register)
   }
 

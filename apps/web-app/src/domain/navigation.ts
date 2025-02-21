@@ -4,6 +4,7 @@ export const ROUTES = {
 
   login: '/login',
   logout: '/logout',
+  profile: '/profile',
   register: '/register',
 
   notFound: '/404'

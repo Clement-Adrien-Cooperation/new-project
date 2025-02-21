@@ -4,15 +4,10 @@ import promisePlugin from 'eslint-plugin-promise'
 import globals from 'globals'
 import tseslint from 'typescript-eslint'
 
-import jsxA11yPlugin from 'eslint-plugin-jsx-a11y'
-import reactPlugin from 'eslint-plugin-react'
-import reactHooksPlugin from 'eslint-plugin-react-hooks'
-import reactRefreshPlugin from 'eslint-plugin-react-refresh'
-
 export default tseslint.config(
   ...tseslint.configs.strict,
   ...tseslint.configs.stylistic,
-  { ignores: ['**/dist', '**/polyglot.js'] },
+  { ignores: ['**/dist', '**/polyglot.js', 'apps/web-app/**'] },
   {
     extends: [
       js.configs.recommended,
@@ -25,22 +20,9 @@ export default tseslint.config(
     },
     plugins: {
       '@stylistic': stylisticPlugin,
-      'promise': promisePlugin,
-      'jsx-a11y': jsxA11yPlugin,
-      'react': reactPlugin,
-      'react-hooks': reactHooksPlugin,
-      'react-refresh': reactRefreshPlugin
-    },
-    settings:{
-      react: {
-        version: 'detect'
-      }
+      'promise': promisePlugin
     },
     rules: {
-      ...reactPlugin.configs.flat.recommended.rules,
-      ...reactHooksPlugin.configs.recommended.rules,
-      ...jsxA11yPlugin.flatConfigs.recommended.rules,
-      ...reactRefreshPlugin.configs.recommended.rules,
       ...promisePlugin.configs.recommended.rules,
       ...stylisticPlugin.configs.rules,
 
@@ -64,9 +46,6 @@ export default tseslint.config(
       '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/no-extraneous-class': 'off',
       '@typescript-eslint/no-unused-vars': ['error', { 'argsIgnorePattern': '^_', 'varsIgnorePattern': '^_' }],
-
-      'jsx-a11y/anchor-is-valid': ['error', { aspects: ['invalidHref', 'preferButton'] }],
-      'jsx-a11y/no-autofocus': ['error', { ignoreNonDOM: true }],
       
       'no-console': ['warn', { allow: ['error', 'info', 'warn'] }],
       'no-debugger': 'error',
@@ -79,9 +58,7 @@ export default tseslint.config(
         'ignoreMemberSort': false,
         'memberSyntaxSortOrder': ['all', 'multiple', 'single', 'none'],
         'allowSeparatedGroups': true
-      }],
-
-      'react/react-in-jsx-scope': 'off'
+      }]
     }
   }
 )
