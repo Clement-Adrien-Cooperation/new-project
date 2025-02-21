@@ -29,9 +29,9 @@ export const NavBar: FC = () => {
       textValue: translate('layouts.navBar.login')
     },
     {
-      href: ROUTES.profile,
+      href: ROUTES.account,
       Icon: <UserIcon />,
-      id: 'profile',
+      id: 'account',
       isVisible: auth.status === 'authenticated',
       textValue: translate('layouts.navBar.profile')
     },

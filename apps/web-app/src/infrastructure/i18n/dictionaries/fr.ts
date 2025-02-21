@@ -26,12 +26,6 @@ export const fr = {
         },
         rememberMeCheckboxLabel: 'Se souvenir de moi',
         userName: {
-          errors: {
-            invalidCharacters: 'Le nom d\'utilisateur ne peut contenir que des lettres, des chiffres, des tirets et des underscores.',
-            noSpaces: 'Le nom d\'utilisateur ne peut pas contenir d\'espaces.',
-            tooLong: 'Le nom d\'utilisateur doit contenir au maximum %{smart_count} caractère. |||| Le nom d\'utilisateur doit contenir au maximum %{smart_count} caractères.',
-            tooShort: 'Le nom d\'utilisateur doit contenir au minimum %{smart_count} caractère. |||| Le nom d\'utilisateur doit contenir au minimum %{smart_count} caractères.'
-          },
           label: 'Nom d\'utilisateur',
           placeholder: 'Entrez votre nom d\'utilisateur'
         },
@@ -44,6 +38,14 @@ export const fr = {
           },
           label: 'Mot de passe',
           placeholder: 'Entrez votre mot de passe'
+        },
+        validUserName: {
+          errors: {
+            invalidCharacters: 'Le nom d\'utilisateur ne peut contenir que des lettres, des chiffres, des tirets et des underscores.',
+            noSpaces: 'Le nom d\'utilisateur ne peut pas contenir d\'espaces.',
+            tooLong: 'Le nom d\'utilisateur doit contenir au maximum %{smart_count} caractère. |||| Le nom d\'utilisateur doit contenir au maximum %{smart_count} caractères.',
+            tooShort: 'Le nom d\'utilisateur doit contenir au minimum %{smart_count} caractère. |||| Le nom d\'utilisateur doit contenir au minimum %{smart_count} caractères.'
+          }
         }
       },
       loginForm: {
@@ -94,6 +96,16 @@ export const fr = {
   },
   pages: {
     auth: {
+      account: {
+        metadata: {
+          category: 'Profil et Informations Utilisateur',
+          classification: 'Données Personnelles et Paramètres',
+          description: 'Consultez et mettez à jour vos informations personnelles sur votre profil.',
+          keywords: 'profil, utilisateur, informations, paramètres, avatar, identité',
+          title: 'Mon Profil'
+        },
+        title: 'Mon profil'
+      },
       login: {
         metadata: {
           category: 'Authentification et Sécurité',
@@ -120,16 +132,6 @@ export const fr = {
         subtitle: 'Voulez-vous vraiment vous déconnecter ?',
         title: 'Déconnexion'
       },
-      profile: {
-        metadata: {
-          category: 'Profil et Informations Utilisateur',
-          classification: 'Données Personnelles et Paramètres',
-          description: 'Consultez et mettez à jour vos informations personnelles sur votre profil.',
-          keywords: 'profil, utilisateur, informations, paramètres, avatar, identité',
-          title: 'Mon Profil'
-        },
-        title: 'Profil'
-      },
       register: {
         login: {
           link: 'Connectez-vous.',
@@ -155,7 +157,7 @@ export const fr = {
       }
     },
     notFound: {
-      goBack: 'Go back',
+      goBack: 'Revenir à la page d\'accueil',
       message: 'La page que vous cherchez n\'existe pas.',
       metadata: {
         category: 'Erreur et Navigation',
@@ -164,17 +166,27 @@ export const fr = {
         keywords: 'erreur 404, page introuvable, lien cassé, page non trouvée, erreur',
         title: 'Page introuvable'
       },
-      title: 'Not found'
+      title: 'Page introuvable'
     },
     settings: {
-      title: 'Paramètres',
       metadata: {
         category: 'Personnalisation et Accessibilité',
         classification: 'Expérience Utilisateur et Paramètres',
         description: 'Personnalisez votre expérience en changeant le thème de l\'application et la langue d\'affichage.',
         keywords: 'paramètres, personnalisation, thème, mode sombre, langue, accessibilité, préférences utilisateur',
         title: 'Personnalisation des paramètres'
-      }
+      },
+      title: 'Paramètres'
+    },
+    userProfile: {
+      metadata: {
+        category: 'Profil et Informations Utilisateur',
+        classification: 'Données Personnelles et Paramètres',
+        description: 'Consultez et mettez à jour les informations de votre profil utilisateur.',
+        keywords: 'profil, utilisateur, informations, paramètres, avatar, identité'
+      },
+      title: 'Profil de %{userName}',
+      userNameFallback: 'Utilisateur'
     }
   }
 } satisfies Dictionary

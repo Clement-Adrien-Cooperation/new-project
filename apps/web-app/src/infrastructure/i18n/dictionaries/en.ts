@@ -24,12 +24,6 @@ export const en = {
         },
         rememberMeCheckboxLabel: 'Remember me',
         userName: {
-          errors: {
-            invalidCharacters: 'The username can only contain letters, numbers, dashes, and underscores.',
-            noSpaces: 'The username cannot contain spaces.',
-            tooLong: 'The username must contain at most %{smart_count} character. |||| The username must contain at most %{smart_count} characters.',
-            tooShort: 'The username must contain at least %{smart_count} character. |||| The username must contain at least %{smart_count} characters.'
-          },
           label: 'Username',
           placeholder: 'Enter your username'
         },
@@ -42,6 +36,14 @@ export const en = {
           },
           label: 'Password',
           placeholder: 'Enter your password'
+        },
+        validUserName: {
+          errors: {
+            invalidCharacters: 'The username can only contain letters, numbers, dashes, and underscores.',
+            noSpaces: 'The username cannot contain spaces.',
+            tooLong: 'The username must contain at most %{smart_count} character. |||| The username must contain at most %{smart_count} characters.',
+            tooShort: 'The username must contain at least %{smart_count} character. |||| The username must contain at least %{smart_count} characters.'
+          }
         }
       },
       loginForm: {
@@ -92,6 +94,16 @@ export const en = {
   },
   pages: {
     auth: {
+      account: {
+        metadata: {
+          category: 'Profile and User Information',
+          classification: 'Personal Data and Settings',
+          description: 'View and update your personal information on your profile.',
+          keywords: 'profile, user, information, settings, avatar, identity',
+          title: 'My Profile'
+        },
+        title: 'My profile'
+      },
       login: {
         metadata: {
           category: 'Authentication and Security',
@@ -117,16 +129,6 @@ export const en = {
         },
         subtitle: 'Are you sure you want to log out?',
         title: 'Logout'
-      },
-      profile: {
-        metadata: {
-          category: 'Profile and User Information',
-          classification: 'Personal Data and Settings',
-          description: 'View and update your personal information on your profile.',
-          keywords: 'profile, user, information, settings, avatar, identity',
-          title: 'My Profile'
-        },
-        title: 'Profile'
       },
       register: {
         login: {
@@ -173,6 +175,16 @@ export const en = {
         keywords: 'settings, customization, theme, dark mode, language, accessibility, user preferences',
         title: 'Settings Customization'
       }
+    },
+    userProfile: {
+      metadata: {
+        category: 'Profile and User Information',
+        classification: 'Personal Data and Settings',
+        description: 'View and update the profile of %{userName}.',
+        keywords: 'profile, user, information, settings, avatar, identity'
+      },
+      title: '%{userName} Profile',
+      userNameFallback: 'User'
     }
   }
 }

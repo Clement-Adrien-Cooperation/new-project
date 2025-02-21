@@ -6,8 +6,8 @@ export type ClassName
 
 export type ClassNames = ClassName | ClassName[]
 
-export const mergeClassNames = (...args: ClassNames[]): string => {
-  return args
+export const mergeClassNames = (...classNames: ClassNames[]): string => {
+  return classNames
     .flat()
     .filter((value): value is string => typeof value === 'string' && Boolean(value))
     .join(' ')

@@ -4,20 +4,20 @@ import { useI18n } from '@/application/hooks'
 import { PageTitle } from '@/presentation/components'
 import { Main } from '@/presentation/layouts'
 
-import { ProfilePageMetadata } from './ProfilePage.metadata.tsx'
+import { AccountPageMetadata } from './AccountPage.metadata.tsx'
 
-const ProfilePage: FC = () => {
+const AccountPage: FC = () => {
   const { translate } = useI18n()
 
   return (
     <>
-      <ProfilePageMetadata />
+      <AccountPageMetadata />
 
       <Main>
-        <PageTitle>{translate('pages.auth.profile.title')}</PageTitle>
+        <PageTitle>{translate('pages.auth.account.title')}</PageTitle>
       </Main>
     </>
   )
 }
 
-export default ProfilePage
+export default AccountPage

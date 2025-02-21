@@ -4,10 +4,9 @@ import { type FC, useState } from 'react'
 import { useAuth, useI18n } from '@/application/hooks'
 import { AuthService, type RegisterCredentials } from '@/application/services'
 import { AUTH_FORM_FIELDS } from '@/domain/auth'
-import { EmailField, FieldSet, Form, FormErrors, PasswordsValidationFields, RememberMeCheckbox, RequiredFieldsMessage, SubmitButton, UserNameField } from '@/presentation/components'
+import { EmailField, FieldSet, Form, FormErrors, PasswordsValidationFields, RememberMeCheckbox, RequiredFieldsMessage, SubmitButton, ValidUserNameField } from '@/presentation/components'
 
 import { getRegisterFormValidationErrors, type RegisterFormValidationErrors } from './RegisterForm.validation.ts'
-
 export const RegisterForm: FC = () => {
   const [isRegisterFormSubmitting, setIsRegisterFormSubmitting] = useState(false)
   const [registerFormValidationErrors, setRegisterFormValidationErrors] = useState<RegisterFormValidationErrors>()
@@ -51,7 +50,7 @@ export const RegisterForm: FC = () => {
       <FieldSet isDisabled={isRegisterFormSubmitting}>
         <FormErrors errors={registerFormValidationErrors} />
 
-        <UserNameField />
+        <ValidUserNameField />
 
         <EmailField />
 

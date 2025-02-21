@@ -43,16 +43,16 @@ export const getRegisterFormValidationErrors = (errors: AuthServiceRegisterError
         usernameErrors.push(translate('components.forms.registerForm.errors.usernameAlreadyExists'))
         break
       case 'username-invalid-characters':
-        usernameErrors.push(translate('components.forms.fields.userName.errors.invalidCharacters'))
+        usernameErrors.push(translate('components.forms.fields.validUserName.errors.invalidCharacters'))
         break
       case 'username-no-spaces':
-        usernameErrors.push(translate('components.forms.fields.userName.errors.noSpaces'))
+        usernameErrors.push(translate('components.forms.fields.validUserName.errors.noSpaces'))
         break
       case 'username-too-long':
-        usernameErrors.push(translate('components.forms.fields.userName.errors.tooLong', { smart_count: USERNAME_RULES.maxLength }))
+        usernameErrors.push(translate('components.forms.fields.validUserName.errors.tooLong', { smart_count: USERNAME_RULES.maxLength }))
         break
       case 'username-too-short':
-        usernameErrors.push(translate('components.forms.fields.userName.errors.tooShort', { smart_count: USERNAME_RULES.minLength }))
+        usernameErrors.push(translate('components.forms.fields.validUserName.errors.tooShort', { smart_count: USERNAME_RULES.minLength }))
         break
       case 'unexpected-error':
       default:
