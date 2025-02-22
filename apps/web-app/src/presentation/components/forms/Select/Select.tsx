@@ -2,7 +2,7 @@ import { ChevronDownIcon } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { Popover, Select as ReactAriaSelect, type SelectProps as ReactAriaSelectProps, SelectValue } from 'react-aria-components'
 
-import { Button, Label, ListBox, type ListItem, Option, type OptionProps } from '@/presentation/components'
+import { Button, Label, List, type ListItem, Option, type OptionProps } from '@/presentation/components'
 import type { Key, Style } from '@/presentation/types'
 import { mergeReactAriaClassNames } from '@/presentation/utils'
 
@@ -118,7 +118,7 @@ export function Select <K extends Key, O> ({
           </Button>
 
           <Popover className='select__popover'>
-            <ListBox
+            <List
               className='select__list'
               itemClassName='select__list__item'
               items={items}
@@ -132,7 +132,7 @@ export function Select <K extends Key, O> ({
                   textValue={item.textValue}
                 />
               )}
-            </ListBox>
+            </List>
           </Popover>
         </>
       )}

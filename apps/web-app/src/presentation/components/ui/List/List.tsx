@@ -1,39 +1,39 @@
 import type { ReactNode } from 'react'
-import { type ListBoxItemRenderProps, ListBox as ReactAriaListBox, type ListBoxProps as ReactAriaListBoxProps } from 'react-aria-components'
+import { ListBox, type ListBoxItemRenderProps, type ListBoxProps } from 'react-aria-components'
 
-import { ListBoxItem, type ListBoxItemProps, Option } from '@/presentation/components'
-import type { CommonItem, Key } from '@/presentation/types'
+import { ListElem, type ListElemProps, Option } from '@/presentation/components'
+import type { Item, Key } from '@/presentation/types'
 import { mergeClassNames, mergeReactAriaClassNames } from '@/presentation/utils'
 
-export type ListItem <K extends Key = Key, O = object> = CommonItem<K, O & ListBoxItemProps>
-export type ListItems <K extends Key = Key, O = object> = Iterable<ListItem<K, O>>
+export type ListItem <K extends Key = Key, O extends object = object> = Item<K, ListElemProps<O>>
+export type ListItems <K extends Key = Key, O extends object = object> = Iterable<ListItem<K, O>>
 
-type ListBoxChildrenRenderProps <K extends Key, O> = ListItem<K, O> & ListBoxItemRenderProps
+type ListBoxChildrenRenderProps <K extends Key, O extends object = object> = ListItem<K, O> & ListBoxItemRenderProps
 
-type ListBoxOverrideProps <K extends Key, O> = {
+type ListBoxOverrideProps <K extends Key, O extends object> = {
   /** The list of items to render. */
   children?: ReactNode | ((item: ListBoxChildrenRenderProps<K, O>) => ReactNode)
 
   /** Additional className for each item */
-  itemClassName?: ListBoxItemProps['className']
+  itemClassName?: ListElemProps<O>['className']
 
-  /** Callback with item in parameters when user click on an item */
+  /** Callback with item in parameters when user press an item */
   onAction?: (item: ListItem<K, O>) => void
 }
 
-type ListBoxProps <K extends Key, O>
-  = Omit<ReactAriaListBoxProps<ListItem<K, O>>, 'children' | 'onAction'>
+type ListProps <K extends Key, O extends object>
+  = Omit<ListBoxProps<ListItem<K, O>>, keyof ListBoxOverrideProps<K, O>>
   & ListBoxOverrideProps<K, O>
 
 // Component to render a list of items
-export function ListBox <K extends Key, O> ({
+export function List <K extends Key, O extends object> ({
   children,
   itemClassName,
   items,
   layout = 'grid',
   onAction,
-  ...listBoxProps
-}: ListBoxProps<K, O>) {
+  ...listProps
+}: ListProps<K, O>) {
   const onListBoxAction = (key: Key) => {
     if (!items || !onAction) {
       return
@@ -48,15 +48,15 @@ export function ListBox <K extends Key, O> ({
   }
 
   return (
-    <ReactAriaListBox
-      {...listBoxProps}
+    <ListBox
+      {...listProps}
       items={items}
       layout={layout}
       onAction={onAction && onListBoxAction}
     >
       {typeof children === 'function' || children == null
-        ? (item) => (
-            <ListBoxItem
+        ? (item) => item.isVisible !== false && (
+            <ListElem
               {...item}
               className={values => {
                 const classNames = [
@@ -75,10 +75,10 @@ export function ListBox <K extends Key, O> ({
                     textValue={item.textValue}
                   />
               }
-            </ListBoxItem>
+            </ListElem>
           )
         : children
       }
-    </ReactAriaListBox>
+    </ListBox>
   )
 }

@@ -8,16 +8,7 @@ import './PasswordField.styles.sass'
 
 export type PasswordFieldProps = TextFieldProps
 
-export const PasswordField: FC<PasswordFieldProps> = ({
-  label,
-  LeftIcon,
-  onChange,
-  placeholder,
-  RightContent,
-  type,
-  value,
-  ...passwordFieldProps
-}) => {
+export const PasswordField: FC<PasswordFieldProps> = ({ onChange, value, ...passwordFieldProps }) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
   const [passwordFieldValue, setPasswordFieldValue] = useState(value ?? '')
 
@@ -45,14 +36,14 @@ export const PasswordField: FC<PasswordFieldProps> = ({
 
   return (
     <TextField
-      {...passwordFieldProps}
-      label={label ?? translate('components.forms.passwordField.label')}
-      LeftIcon={LeftIcon ?? <LockKeyholeIcon />}
+      label={translate('components.forms.passwordField.label')}
+      LeftIcon={<LockKeyholeIcon />}
       onChange={onPasswordFieldChange}
-      placeholder={placeholder ?? translate('components.forms.passwordField.placeholder')}
-      RightContent={RightContent ?? renderPasswordFieldRightContent()}
-      type={type ?? isPasswordVisible ? 'text' : 'password'}
+      placeholder={translate('components.forms.passwordField.placeholder')}
+      RightContent={renderPasswordFieldRightContent()}
+      type={isPasswordVisible ? 'text' : 'password'}
       value={passwordFieldValue}
+      {...passwordFieldProps}
     />
   )
 }

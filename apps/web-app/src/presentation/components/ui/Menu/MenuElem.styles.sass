@@ -1,0 +1,13 @@
+@use '@/presentation/styles/accessibility'
+@use '@/presentation/styles/interactive'
+
+.menu-elem
+  @include accessibility.focus-outline
+
+  &
+    @include interactive.transparent
+
+  &
+    border-radius: var(--radius-s, 0.25rem)
+    cursor: pointer
+    width: 100%

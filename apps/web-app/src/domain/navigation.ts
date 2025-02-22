@@ -16,6 +16,10 @@ export const ROUTES = {
 
 export const ROUTE_DEFAULT = ROUTES.home
 
-const replaceParam = (route: string, param: string, value: string) => route.replace(`:${param}`, value)
+const replaceParam = (route: string, param: string, value: string) => {
+  return route.replace(`:${param}`, value)
+}
 
-export const getUserProfileRoute = (userName: string) => replaceParam(ROUTES.userProfile, USER_PROFILE_ROUTE_PARAM, userName)
+export const getUserProfileRoute = (userName: string) => {
+  return replaceParam(ROUTES.userProfile, USER_PROFILE_ROUTE_PARAM, userName)
+}

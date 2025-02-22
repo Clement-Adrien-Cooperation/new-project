@@ -1,4 +1,4 @@
-import type { ButtonRenderProps, CalendarRenderProps, DatePickerProps, DateValue, FieldErrorRenderProps, LinkRenderProps, ListBoxItemRenderProps, ListBoxRenderProps, SelectRenderProps, TextFieldRenderProps } from 'react-aria-components'
+import type { ButtonRenderProps, CalendarRenderProps, DatePickerProps, DateValue, FieldErrorRenderProps, LinkRenderProps, ListBoxItemRenderProps, ListBoxRenderProps, MenuItemRenderProps, SelectRenderProps, TextFieldRenderProps } from 'react-aria-components'
 
 import { type ClassNames, mergeClassNames } from './classNames'
 
@@ -8,8 +8,9 @@ export type ElementRenderProps
   | DatePickerProps<DateValue>
   | FieldErrorRenderProps
   | LinkRenderProps
-  | ListBoxRenderProps
   | ListBoxItemRenderProps
+  | ListBoxRenderProps
+  | MenuItemRenderProps
   | SelectRenderProps
   | TextFieldRenderProps
 

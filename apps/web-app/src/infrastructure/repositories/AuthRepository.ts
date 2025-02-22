@@ -1,6 +1,6 @@
-import { getStoredItem, removeStoredItem, storeItem } from '@/infrastructure/storage'
+import { getStoredItem, type LocaleStorageKey, removeStoredItem, storeItem } from '@/infrastructure/storage'
 
-const AUTH_TOKEN_KEY = 'authToken' as const
+const AUTH_TOKEN_KEY: LocaleStorageKey = 'authToken' as const
 
 export const AuthRepository = {
   getAuthToken: (): string | undefined => getStoredItem(AUTH_TOKEN_KEY),
