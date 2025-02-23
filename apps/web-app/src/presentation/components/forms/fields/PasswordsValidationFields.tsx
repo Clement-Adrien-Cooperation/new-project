@@ -4,6 +4,7 @@ import { PASSWORD_RULES, validatePassword } from '@shared-types/auth'
 
 import { useI18n } from '@/application/hooks'
 import { AUTH_FORM_FIELDS } from '@/domain/auth'
+import { getStringArray } from '@/infrastructure/utils'
 import { UserPasswordField } from '@/presentation/components'
 
 import './PasswordsValidationFields.styles.sass'
@@ -60,11 +61,7 @@ export const PasswordsValidationFields: FC = () => {
   const validatePasswordConfirmationField = (value: string) => {
     const baseValidation = validatePasswordField(value)
 
-    const passwordFieldsErrors = Array.isArray(baseValidation)
-      ? baseValidation.filter((v): v is string => Boolean(v))
-      : typeof baseValidation === 'string'
-        ? [baseValidation]
-        : []
+    const passwordFieldsErrors = getStringArray(baseValidation)
 
     if (value !== passwordValue) {
       passwordFieldsErrors.push(passwordsDonTMatch)

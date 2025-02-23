@@ -1,8 +1,9 @@
 import type { FC, ReactNode } from 'react'
 import { type ButtonRenderProps, Button as ReactAriaButton, type ButtonProps as ReactAriaButtonProps } from 'react-aria-components'
 
-import { mergeReactAriaPressableClassNames, type PressableProps } from '@/presentation/components/ui/Pressable'
-import { Spinner } from '@/presentation/components'
+import { Spinner, Tooltip } from '@/presentation/components'
+
+import { mergeReactAriaPressableClassNames, type PressableProps } from './Pressable'
 
 export type ButtonProps = PressableProps & ReactAriaButtonProps
 
@@ -24,7 +25,7 @@ const renderButtonIcon = (Icon: ButtonProps['Icon'], variant: ButtonProps['varia
   )
 }
 
-export const Button: FC<ButtonProps> = ({
+const BaseButton: FC<ButtonProps> = ({
   children,
   className,
   Icon,
@@ -59,3 +60,15 @@ export const Button: FC<ButtonProps> = ({
     }
   </ReactAriaButton>
 )
+
+export const Button: FC<ButtonProps> = ({ tooltip, ...buttonProps }) => {
+  if (tooltip != null) {
+    return (
+      <Tooltip Trigger={<BaseButton {...buttonProps} />}>
+        {tooltip}
+      </Tooltip>
+    )
+  }
+
+  return <BaseButton {...buttonProps} />
+}

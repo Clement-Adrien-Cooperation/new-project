@@ -1,17 +1,15 @@
 @use '@/presentation/styles/accessibility'
+@use '@/presentation/styles/layout'
 @use '@/presentation/styles/sizes'
 
 .menu
   @include accessibility.focus-outline
 
   &
-    @include sizes.popover(var(--select-width, 100%))
+    @include layout.popover
 
   &
-    background-color: var(--neutral-background)
-    border: var(--stroke-m, 0.125rem) solid var(--border)
-    border-radius: var(--radius-m, 0.5rem)
-    max-height: clamp(10rem, 45vh, 30rem)
-    max-width: min(30ch, var(--common-max-width, 95%))
-    overflow-y: auto
-    padding: var(--size-40, 0.25rem)
+    @include sizes.popover
+
+  &
+    max-width: min(35ch, var(--common-max-width, 95%))

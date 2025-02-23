@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { PasswordField } from './PasswordField'
 import { I18nProvider } from '@/presentation/providers'
+
+import { PasswordField } from './PasswordField'
 
 const meta: Meta<typeof PasswordField> = {
   args: {

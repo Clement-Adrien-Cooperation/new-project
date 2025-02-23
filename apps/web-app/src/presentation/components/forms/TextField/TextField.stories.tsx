@@ -1,13 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import { UserIcon } from 'lucide-react'
 
 import { TextField } from './TextField'
-import { UserIcon } from 'lucide-react'
 
 const meta: Meta<typeof TextField> = {
   args: {
     description: 'Text Field Description',
     label: 'Text Field Label',
     placeholder: 'Enter text here'
+  },
+  argTypes: {
+    label: { control: 'text' },
+    maxLength: { control: 'number' },
+    minLength: { control: 'number' },
+    placeholder: { control: 'text' }
   },
   component: TextField,
   decorators: [
@@ -24,20 +30,12 @@ export default meta
 type Story = StoryObj<typeof TextField>
 
 export const TextFieldStory: Story = {
-  argTypes: {
-    label: { control: 'text' },
-    placeholder: { control: 'text' }
-  },
   name: 'Text Field'
 }
 
 export const TextFieldWithLeftIconStory: Story = {
   args: {
     LeftIcon: <UserIcon />
-  },
-  argTypes: {
-    label: { control: 'text' },
-    placeholder: { control: 'text' }
   },
   name: 'Text Field with left icon'
 }

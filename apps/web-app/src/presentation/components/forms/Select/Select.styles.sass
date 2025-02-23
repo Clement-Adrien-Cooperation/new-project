@@ -1,5 +1,6 @@
 @use '@/presentation/styles/animations'
 @use '@/presentation/styles/interactive'
+@use '@/presentation/styles/layout'
 @use '@/presentation/styles/selectors'
 @use '@/presentation/styles/sizes'
 @use '@/presentation/styles/typography'
@@ -53,12 +54,7 @@
     @include sizes.popover(var(--select-width, 100%))
 
     &
-      background-color: var(--neutral-background)
-      border: var(--stroke-m, 0.125rem) solid var(--border)
-      border-radius: var(--radius-m, 0.5rem)
-      max-height: clamp(10rem, 45vh, 30rem)
-      overflow-y: auto
-      padding: var(--size-40, 0.25rem)
+      @include layout.popover
 
     &__item
       @include interactive.transparent

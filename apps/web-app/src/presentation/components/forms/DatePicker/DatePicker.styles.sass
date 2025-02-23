@@ -61,9 +61,4 @@
     @include sizes.popover(var(--date-picker-width, 100%))
 
   &__calendar
-    background-color: var(--neutral-background)
-    border: var(--stroke-m, 0.125rem) solid var(--border)
-    border-radius: var(--radius-m, 0.5rem)
-    max-height: clamp(10rem, 45vh, 30rem)
-    overflow-y: auto
-    padding: var(--size-40, 0.3125rem)
+    @include layout.popover

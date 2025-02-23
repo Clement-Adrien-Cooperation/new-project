@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 import { type MenuItemRenderProps, MenuTrigger, Popover, Menu as ReactAriaMenu, type MenuProps as ReactAriaMenuProps } from 'react-aria-components'
 
-import { MenuElem, type MenuElemProps, Option } from '@/presentation/components'
+import { MenuElem, type MenuElemProps, Option, Tooltip } from '@/presentation/components'
 import type { Item, Key } from '@/presentation/types'
 import { mergeClassNames, mergeReactAriaClassNames } from '@/presentation/utils'
 
@@ -65,26 +65,30 @@ export function Menu <K extends Key, O extends object> ({
         >
           {typeof children === 'function' || children == null
             ? (item) => item.isVisible !== false && (
-                <MenuElem
-                  {...item}
-                  className={values => {
-                    const classNames = [
-                      mergeReactAriaClassNames(values, itemClassName),
-                      mergeReactAriaClassNames(values, item.className)
-                    ]
-                    return mergeClassNames(classNames)
-                  }}
-                >
-                  {values => children
-                    ? children({ ...item, ...values })
-                    : <Option
-                        Icon={item.Icon}
-                        isDisabled={values.isDisabled}
-                        isSelected={values.isSelected}
-                        textValue={item.textValue}
-                      />
-                  }
-                </MenuElem>
+                <Tooltip Trigger={
+                  <MenuElem
+                    {...item}
+                    className={values => {
+                      const classNames = [
+                        mergeReactAriaClassNames(values, itemClassName),
+                        mergeReactAriaClassNames(values, item.className)
+                      ]
+                      return mergeClassNames(classNames)
+                    }}
+                  >
+                    {values => children
+                      ? children({ ...item, ...values })
+                      : <Option
+                          Icon={item.Icon}
+                          isDisabled={values.isDisabled}
+                          isSelected={values.isSelected}
+                          textValue={item.textValue}
+                        />
+                    }
+                  </MenuElem>
+                }>
+                  test 2
+                </Tooltip>
               )
             : children
           }

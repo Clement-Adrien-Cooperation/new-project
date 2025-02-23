@@ -1,6 +1,7 @@
 import type { ReactElement, ReactNode } from 'react'
 import type { ButtonRenderProps, LinkRenderProps } from 'react-aria-components'
 
+import type { TooltipProps } from '@/presentation/components'
 import { mergeReactAriaClassNames, type RenderPropsValues } from '@/presentation/utils'
 
 import './Pressable.styles.sass'
@@ -33,6 +34,11 @@ type PressableWithVariantProps = {
    */
   size?: PressableSize
 
+  /** Optional tooltip to display when hovering over the button
+   * @default undefined
+   */
+  tooltip?: TooltipProps['children']
+
   /**
    * The visual style variant of the button.
    * @values 'primary', 'secondary', 'outline', 'ghost', 'destructive'
@@ -48,7 +54,16 @@ type PressableWithoutVariantProps = {
   variant?: undefined
 }
 
-export type PressableProps = PressableWithVariantProps | PressableWithoutVariantProps
+type CommonPressableProps = {
+  /** Optional tooltip to display when hovering over the button
+   * @default undefined
+   */
+  tooltip?: TooltipProps['children']
+}
+
+export type PressableProps =
+  & (PressableWithVariantProps | PressableWithoutVariantProps)
+  & CommonPressableProps
 
 type PressableRenderProps
   = ButtonRenderProps

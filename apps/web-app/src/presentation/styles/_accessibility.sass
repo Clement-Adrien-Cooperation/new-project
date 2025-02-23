@@ -23,7 +23,7 @@
   @include no-rac-focus-outline
 
   &
-    border: var(--stroke-m, 0.125rem) solid transparent
+    border: var(--element-stroke, 0.125rem) solid transparent
 
   @include selectors.focus-visible
     border-color: var(--ring)
@@ -35,4 +35,4 @@
     outline-offset: var(--size-20, 0.125rem)
 
   @include selectors.focus-visible
-    outline: var(--stroke-m, 0.125rem) solid var(--ring)
+    outline: var(--element-stroke, 0.125rem) solid var(--ring)

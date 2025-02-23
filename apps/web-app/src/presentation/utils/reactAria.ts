@@ -1,4 +1,4 @@
-import type { ButtonRenderProps, CalendarRenderProps, DatePickerProps, DateValue, FieldErrorRenderProps, LinkRenderProps, ListBoxItemRenderProps, ListBoxRenderProps, MenuItemRenderProps, SelectRenderProps, TextFieldRenderProps } from 'react-aria-components'
+import type { ButtonRenderProps, CalendarRenderProps, DatePickerProps, DateValue, FieldErrorRenderProps, LinkRenderProps, ListBoxItemRenderProps, ListBoxRenderProps, MenuItemRenderProps, SelectRenderProps, TextFieldRenderProps, TooltipRenderProps } from 'react-aria-components'
 
 import { type ClassNames, mergeClassNames } from './classNames'
 
@@ -13,6 +13,7 @@ export type ElementRenderProps
   | MenuItemRenderProps
   | SelectRenderProps
   | TextFieldRenderProps
+  | TooltipRenderProps
 
 export type RenderPropsValues <T extends ElementRenderProps> = T & {
   defaultClassName: string | undefined

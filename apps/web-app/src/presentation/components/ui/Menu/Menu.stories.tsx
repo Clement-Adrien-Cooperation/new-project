@@ -6,7 +6,7 @@ import { Menu, type MenuItems } from './Menu'
 import { Button } from '@/presentation/components/ui/Pressable'
 
 const menuItems: MenuItems = [
-  { id: '1', textValue: 'Option 1 is a lin', href: 'https://www.youtube.com/watch?v=xvFZjo5PgG0', target: '_blank' },
+  { id: '1', textValue: 'Option 1 is a link', href: 'https://www.youtube.com/watch?v=xvFZjo5PgG0', target: '_blank' },
   { id: '2', textValue: 'Option 2 with a pretty long text to see if ellipsis is ok here' },
   { id: '3', textValue: 'Option 3 with an icon', Icon: <SettingsIcon /> },
   { id: '4', textValue: 'Option 4 with long text & icon to see if ellipsis is ok here', Icon: <SettingsIcon /> },
@@ -15,15 +15,15 @@ const menuItems: MenuItems = [
   { id: '7', textValue: 'Option 7 (disabled)', Icon: <SettingsIcon />, isDisabled: true },
   { id: '8', textValue: 'Option 8', Icon: <SettingsIcon /> },
   { id: '9', textValue: 'Option 9', Icon: <SettingsIcon /> },
-  { id: '10', textValue: 'Option 10', Icon: <SettingsIcon /> },
-  { id: '11', textValue: 'Option 11 (disabled)', Icon: <SettingsIcon />, isDisabled: true },
-  { id: '12', textValue: 'Option 12', Icon: <SettingsIcon /> },
+  { id: '10', textValue: 'Option 10' },
+  { id: '11', textValue: 'Option 11 (disabled)', isDisabled: true },
+  { id: '12', textValue: 'Option 12' },
   { id: '13', textValue: 'Option 13', Icon: <SettingsIcon /> },
   { id: '14', textValue: 'Option 14', Icon: <SettingsIcon /> },
-  { id: '15', textValue: 'Option 15', Icon: <SettingsIcon /> },
-  { id: '16', textValue: 'Option 16', Icon: <SettingsIcon /> },
+  { id: '15', textValue: 'Option 15' },
+  { id: '16', textValue: 'Option 16' },
   { id: '17', textValue: 'Option 17', Icon: <SettingsIcon /> },
-  { id: '18', textValue: 'Option 18', Icon: <SettingsIcon /> },
+  { id: '18', textValue: 'Option 18' },
   { id: '19', textValue: 'Option 19', Icon: <SettingsIcon /> },
   { id: '20', textValue: 'Option 20', Icon: <SettingsIcon /> }
 ]
@@ -35,13 +35,6 @@ const meta: Meta<typeof Menu> = {
     Trigger: <Button Icon={<SettingsIcon />} variant='outlined' />
   },
   component: Menu,
-  decorators: [
-    (Story) => (
-      <div style={{ maxWidth: 300 }}>
-        <Story />
-      </div>
-    )
-  ],
   title: 'Menu'
 }
 

@@ -1,0 +1,13 @@
+@use '@/presentation/styles/animations'
+@use '@/presentation/styles/typography'
+
+.tooltip
+  @include animations.fade-in
+
+  &
+    @include typography.label-small
+
+  &
+    background-color: var(--brand-background-secondary)
+    border-radius: var(--radius-s, 025rem)
+    padding: var(--size-80, 0.5rem) var(--size-120, 0.75rem)
