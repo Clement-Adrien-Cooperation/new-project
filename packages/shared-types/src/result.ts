@@ -26,6 +26,6 @@ export type SuccessResult<T = undefined> = T extends undefined | null
   ? { status: 'success' }
   : { data: T, status: 'success' }
 
-export type Result<E = undefined, T = undefined>
-  = ErrorResult<E>
+export type Result<E = undefined, T = undefined> =
+  | ErrorResult<E>
   | SuccessResult<T>

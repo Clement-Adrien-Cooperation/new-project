@@ -20,6 +20,7 @@ export const Router: FC = () => (
   <Routes>
     <Route element={<HomePage />} index path={ROUTES.home} />
     <Route element={<SettingsPage />} path={ROUTES.settings} />
+    <Route element={<UserProfilePage />} path={ROUTES.userProfile} />
 
     <Route element={<RequireAuthenticated />}>
       <Route element={<AccountPage />} path={ROUTES.account} />
@@ -30,8 +31,6 @@ export const Router: FC = () => (
       <Route element={<LoginPage />} path={ROUTES.login} />
       <Route element={<RegisterPage />} path={ROUTES.register} />
     </Route>
-
-    <Route element={<UserProfilePage />} path={ROUTES.userProfile} />
 
     <Route element={<Navigate to={CATCH_ROUTE} />} path={ROUTES.notFound} />
     <Route element={<NotFoundPage />} path={CATCH_ROUTE} />

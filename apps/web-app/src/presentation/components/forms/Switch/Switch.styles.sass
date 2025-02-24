@@ -1,0 +1,102 @@
+@use '@/presentation/styles/accessibility'
+@use '@/presentation/styles/animations'
+@use '@/presentation/styles/colors'
+@use '@/presentation/styles/layout'
+@use '@/presentation/styles/selectors'
+@use '@/presentation/styles/sizes'
+@use '@/presentation/styles/typography'
+
+.switch
+  @include accessibility.focus-outline
+
+  &
+    @include animations.color-transition
+
+  &
+    @include typography.label-large
+
+  &
+    align-items: center
+    border-radius: var(--radius-s, 0.25rem)
+    display: flex
+    gap: var(--size-80, 0.75rem)
+    width: fit-content
+
+  &__indicator
+    @include animations.color-transition
+
+    &
+      --switch-indicator-height: calc(var(--element-size, 2.5rem) / 2.5)
+      --switch-indicator-width: calc(var(--switch-indicator-height, 1.25rem) * 1.6)
+      --switch-indicator-thumb-size: calc(var(--switch-indicator-height, 1.25rem) / 2)
+      align-content: center
+      border: var(--element-stroke, 0.125rem) solid var(--border)
+      border-radius: var(--circular, 99rem)
+      height: var(--switch-indicator-height, 1.25rem)
+      padding-inline: var(--size-20, 0.125rem)
+      width: var(--switch-indicator-width, 2rem)
+
+      &::after
+        @include sizes.fixed(var(--switch-indicator-thumb-size, 0.625rem))
+
+        &
+          aspect-ratio: 1
+          background-color: var(--brand-background-primary)
+          border-radius: var(--circular, 99rem)
+          content: ''
+          display: block
+          transition-duration: var(--transition-150, 0)
+          transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, transform
+          transition-timing-function: var(--timing, ease-in-out)
+
+  @include selectors.hovered
+    color: colors.fade(var(--neutral-foreground), var(--alpha-2xl, 0.88))
+
+    & .switch__indicator
+      background-color: var(--border)
+
+  @include selectors.pressed
+    color: colors.fade(var(--neutral-foreground), var(--alpha-xl, 0.76))
+
+    & .switch__indicator
+      background-color: colors.fade(var(--border), var(--alpha-2xl, 0.88))
+      border-color: colors.fade(var(--border), var(--alpha-2xl, 0.88))
+
+  @include selectors.disabled
+    color: var(--neutral-foreground-muted)
+    pointer-events: none
+
+    & .switch__indicator
+      background-color: transparent
+      border-color: var(--neutral-background-muted)
+
+      &::after
+        background-color: var(--neutral-background-muted)
+
+  @include selectors.selected
+    & .switch__indicator
+      background-color: var(--brand-background-primary)
+      border-color: var(--brand-background-primary)
+
+      &::after
+        background-color: var(--brand-foreground-on-brand)
+        transform: translateX(calc(var(--switch-indicator-width, 2rem) - var(--switch-indicator-thumb-size, 0.625rem) - var(--size-20, 0.125rem) * 2 - var(--element-stroke, 0.125rem) * 2)) scale(1.5)
+
+    @include selectors.hovered
+      & .switch__indicator
+        background-color: colors.fade(var(--brand-background-primary), var(--alpha-2xl, 0.88))
+        border-color: colors.fade(var(--brand-background-primary), var(--alpha-2xl, 0.88))
+
+    @include selectors.pressed
+      & .switch__indicator
+        background-color: colors.fade(var(--brand-background-primary), var(--alpha-xl, 0.76))
+        border-color: colors.fade(var(--brand-background-primary), var(--alpha-xl, 0.76))
+
+    @include selectors.disabled
+      & .switch__indicator
+        background-color: var(--neutral-background-muted)
+        border-color: var(--neutral-background-muted)
+
+        &::after
+          background-color: var(--neutral-foreground-muted)
+

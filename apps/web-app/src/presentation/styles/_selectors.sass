@@ -1,12 +1,12 @@
 @mixin disabled
   &.disabled:not([data-rac]),
   &:disabled:not([data-rac]),
-  &[data-disabled='true']
+  &[data-disabled]
     @content
 
 @mixin focus-visible
   &:focus-visible:not([data-rac]),
-  &[data-focus-visible='true']
+  &[data-focus-visible]
     @content
 
 @mixin hovered
@@ -14,30 +14,30 @@
     &:hover:not([data-rac])
       @content
 
-  &[data-hovered='true']
+  &[data-hovered]
     @content
 
 @mixin invalid
   &:invalid:not([data-rac]),
-  &[data-invalid='true']
+  &[data-invalid]
     @content
 
 @mixin pending
   &.pending:not([data-rac]),
-  &[data-pending='true']
+  &[data-pending]
     @content
 
 @mixin placeholder
-  &[data-placeholder='true'],
+  &[data-placeholder],
   &::placeholder
     @content
 
 @mixin pressed
   &:active:not([data-rac]),
-  &[data-pressed='true']
+  &[data-pressed]
     @content
 
 @mixin selected
   &.selected:not([data-rac]),
-  &[data-selected='true']
+  &[data-selected]
     @content
