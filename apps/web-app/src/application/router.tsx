@@ -6,13 +6,13 @@ import { ROUTES } from '@/domain/navigation'
 import { RequireAuthenticated, RequireUnauthenticated } from '@/presentation/guards'
 import { NotFoundPage } from '@/presentation/pages'
 
-const AccountPage = lazyComponent(() => import('@/presentation/pages/auth/AccountPage'))
-const LoginPage = lazyComponent(() => import('@/presentation/pages/auth/LoginPage'))
-const LogoutPage = lazyComponent(() => import('@/presentation/pages/auth/LogoutPage'))
-const RegisterPage = lazyComponent(() => import('@/presentation/pages/auth/RegisterPage'))
-const HomePage = lazyComponent(() => import('@/presentation/pages/home/HomePage'))
-const SettingsPage = lazyComponent(() => import('@/presentation/pages/settings/SettingsPage'))
-const UserProfilePage = lazyComponent(() => import('@/presentation/pages/user-profile/UserProfilePage'))
+const AccountPage = lazyComponent(() => import('@/presentation/pages/auth/AccountPage'), 'Account Page')
+const LoginPage = lazyComponent(() => import('@/presentation/pages/auth/LoginPage'), 'Login Page')
+const LogoutPage = lazyComponent(() => import('@/presentation/pages/auth/LogoutPage'), 'Logout Page')
+const RegisterPage = lazyComponent(() => import('@/presentation/pages/auth/RegisterPage'), 'Register Page')
+const HomePage = lazyComponent(() => import('@/presentation/pages/home/HomePage'), 'Home Page')
+const SettingsPage = lazyComponent(() => import('@/presentation/pages/settings/SettingsPage'), 'Settings Page')
+const UserProfilePage = lazyComponent(() => import('@/presentation/pages/user-profile/UserProfilePage'), 'User Profile Page')
 
 const CATCH_ROUTE = '*'
 

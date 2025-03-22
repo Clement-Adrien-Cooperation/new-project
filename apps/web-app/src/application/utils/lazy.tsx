@@ -4,6 +4,7 @@ import { Loader } from '@/presentation/components'
 
 export const lazyComponent = <P extends object>(
   importPath: () => Promise<{ default: ComponentType<P> }>,
+  componentName?: string,
   fallback: ReactElement = <Loader />
 ) => {
   const LazyComponent = lazy(importPath)
@@ -14,7 +15,7 @@ export const lazyComponent = <P extends object>(
     </Suspense>
   )
 
-  Component.displayName = 'LazyComponent'
+  Component.displayName = componentName ?? 'LazyComponent'
 
   return Component
 }

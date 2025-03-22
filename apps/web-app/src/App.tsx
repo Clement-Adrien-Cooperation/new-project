@@ -14,6 +14,22 @@ export const App = () => (
       <ErrorBoundary>
         <AppLayout>
           <Router />
+
+          <div className='grid'>
+            {Array.from({ length: 20 }).map((_, index) => (
+              <div key={index} className='grid__item'>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, necessitatibus?
+                </p>
+
+                <hr />
+
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, necessitatibus?
+                </p>
+              </div>
+            ))}
+          </div>
         </AppLayout>
       </ErrorBoundary>
     </Providers>

@@ -37,3 +37,17 @@ body
 
 h1, h2, h3, h4, h5, h6
   @include typography.title-medium
+
+.grid
+  display: grid
+  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr))
+  gap: 1rem
+  width: min(1000px, calc(100% - 2rem))
+  margin-inline: auto
+
+  &__item
+    background-color: var(--border)
+    border-radius: var(--radius-m, 0.25rem)
+    width: 100%
+    height: auto
+    padding: 1rem 1.5rem
