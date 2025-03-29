@@ -5,21 +5,22 @@ import { mergeReactAriaClassNames, renderReactAriaChildren } from '@/presentatio
 
 import './Switch.styles.sass'
 
-export type SwitchProps = ReactAriaSwitchProps
-
-export const Switch: FC<ReactAriaSwitchProps> = ({ children, className, ...switchProps }) => {
-  return (
-    <ReactAriaSwitch
-      {...switchProps}
-      className={values => mergeReactAriaClassNames(values, className, 'switch')}
-    >
-      {values => (
-        <>
-          <div aria-hidden className='switch__indicator' />
-
-          {renderReactAriaChildren(children, values)}
-        </>
-      )}
-    </ReactAriaSwitch>
-  )
+export type SwitchProps = ReactAriaSwitchProps & {
+  /** Switch side */
+  switchSide?: 'left' | 'right'
 }
+
+export const Switch: FC<SwitchProps> = ({ children, className, switchSide, ...switchProps }) => (
+  <ReactAriaSwitch
+    {...switchProps}
+    className={values => mergeReactAriaClassNames(values, className, 'switch', switchSide)}
+  >
+    {values => (
+      <>
+        <div aria-hidden className='switch__indicator' />
+
+        {renderReactAriaChildren(children, values)}
+      </>
+    )}
+  </ReactAriaSwitch>
+)

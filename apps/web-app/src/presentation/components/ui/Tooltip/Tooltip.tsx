@@ -1,12 +1,17 @@
 import type { FC, ReactElement } from 'react'
-import { Tooltip as ReactAriaTooltip, type TooltipProps as ReactAriaTooltipProps, TooltipTrigger } from 'react-aria-components'
+import {
+  Tooltip as ReactAriaTooltip,
+  type TooltipProps as ReactAriaTooltipProps,
+  TooltipTrigger,
+  type TooltipTriggerComponentProps
+} from 'react-aria-components'
 
 import { mergeReactAriaClassNames } from '@/presentation/utils'
 
 import './Tooltip.styles.sass'
 
 export type TooltipProps = ReactAriaTooltipProps & {
-  delay?: number
+  delay?: TooltipTriggerComponentProps['delay']
   Trigger: ReactElement
 }
 

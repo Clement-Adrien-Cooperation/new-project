@@ -10,24 +10,22 @@ export type CheckboxProps = ReactAriaCheckboxProps & {
   checkboxSide?: 'left' | 'right'
 }
 
-export const Checkbox: FC<CheckboxProps> = ({ className, children, checkboxSide = 'left', ...checkboxProps }) => {
-  return (
-    <ReactAriaCheckbox
-      className={values => mergeReactAriaClassNames(values, className, 'checkbox', checkboxSide)}
-      {...checkboxProps}
-    >
-      {(values) => (
-        <>
-          <div className='checkbox__icon'>
-            {values.isSelected && <CheckIcon />}
-          </div>
+export const Checkbox: FC<CheckboxProps> = ({ className, children, checkboxSide = 'left', ...checkboxProps }) => (
+  <ReactAriaCheckbox
+    {...checkboxProps}
+    className={values => mergeReactAriaClassNames(values, className, 'checkbox', checkboxSide)}
+  >
+    {(values) => (
+      <>
+        <div className='checkbox__icon'>
+          {values.isSelected && <CheckIcon />}
+        </div>
 
-          {typeof children === 'function'
-            ? children(values)
-            : children
-          }
-        </>
-      )}
-    </ReactAriaCheckbox>
-  )
-}
+        {typeof children === 'function'
+          ? children(values)
+          : children
+        }
+      </>
+    )}
+  </ReactAriaCheckbox>
+)

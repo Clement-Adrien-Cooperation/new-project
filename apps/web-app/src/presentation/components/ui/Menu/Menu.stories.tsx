@@ -2,8 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { fn } from '@storybook/test'
 import { SettingsIcon } from 'lucide-react'
 
+import { Button } from '@/presentation/components'
+
 import { Menu, type MenuItems } from './Menu'
-import { Button } from '@/presentation/components/ui/Pressable'
 
 const menuItems: MenuItems = [
   { id: '1', textValue: 'Option 1 is a link', href: 'https://www.youtube.com/watch?v=xvFZjo5PgG0', target: '_blank' },

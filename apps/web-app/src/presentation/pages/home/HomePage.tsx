@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 
-import { PageTitle, Switch } from '@/presentation/components'
+import { PageTitle } from '@/presentation/components'
 import { Main } from '@/presentation/layouts'
 
 import { HomePageMetadata } from './HomePage.metadata.tsx'
@@ -11,10 +11,6 @@ const HomePage: FC = () => (
 
     <Main>
       <PageTitle>Home</PageTitle>
-
-      <Switch>
-        test
-      </Switch>
     </Main>
   </>
 )

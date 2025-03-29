@@ -1,27 +1,21 @@
-import { type FC, type PropsWithChildren, useCallback, useEffect, useMemo, useState } from 'react'
+import { type FC, type PropsWithChildren, useCallback, useMemo, useState } from 'react'
 import { I18nProvider as ReactAriaI18nProvider } from 'react-aria-components'
 
 import { I18nService } from '@/application/services'
-import { DEFAULT_LOCALE, type Locale, type TranslateKey, type TranslateOptions } from '@/domain/i18n'
+import type { Locale, TranslateKey, TranslateOptions } from '@/domain/i18n'
 import { I18nContext } from '@/presentation/providers'
 
-export const I18nProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [selectedLocale, setSelectedLocale] = useState<Locale>(DEFAULT_LOCALE)
+const initialLocale = I18nService.getInitialLocale()
+I18nService.changeLang(initialLocale)
 
-  const selectLocale = useCallback((newLocale: Locale) => {
-    I18nService.changeLocale(newLocale)
-    setSelectedLocale(newLocale)
-  }, [])
+export const I18nProvider: FC<PropsWithChildren> = ({ children }) => {
+  const [selectedLocale, setSelectedLocale] = useState<Locale>(initialLocale)
 
   const changeLocale = useCallback((newLocale: Locale) => {
+    I18nService.changeLang(newLocale)
     I18nService.saveFavoriteLocale(newLocale)
-    selectLocale(newLocale)
-  }, [selectLocale])
-
-  useEffect(() => {
-    const initialLocale = I18nService.getInitialLocale()
-    selectLocale(initialLocale)
-  }, [selectLocale])
+    setSelectedLocale(newLocale)
+  }, [])
 
   const polyglot = useMemo(() => I18nService.getPolyglot(selectedLocale), [selectedLocale])
 
