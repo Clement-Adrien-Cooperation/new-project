@@ -15,7 +15,7 @@ export const lazyComponent = <P extends object>(
     </Suspense>
   )
 
-  Component.displayName = componentName ?? 'LazyComponent'
+  Component.displayName = componentName ?? 'Lazy Component'
 
   return Component
 }

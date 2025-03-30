@@ -1,19 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { SettingsIcon, UserIcon } from 'lucide-react'
-import type { FC } from 'react'
 
 import { Button } from '@/presentation/components'
 
 import { Tooltip } from './Tooltip'
 
-const TooltipContent: FC = () => (
+const TooltipContent = (
   <div style={{ alignItems: 'center', display: 'flex', gap: '0.3rem' }}>
     <UserIcon size='1rem' />
     <p>Tooltip Content</p>
   </div>
 )
 
-const TooltipTrigger: FC = () => (
+const TooltipTrigger = (
   <Button
     Icon={<SettingsIcon />}
     variant='outlined'
@@ -22,8 +21,8 @@ const TooltipTrigger: FC = () => (
 
 const meta: Meta<typeof Tooltip> = {
   args: {
-    children: <TooltipContent />,
-    Trigger: <TooltipTrigger />
+    children: TooltipContent,
+    Trigger: TooltipTrigger
   },
   component: Tooltip,
   title: 'Tooltip'

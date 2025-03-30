@@ -1,33 +1,27 @@
 import { type FC, type PropsWithChildren, useCallback, useEffect, useState } from 'react'
 
 import { ThemeService } from '@/application/services'
-import { DEFAULT_THEME, type Theme } from '@/domain/theme'
+import type { Theme } from '@/domain/theme'
 import { ThemeContext } from '@/presentation/providers'
 
-export const ThemeProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [selectedTheme, setSelectedTheme] = useState<Theme>(DEFAULT_THEME)
+const initialTheme = ThemeService.getInitialTheme()
+ThemeService.changeTheme(initialTheme)
 
-  const selectTheme = useCallback((newTheme: Theme) => {
+export const ThemeProvider: FC<PropsWithChildren> = ({ children }) => {
+  const [selectedTheme, setSelectedTheme] = useState<Theme>(initialTheme)
+
+  const changeTheme = useCallback((newTheme: Theme) => {
+    ThemeService.saveFavoriteTheme(newTheme)
     ThemeService.changeTheme(newTheme)
     setSelectedTheme(newTheme)
   }, [])
 
-  const changeTheme = useCallback((newTheme: Theme) => {
-    ThemeService.saveFavoriteTheme(newTheme)
-    selectTheme(newTheme)
-  }, [selectTheme])
-
   useEffect(() => {
     if (selectedTheme === 'system') {
-      const unsubscribe = ThemeService.subscribeToSystemThemeChanges()
-      return () => unsubscribe()
+      const unsubscribeToSystemThemeChanges = ThemeService.subscribeToSystemThemeChanges()
+      return () => unsubscribeToSystemThemeChanges()
     }
-  }, [selectedTheme, selectTheme])
-
-  useEffect(() => {
-    const initialTheme = ThemeService.getInitialTheme()
-    selectTheme(initialTheme)
-  }, [selectTheme])
+  }, [selectedTheme])
 
   return (
     <ThemeContext value={{ changeTheme, selectedTheme }}>

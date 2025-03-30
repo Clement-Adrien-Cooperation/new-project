@@ -35,8 +35,6 @@ export const AuthService = {
   },
 
   login: async (loginCredentials: LoginCredentials): Promise<LoginResult> => {
-    const shouldRemember = loginCredentials.shouldRemember
-
     const loginRequest: LoginRequest = {
       userNameOrEmail: loginCredentials.userNameOrEmail,
       password: loginCredentials.password
@@ -54,7 +52,7 @@ export const AuthService = {
       return failure(loginResponse.errors)
     }
 
-    if (shouldRemember) {
+    if (loginCredentials.shouldRemember) {
       AuthRepository.saveAuthToken(loginResponse.data.token)
     }
 
@@ -70,8 +68,6 @@ export const AuthService = {
       return failure(['passwords-don\'t-match'])
     }
 
-    const shouldRemember = registerCredentials.shouldRemember
-
     const registerRequestValidationResult = validateRegisterRequest(registerCredentials)
 
     if (registerRequestValidationResult.status === 'error') {
@@ -84,7 +80,7 @@ export const AuthService = {
       return failure(registerResponse.errors)
     }
 
-    if (shouldRemember) {
+    if (registerCredentials.shouldRemember) {
       AuthRepository.saveAuthToken(registerResponse.data.token)
     }
 
