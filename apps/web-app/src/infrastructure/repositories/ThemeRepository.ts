@@ -4,7 +4,7 @@ import { getStoredItem, type LocaleStorageKey, storeItem } from '@/infrastructur
 const THEME_KEY: LocaleStorageKey = 'theme' as const
 
 export const ThemeRepository = {
-  getTheme: (): Theme | undefined => getStoredItem(THEME_KEY),
+  getTheme: () => getStoredItem(THEME_KEY),
 
   saveTheme: (locale: Theme) => storeItem(THEME_KEY, locale)
 }

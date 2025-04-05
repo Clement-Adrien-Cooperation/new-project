@@ -19,7 +19,7 @@ export const ROUTES = {
 export const ROUTE_DEFAULT = ROUTES.home
 
 const replaceParam = (route: string, param: string, value: string) => {
-  return route.replace(`:${param}`, encodeURIComponent(value))
+  return route.replace(`:${param}`, value)
 }
 
 export const getUserProfileRoute = (userName: string) => {

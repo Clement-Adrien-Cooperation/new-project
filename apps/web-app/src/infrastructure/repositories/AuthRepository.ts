@@ -3,7 +3,7 @@ import { getStoredItem, type LocaleStorageKey, removeStoredItem, storeItem } fro
 const AUTH_TOKEN_KEY: LocaleStorageKey = 'authToken' as const
 
 export const AuthRepository = {
-  getAuthToken: (): string | undefined => getStoredItem(AUTH_TOKEN_KEY),
+  getAuthToken: () => getStoredItem(AUTH_TOKEN_KEY),
 
   removeAuthToken: () => removeStoredItem(AUTH_TOKEN_KEY),
 

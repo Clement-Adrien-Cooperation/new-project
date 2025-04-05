@@ -4,7 +4,7 @@ import { getStoredItem, type LocaleStorageKey, storeItem } from '@/infrastructur
 const LOCALE_KEY: LocaleStorageKey = 'locale' as const
 
 export const I18nRepository = {
-  getLocale: (): Locale | undefined => getStoredItem(LOCALE_KEY),
+  getLocale: () => getStoredItem(LOCALE_KEY),
 
   saveLocale: (locale: Locale) => storeItem(LOCALE_KEY, locale)
 }
