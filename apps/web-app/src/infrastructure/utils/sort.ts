@@ -1,5 +1,7 @@
 export type SortType = 'asc' | 'desc' | 'none'
 
+export const DEFAULT_SORT_TYPE: SortType = 'asc'
+
 const getSortedValues = <T> (a: T, b: T, sortDirection: Omit<SortType, 'none'>): number => {
   const [valueA, valueB] = sortDirection === 'asc' ? [a, b] : [b, a]
 
@@ -18,7 +20,7 @@ const getSortedValues = <T> (a: T, b: T, sortDirection: Omit<SortType, 'none'>):
   return String(valueA).localeCompare(String(valueB))
 }
 
-export const getSortedObjectsByKey = <T> (array: T[], sortKey: keyof T, sortDirection: SortType = 'asc'): T[] => {
+export const getSortedObjectsByKey = <T> (array: T[], sortKey: keyof T, sortDirection: SortType = DEFAULT_SORT_TYPE): T[] => {
   if (sortDirection === 'none') {
     return array
   }
@@ -28,7 +30,7 @@ export const getSortedObjectsByKey = <T> (array: T[], sortKey: keyof T, sortDire
   })
 }
 
-export const getSortedArray = <T> (array: T[], sortDirection: SortType = 'asc'): T[] => {
+export const getSortedArray = <T> (array: T[], sortDirection: SortType = DEFAULT_SORT_TYPE): T[] => {
   if (sortDirection === 'none') {
     return array
   }

@@ -5,6 +5,7 @@ import { DEFAULT_METADATA, type Metadata } from '@/domain/metadata'
 export const PageMetadata: FC<Metadata> = (metadata) => (
   <>
     <title>{metadata.title || DEFAULT_METADATA.title}</title>
+    <meta name='apple-mobile-web-app-title' content={metadata.title || DEFAULT_METADATA.title} />
 
     <meta name='description' content={metadata.description || DEFAULT_METADATA.description} />
 

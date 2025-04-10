@@ -31,11 +31,7 @@ export const I18nService = {
       .map(getLocaleFromLanguage)
       .find(isSupportedLocale)
 
-    if (matchingNavigatorLocale) {
-      return matchingNavigatorLocale
-    }
-
-    return DEFAULT_LOCALE
+    return matchingNavigatorLocale ?? DEFAULT_LOCALE
   },
 
   getPolyglot: (locale: Locale) => {

@@ -16,7 +16,7 @@
     "@storybook/react-vite": "8.6.12",
     "@storybook/test": "8.6.12",
     "@types/react": "^19.1.0",
-    "@types/react-dom": "^19.1.1",
+    "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react-swc": "^3.8.1",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
@@ -24,7 +24,7 @@
     "eslint-plugin-react-refresh": "^0.4.19",
     "sass": "^1.86.3",
     "storybook": "8.6.12",
-    "vite": "^6.2.5"
+    "vite": "^6.2.6"
   },
   "name": "new-project-web",
   "scripts": {

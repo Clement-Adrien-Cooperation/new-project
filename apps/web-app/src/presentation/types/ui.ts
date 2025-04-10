@@ -24,4 +24,4 @@ export type Item <T extends Key = Key, BaseProps = object>
   = Omit<BaseProps, 'id' | 'textValue'>
   & BaseItem<T>
 
-export type Style = Record<string, null | number | string>
+export type Style = Record<string, number | string>
