@@ -39,12 +39,19 @@ h1, h2, h3, h4, h5, h6
   @include typography.title-medium
 
 .grid
+  --grid-max-column-count: 2
+  --grid-min-column-size: 300px
+  --grid-gap: 1rem
+
+  --grid-column-size-calc: calc((100% - var(--grid-gap) * var(--grid-max-column-count) - var(--grid-gap)) / var(--grid-max-column-count))
+  --grid-column-min-size-calc: min(100%, max(var(--grid-column-size-calc), var(--grid-min-column-size)))
+
   display: grid
-  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr))
-  gap: 1rem
-  width: min(1000px, calc(100% - 2rem))
+  gap: var(--grid-gap)
+  grid-template-columns: repeat(auto-fit, minmax(var(--grid-column-min-size-calc), 1fr))
   margin-inline: auto
   padding-block: 2rem
+  width: min(1000px, calc(100% - 2rem))
 
   &__item
     background-color: var(--border)

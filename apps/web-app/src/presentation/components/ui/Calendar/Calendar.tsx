@@ -52,7 +52,7 @@ export function Calendar <T extends DateValue> ({
         />
       </header>
 
-      <div role='separator' className='calendar__separator' />
+      <div className='calendar__separator' role='separator' />
 
       <CalendarGrid className='calendar__grid'>
         <CalendarGridHeader>

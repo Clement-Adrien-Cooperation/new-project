@@ -9,18 +9,18 @@ export type LocalStorage = {
 
 export type LocaleStorageKey = keyof LocalStorage
 
-export const clearStore = () => { window.localStorage.clear() }
-
-export const getStoredItem = <K extends LocaleStorageKey> (key: K): LocalStorage[K] | undefined => {
+export const getStoredItem = <K extends LocaleStorageKey> (key: K): LocalStorage[K] | null => {
   const value = window.localStorage.getItem(key)
 
-  if (value !== null) {
-    try {
-      return value === 'undefined' ? undefined : JSON.parse(value ?? '')
-    } catch {
-      console.warn(`Parsing error for key "${key}"`)
-      return undefined
-    }
+  if (value == null) {
+    return null
+  }
+
+  try {
+    return value === 'undefined' ? null : JSON.parse(value)
+  } catch {
+    console.warn(`Parsing error for key "${key}"`)
+    return null
   }
 }
 
