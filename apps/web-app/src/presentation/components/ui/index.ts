@@ -1,4 +1,5 @@
 export * from './Calendar'
+export * from './Fallback'
 export * from './Label'
 export * from './List'
 export * from './Loader'

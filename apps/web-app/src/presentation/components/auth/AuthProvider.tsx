@@ -5,7 +5,7 @@ import type { AuthUser } from '@shared-types/dto'
 
 import { AuthService } from '@/application/services'
 import { ROUTE_DEFAULT } from '@/domain/navigation'
-import { AuthContext, type AuthWithLoading } from '@/presentation/providers'
+import { AuthContext, type AuthWithLoading } from '@/presentation/components'
 
 export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   const [auth, setAuth] = useState<AuthWithLoading>({ status: 'loading' })

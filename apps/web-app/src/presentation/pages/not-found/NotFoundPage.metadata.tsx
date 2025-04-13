@@ -3,7 +3,7 @@ import type { FC } from 'react'
 import { useI18n } from '@/application/hooks'
 import { DEFAULT_METADATA, mergeTitle, mergeUrl, type Metadata } from '@/domain/metadata'
 import { ROUTES } from '@/domain/navigation'
-import { PageMetadata } from '@/presentation/components'
+import { PageMetadata } from '@/presentation/pages'
 
 export const NotFoundPageMetadata: FC = () => {
   const { translate } = useI18n()

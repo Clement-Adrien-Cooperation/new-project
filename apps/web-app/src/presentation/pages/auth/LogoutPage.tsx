@@ -2,8 +2,7 @@ import { LogOutIcon } from 'lucide-react'
 import type { FC } from 'react'
 
 import { useAuth, useI18n } from '@/application/hooks'
-import { Button, PageSubtitle, PageTitle } from '@/presentation/components'
-import { Main } from '@/presentation/layouts'
+import { Button, Main, PageSubtitle, PageTitle } from '@/presentation/components'
 
 import './LogoutPage.styles.sass'
 

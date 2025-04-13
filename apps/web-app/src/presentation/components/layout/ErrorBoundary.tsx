@@ -1,6 +1,6 @@
 import { Component, type ReactNode } from 'react'
 
-import { Fallback } from '@/presentation/components/Fallback'
+import { Fallback } from '@/presentation/components/ui/Fallback'
 
 type ErrorBoundaryProps = {
   children: ReactNode

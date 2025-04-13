@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { I18nProvider } from '@/presentation/providers'
+import { I18nProvider } from '@/presentation/components'
 
 import { PasswordField } from './PasswordField'
 

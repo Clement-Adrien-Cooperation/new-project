@@ -2,7 +2,7 @@ import type { FC } from 'react'
 
 import { useI18n } from '@/application/hooks'
 import { AUTH_FORM_FIELDS } from '@/domain/auth'
-import { Checkbox, type CheckboxProps } from '@/presentation/components/forms/Checkbox'
+import { Checkbox, type CheckboxProps } from '@/presentation/components'
 
 import './RememberMeCheckbox.styles.sass'
 

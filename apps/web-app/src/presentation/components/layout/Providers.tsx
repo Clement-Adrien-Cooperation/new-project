@@ -2,7 +2,7 @@ import type { FC, PropsWithChildren } from 'react'
 import { RouterProvider } from 'react-aria-components'
 import { useNavigate } from 'react-router'
 
-import { AuthProvider, I18nProvider, ThemeProvider } from '@/presentation/providers'
+import { AuthProvider, I18nProvider, ThemeProvider } from '@/presentation/components'
 
 export const Providers: FC<PropsWithChildren> = ({ children }) => {
   const navigate = useNavigate()

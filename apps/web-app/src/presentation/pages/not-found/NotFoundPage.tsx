@@ -3,8 +3,7 @@ import type { FC } from 'react'
 
 import { useI18n } from '@/application/hooks'
 import { ROUTE_DEFAULT } from '@/domain/navigation'
-import { Link } from '@/presentation/components'
-import { ErrorActions, ErrorContent, ErrorTitle, Main } from '@/presentation/layouts'
+import { ErrorActions, ErrorContent, ErrorTitle, Link, Main } from '@/presentation/components'
 
 import { NotFoundPageMetadata } from './NotFoundPage.metadata.tsx'
 

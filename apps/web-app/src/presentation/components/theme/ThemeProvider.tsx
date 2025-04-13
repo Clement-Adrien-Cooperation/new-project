@@ -2,7 +2,7 @@ import { type FC, type PropsWithChildren, useCallback, useEffect, useState } fro
 
 import { ThemeService } from '@/application/services'
 import type { Theme } from '@/domain/theme'
-import { ThemeContext } from '@/presentation/providers'
+import { ThemeContext } from '@/presentation/components'
 
 const initialTheme = ThemeService.getInitialTheme()
 ThemeService.changeTheme(initialTheme)

@@ -3,7 +3,7 @@ import type { FC } from 'react'
 import { useI18n } from '@/application/hooks'
 import { DEFAULT_METADATA, mergeUrl, type Metadata } from '@/domain/metadata'
 import { getUserProfileRoute } from '@/domain/navigation'
-import { PageMetadata } from '@/presentation/components'
+import { PageMetadata } from '@/presentation/pages'
 
 type UserProfilePageMetadataProps = {
   userName: string

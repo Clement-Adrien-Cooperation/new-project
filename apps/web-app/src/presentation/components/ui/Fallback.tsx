@@ -3,8 +3,7 @@ import type { FC } from 'react'
 
 import { useI18n } from '@/application/hooks'
 import { ROUTE_DEFAULT } from '@/domain/navigation'
-import { Button } from '@/presentation/components'
-import { ErrorActions, ErrorContent, ErrorTitle, ErrorWrapper } from '@/presentation/layouts'
+import { Button, ErrorActions, ErrorContent, ErrorTitle, ErrorWrapper } from '@/presentation/components'
 
 type FallbackProps = {
   /** Error message to display */

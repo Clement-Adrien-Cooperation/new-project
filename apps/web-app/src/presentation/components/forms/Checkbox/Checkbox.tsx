@@ -15,7 +15,7 @@ export const Checkbox: FC<CheckboxProps> = ({ className, children, checkboxSide 
     {...checkboxProps}
     className={values => mergeReactAriaClassNames(values, className, 'checkbox', checkboxSide)}
   >
-    {(values) => (
+    {values => (
       <>
         <div className='checkbox__icon'>
           {values.isSelected && <CheckIcon />}

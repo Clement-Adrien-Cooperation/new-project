@@ -2,8 +2,7 @@ import type { FC } from 'react'
 
 import { useI18n } from '@/application/hooks'
 import { ROUTES } from '@/domain/navigation'
-import { Link } from '@/presentation/components'
-import { NavBar } from '@/presentation/layouts'
+import { Link, NavBar } from '@/presentation/components'
 
 import './Header.styles.sass'
 

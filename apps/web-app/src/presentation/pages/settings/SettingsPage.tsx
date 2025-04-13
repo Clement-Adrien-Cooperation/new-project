@@ -1,8 +1,7 @@
 import type { FC } from 'react'
 
 import { useI18n } from '@/application/hooks'
-import { LocaleSwitcher, PageTitle, ThemeSwitcher } from '@/presentation/components'
-import { Main } from '@/presentation/layouts'
+import { LocaleSwitcher, Main, PageTitle, ThemeSwitcher } from '@/presentation/components'
 
 import { SettingsPageMetadata } from './SettingsPage.metadata.tsx'
 

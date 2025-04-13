@@ -2,8 +2,7 @@ import type { FC } from 'react'
 
 import { useI18n } from '@/application/hooks'
 import { ROUTES } from '@/domain/navigation'
-import { Link, PageTitle, RegisterForm } from '@/presentation/components'
-import { Main } from '@/presentation/layouts'
+import { Link, Main, PageTitle, RegisterForm } from '@/presentation/components'
 
 import { RegisterPageMetadata } from './RegisterPage.metadata.tsx'
 

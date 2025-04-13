@@ -1,8 +1,7 @@
 import type { FC } from 'react'
 
 import { useI18n, useParams } from '@/application/hooks'
-import { PageTitle } from '@/presentation/components'
-import { Main } from '@/presentation/layouts'
+import { Main, PageTitle } from '@/presentation/components'
 
 import { UserProfilePageMetadata } from './UserProfilePage.metadata.tsx'
 

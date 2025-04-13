@@ -1,10 +1,7 @@
 import { BrowserRouter } from 'react-router'
 
 import { Router } from '@/application/router'
-
-import { ErrorBoundary } from '@/presentation/components'
-import { AppLayout } from '@/presentation/layouts'
-import { Providers } from '@/presentation/providers'
+import { AppLayout, ErrorBoundary, Providers } from '@/presentation/components'
 
 import '@/presentation/styles/base.sass'
 

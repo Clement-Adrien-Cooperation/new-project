@@ -7,6 +7,7 @@ import { AUTH_FORM_FIELDS } from '@/domain/auth'
 import { EmailField, FieldSet, Form, FormErrors, PasswordsValidationFields, RememberMeCheckbox, RequiredFieldsMessage, SubmitButton, ValidUserNameField } from '@/presentation/components'
 
 import { getRegisterFormValidationErrors, type RegisterFormValidationErrors } from './RegisterForm.validation.ts'
+
 export const RegisterForm: FC = () => {
   const [isRegisterFormSubmitting, setIsRegisterFormSubmitting] = useState(false)
   const [registerFormValidationErrors, setRegisterFormValidationErrors] = useState<RegisterFormValidationErrors>()

@@ -3,7 +3,7 @@ import { I18nProvider as ReactAriaI18nProvider } from 'react-aria-components'
 
 import { I18nService } from '@/application/services'
 import type { Locale, TranslateKey, TranslateOptions } from '@/domain/i18n'
-import { I18nContext } from '@/presentation/providers'
+import { I18nContext } from '@/presentation/components'
 
 const initialLocale = I18nService.getInitialLocale()
 I18nService.changeLang(initialLocale)

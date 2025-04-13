@@ -1,7 +1,6 @@
 import type { FC } from 'react'
 
-import { PageTitle } from '@/presentation/components'
-import { Main } from '@/presentation/layouts'
+import { Main, PageTitle } from '@/presentation/components'
 
 import { HomePageMetadata } from './HomePage.metadata.tsx'
 

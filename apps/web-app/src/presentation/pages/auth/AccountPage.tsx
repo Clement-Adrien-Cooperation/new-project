@@ -1,8 +1,7 @@
 import type { FC } from 'react'
 
 import { useI18n } from '@/application/hooks'
-import { PageTitle } from '@/presentation/components'
-import { Main } from '@/presentation/layouts'
+import { Main, PageTitle } from '@/presentation/components'
 
 import { AccountPageMetadata } from './AccountPage.metadata.tsx'
 
