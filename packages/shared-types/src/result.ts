@@ -1,8 +1,8 @@
 import type { DefaultErrorKey } from './dto'
 
-const STATUS_ERROR = 'error'
-const STATUS_SUCCESS = 'success'
-const UNEXPECTED_ERROR: DefaultErrorKey = 'unexpected-error'
+export const STATUS_ERROR = 'error'
+export const STATUS_SUCCESS = 'success'
+export const UNEXPECTED_ERROR: DefaultErrorKey = 'unexpected-error'
 
 export function failure(): { errors: DefaultErrorKey, status: typeof STATUS_ERROR }
 export function failure<E>(errors: E): { errors: E, status: typeof STATUS_ERROR }
