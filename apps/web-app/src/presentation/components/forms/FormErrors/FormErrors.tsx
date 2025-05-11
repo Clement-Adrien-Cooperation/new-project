@@ -20,7 +20,7 @@ export const FormErrors: FC<FormErrorsProps> = ({ className, errors, ...formErro
   return (
     <ul className={mergeClassNames('form-errors', className)} {...formErrorProps}>
       {Array.isArray(errorsList)
-        ? errorsList.map(error => <div key={error}>• {error}</div>)
+        ? errorsList.map(error => <li key={error}>• {error}</li>)
         : <li>{errorsList}</li>
       }
     </ul>

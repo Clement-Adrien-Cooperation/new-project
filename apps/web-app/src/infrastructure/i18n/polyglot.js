@@ -1,6 +1,6 @@
 'use strict'
 
-const DEFAULT_LOCALE = 'fr'
+import { DEFAULT_LOCALE } from '@/domain/i18n'
 
 const entries = Object.entries
 const has = (o, arg) => {

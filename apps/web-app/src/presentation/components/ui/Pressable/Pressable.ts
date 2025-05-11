@@ -34,11 +34,6 @@ type PressableWithVariantProps = {
    */
   size?: PressableSize
 
-  /** Optional tooltip to display when hovering over the button
-   * @default undefined
-   */
-  tooltip?: TooltipProps['children']
-
   /**
    * The visual style variant of the button.
    * @values 'primary', 'secondary', 'outline', 'ghost', 'destructive'

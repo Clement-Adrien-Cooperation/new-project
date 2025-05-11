@@ -22,6 +22,17 @@ const fakeLoad = async (log: unknown) => {
 }
 
 export const authApi = {
+  createUser: async (registerRequest: RegisterRequest): Promise<RegisterResponse>  => {
+    try {
+      const registerResponse = await fakeLoad(registerRequest)
+
+      return success(registerResponse)
+    } catch (error) {
+      console.error(error)
+      return failure(['unexpected-error'])
+    }
+  },
+
   getAuthUserByCredentials: async (loginRequest: LoginRequest): Promise<LoginResponse>  => {
     try {
       const loginResponse = await fakeLoad(loginRequest)
@@ -41,17 +52,6 @@ export const authApi = {
     } catch (error) {
       console.error(error)
       return failure()
-    }
-  },
-
-  createUser: async (registerRequest: RegisterRequest): Promise<RegisterResponse>  => {
-    try {
-      const registerResponse = await fakeLoad(registerRequest)
-
-      return success(registerResponse)
-    } catch (error) {
-      console.error(error)
-      return failure(['unexpected-error'])
     }
   }
 }

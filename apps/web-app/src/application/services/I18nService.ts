@@ -9,21 +9,28 @@ const isSupportedLocale = (locale: string): locale is Locale => {
   return Object.keys(dictionaries).includes(locale)
 }
 
+const changeLang = (locale: Locale) => {
+  document.documentElement.setAttribute('lang', locale)
+}
+
 export const I18nService = {
-  changeLang: (locale: Locale) => {
-    document.documentElement.setAttribute('lang', locale)
+  changeLocale: (locale: Locale) => {
+    changeLang(locale)
+    I18nRepository.saveLocale(locale)
   },
 
   getInitialLocale: (): Locale => {
     const storedLocale = I18nRepository.getLocale()
 
     if (storedLocale && isSupportedLocale(storedLocale)) {
+      changeLang(storedLocale)
       return storedLocale
     }
 
     const primaryNavigatorLocale = getLocaleFromLanguage(navigator.language)
 
     if (isSupportedLocale(primaryNavigatorLocale)) {
+      changeLang(primaryNavigatorLocale)
       return primaryNavigatorLocale
     }
 
@@ -31,15 +38,14 @@ export const I18nService = {
       .map(getLocaleFromLanguage)
       .find(isSupportedLocale)
 
-    return matchingNavigatorLocale ?? DEFAULT_LOCALE
+    const locale = matchingNavigatorLocale ?? DEFAULT_LOCALE
+    changeLang(locale)
+
+    return locale
   },
 
   getPolyglot: (locale: Locale) => {
     const selectedDictionary = dictionaries[locale] ?? dictionaries[DEFAULT_LOCALE]
     return new Polyglot({ locale, phrases: selectedDictionary })
-  },
-
-  saveFavoriteLocale: (locale: Locale) => {
-    I18nRepository.saveLocale(locale)
   }
 }

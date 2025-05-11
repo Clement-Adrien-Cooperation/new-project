@@ -6,14 +6,12 @@ import type { Locale, TranslateKey, TranslateOptions } from '@/domain/i18n'
 import { I18nContext } from '@/presentation/components'
 
 const initialLocale = I18nService.getInitialLocale()
-I18nService.changeLang(initialLocale)
 
 export const I18nProvider: FC<PropsWithChildren> = ({ children }) => {
   const [selectedLocale, setSelectedLocale] = useState<Locale>(initialLocale)
 
   const changeLocale = useCallback((newLocale: Locale) => {
-    I18nService.changeLang(newLocale)
-    I18nService.saveFavoriteLocale(newLocale)
+    I18nService.changeLocale(newLocale)
     setSelectedLocale(newLocale)
   }, [])
 
